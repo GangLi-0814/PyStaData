@@ -1,0 +1,10 @@
+
+[](./image/6.png)
+
+本来写了一篇用 Python 从 PDF 中提取文本内容，但是因为审核原因公众号上发不出来，尝试排查了一个小时，没有找出原因。如果有兴趣可以到 Github 或者 码云上看。
+
+Github访问：https://github.com/GangLi-0814/PyStaData/blob/master/Python_for_Research/Python%E4%BB%8EPDF%E4%B8%AD%E6%8F%90%E5%8F%96%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9/%E4%BB%8EPDF%E4%B8%AD%E6%8F%90%E5%8F%96%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9.md
+
+
+码云访问：
+

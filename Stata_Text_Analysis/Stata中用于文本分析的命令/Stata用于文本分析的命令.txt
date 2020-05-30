@@ -1,0 +1,13 @@
+
+|command|function|
+|:---:|:---:|
+|tokenize||
+|intext||
+|txttool||
+|textfind|| 
+|wordfreq||
+|wordscores||
+|strdist||
+|matchit||
+|precoin||
+|coin||

@@ -1,0 +1,64 @@
+
+
+ -- Beep.exe 2.0 --
+
+  (c) RL Vision 2008-2010
+ 
+  http://www.rlvision.com
+
+  Freeware
+
+
+ -- Purpose --
+ 
+  Beep.Exe is a tiny Windows command line utility that 
+  uses the internal PC speaker to make a sound. This 
+  can be useful in situations when you do not have a 
+  sound card or speakers are not connected or turned 
+  on.
+
+  Typical usage is in batch scripts or similar to 
+  signal events. For example, I use it myself to 
+  signal when my (slow) PC has booted and launched 
+  all startup applications and is ready to use.
+
+
+ -- Usage --
+
+  Beep.exe {tone duration [/s sleep]} {...} [/r repeat] [/d]
+
+    tone       Tone to play in Hz
+    duration   Time in Ms to play tone
+    sleep      Time in Ms to sleep after previous tone (optional)
+  
+      * These 3 arguments can be repeated to play multiple tones.  
+      * Time is measured in milliseconds (Ms). 1000 Ms = 1 second.
+  
+    repeat    Number of times to play entire sequence. (optional)
+      
+      * Default is to play only once.
+      * Enter 0 for unlimited repeats (Break with Ctrl+C)
+
+    /d        Print on screen what is playing (optional)
+
+  Note: If you don't enter any arguments, a "notification" 
+  sound is played.
+
+ -- Examples --
+
+  Notification (the default sound):
+    
+    beep.exe 240 10 /s 50 280 10 /s 50 340 10
+
+  Alarm:
+  
+    beep.exe 300 15 310 15 320 15 330 15 340 15 350 15 360 15 370 15 380 15 390 15 400 15 390 15 380 15 370 15 360 15 350 15 340 15 330 15 320 15 310 15 300 15 
+
+
+ -- Notes --
+
+  Not all modern PCs have an internal PC speaker. Some 
+  may use an integrated sound card instead. Some are just 
+  silent. Windows 7 seems to have removed this hardware 
+  feature all together for some unknown reason :-(
+

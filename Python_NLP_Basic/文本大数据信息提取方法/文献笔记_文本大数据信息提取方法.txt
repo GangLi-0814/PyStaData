@@ -1,0 +1,41 @@
+文献笔记|文本大数据信息提取方法
+
+在经济学研究领域中，文本大数据主要用于测度经济和政策不确定性、基于文本的行业动态分类、度量和预测商业周期，以及量化媒体的政治倾向等问题。在金融学研究领域，文本大数据主要用于度量投资者和媒体关注度、不同市场参与主体的情绪、基于新闻的隐含波动率以及投资者的意见分歧等指标。（沈艳等，2018）
+
+
+机器学习在追踪调查数据中的应用
+文本分析方法在测度经济政策不确定性中的应用
+
+构建指数
+
+ EPU 指数可视化
+
+美国前 10 的报刊，含有that contain
+the following trio of terms: ‘‘economic’’ or ‘‘economy’’; ‘‘uncertain’’
+or ‘‘uncertainty’’; and one or more of ‘‘Congress,’’ ‘‘deficit,’’
+‘‘Federal Reserve,’’ ‘‘legislation,’’ ‘‘regulation,’’ or ‘‘White House.’’
+The index spikes near tight presidential elections, GulfWars I and
+II, the 9/11 attacks, the 2011 debt ceiling dispute, and other major
+battles over fiscal policy.
+
+Newspaper text search can yield useful proxies for economic and policy conditions stretching back several decades, which could be especially valuable in earlier eras and in countries with fewer data sources.
+
+数据来源：
+Our modern monthly EPU index for the United States relies
+on 10 leading newspapers: USA Today, Miami Herald, Chicago
+Tribune, Washington Post, Los Angeles Times, Boston Globe, San Francisco Chronicle, Dallas Morning News, New York Times, and Wall Street Journal.
+
+时间跨度：from January 1985, monthly
+
+检索内容：
+‘‘uncertainty’’ or ‘‘uncertain’’;
+‘‘economic’’ or ‘‘economy’’; and one of the following policy
+terms: ‘‘Congress,’’ ‘‘deficit,’’ ‘‘Federal Reserve,’’ ‘‘legislation,’’
+‘‘regulation,’’ or ‘‘White House’’ (including variants like
+‘‘uncertainties,’’ ‘‘regulatory,’’ or ‘‘the Fed’’). In other words, to
+meet our criteria, an article must contain terms in all three categories
+pertaining to uncertainty, the economy, and policy.
+
+计算：
+total number of articles in the same newspaper and month
+
