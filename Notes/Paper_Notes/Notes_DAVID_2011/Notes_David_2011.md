@@ -1,4 +1,4 @@
-> Function: Notes of S. Fountas et al.(2015)
+> Function: Notes of David et al.(2011)
 >
 > Name: Li Gang
 >
@@ -8,7 +8,7 @@
 >
 > Last Modify: 2020/06/01 09:50
 
-_You can see the latest version of this notes at my [Github Page](https://github.com/GangLi-0814/PyStaData/blob/master/Notes/Paper_Notes/Notes_David_2011/Notes_David_2011.md)_.
+_You can see the latest version of this notes at my [Github Page](https://github.com/GangLi-0814/PyStaData/blob/master/Notes/Paper_Notes/Notes_DAVID_2011/Notes_David_2011.md)_.
 
 ## 1. Background and Goal
 
