@@ -8,7 +8,7 @@
 >
 > Last Modify: 2020/05/18 23:50
 
-_You can see the latest version of this notes at my [Github Page](https://github.com/GangLi-0814/PyStaData/blob/master/Paper_Notes/Notes_Fountas_2015/Notes_Fountas_2015.md)_.
+_You can see the latest version of this notes at my [Github Page](https://github.com/GangLi-0814/PyStaData/blob/master/Notes/Paper_Notes/Notes_Fountas_2015/Notes_Fountas_2015.md)_.
 
 [TOC]
 

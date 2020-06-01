@@ -8,7 +8,7 @@
 >
 > Last Modify: 2020/04/27 15:42
 
-*You can see the latest version of this notes  at my [Github Page](https://github.com/GangLi-0814/PyStaData/blob/master/Paper_Notes/Lamprinopoulou_2014_Application%20_of_an_integrated_systemic_framework/Notes_Agricultural_Systems_129(2014)40_54.md)*.
+*You can see the latest version of this notes  at my [Github Page](https://github.com/GangLi-0814/PyStaData/blob/master/Notes/Paper_Notes/Lamprinopoulou_2014_Application%20_of_an_integrated_systemic_framework/Notes_Agricultural_Systems_129(2014)40_54.md)*.
 
 # 0.Abstract
 
