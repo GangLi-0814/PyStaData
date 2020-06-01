@@ -12,7 +12,7 @@ _You can see the latest version of this notes at my [Github Page](https://github
 
 ## 1. Background and Goal
 
-**Background**: milk-related food safety -> trade flows from China.
+**Background**: milk-related food safety $\Rightarrow$ trade flows from China.
 
 **Goal**: provide an economic assessment of Chinese consumer preferences for food safety verification attributes in UTH milk(Ultra-high temperature, or UHT, milk is ultra-pasteurized milk that comes in sterilized containers).
 
@@ -30,53 +30,55 @@ Choice experiment approach to evaluate Chinese consumer's willingness to pay(WTP
 
 7 cities $\times$ 60 observations $\times$ 16 choice sets = 6720 observations.
 
-### 3. Econometric Methods
+### 2.3 Econometric Methods
 
-- **The random utility model(RUM)**
+#### 2.3.1 The random utility model(RUM)
+
 $$
-  P_{nit} = \frac{exp(V_{nit})}{\sum_{j}{exp(V_njt)}}
-  $$
-  
-- **RPL model (Recognition of Prior Learning)**
+P_{nit} = \frac{exp(V_{nit})}{\sum_{j}{exp(V_njt)}}
+$$
 
-  relaxes the limitations of the traditional logit by allowing random taste variation within a sample according to a specified distribution.
+#### 2.3.2 RPL model (Recognition of Prior Learning)
 
-  $$
-  P_{nit}=\int \frac{exp(V_{nit})}{\sum_{j}{exp(V_{njt})}}f(\beta)d\beta
-  $$
+RPL model relaxes the limitations of the traditional logit by allowing random taste variation within a sample according to a specified distribution.
 
-- **WTP**
+$$
+P_{nit}=\int \frac{exp(V_{nit})}{\sum_{j}{exp(V_{njt})}}f(\beta)d\beta
+$$
+
+#### 2.3.3 WTP
 
 $$
 WTP=-2 \frac{\beta_{k}}{\beta_{p}}
 $$
 
-$\beta_{k}$ is the estimated parameter of the $k$th attribute, $\beta_{p}\$ is the estimated price coefficient.
+$\beta_{k}$ is the estimated parameter of the $k$th attribute, $\beta_{p}$ is the estimated price coefficient.
 
-- **Welfare Evaluation**
+#### 2.3.4 Welfare Evaluation
 
 $$
 CV = ln(\sum_{j}{e^{V_{i}}})+ \gamma
 $$
 
 where $\gamma$ is Euler's constant. Therefore, the change in welfare that from moving from situation A tp B is given by
+
 $$
 \frac{1}{Marginal\,Utility\,of\,Income}(CV^B-CV^A)
 $$
 
-## 4. Results and Conclusions
+## 4. Results
 
-### Willingness to Pay
+### 4.1 Willingness to Pay
 
 ![](./images/1.png)
 
 Table 1 indicates that consumers are willing to pay the most for government certification, followed by the product's brand and private certification;then there is negative WTP for UTH milk with the shelf-life longer than three months.
 
-### Welfare Evaluation and Market Impacts
+### 4.2 Welfare Evaluation and Market Impacts
 
 ![](./images/2.png)
 
-## Conclusions
+## 5. Conclusions
 
 This study finds that:
 
