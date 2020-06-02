@@ -8,7 +8,7 @@
 >
 > Last Modify: 2020/06/01 14:26
 
-_You can see the latest version of this notes at my [Github Page](https://github.com/GangLi-0814/PyStaData/blob/master/Notes/Paper_Notes/Notes_Jeffrey_2009/Notes_Jeffrey_2009.md)_.
+_You can see the latest version of this notes at my [Github Page](https://github.com/GangLi-0814/PyStaData/blob/master/Notes/Paper_Notes/Notes_Gillespie_2009/Notes_Gillespie_2009.md)_.
 
 ## Background and Objectives
 
