@@ -19,7 +19,7 @@ _You can see the latest version of this notes at my [Github Page](https://github
 >Pasture-based dairies are "management grazing"or "mixed feed" operations(Foltz, 2006). 
 
 - **Management-intensive grazers**: use pasture as the primary forage source during the grazing period;
-- **mixed-feed** operators obtain part of their forage rations from pasture but rely primarily on stored feed. 
+- **mixed-feed**: operators obtain part of their forage rations from pasture but rely primarily on stored feed. 
 
 **Objectives: **
 
@@ -110,7 +110,7 @@ Including two dairy enterprise profit measures and two whole-farm profit measure
 
 **Note**: 
 
-- because this design-based survey uses stratified sampling, **weighted regression **procedures were used to estimate all models reported in this paper.
+- because this design-based survey uses stratified sampling(分层抽样), **weighted regression **procedures were used to estimate all models reported in this paper.
 - The multi-phase sampling underlying ARMS data provides challenges in estimating variances using classical methods; thus, the **delete-a-group jackknife estimator** is used.
 
 ## Result
@@ -123,7 +123,7 @@ Including two dairy enterprise profit measures and two whole-farm profit measure
 
 ![](./images/3.png)
 
-On the one hand, conventional farms are more profitable than pasture-based and semi-pasture-based farms. On the other hand, when whole-farm measures are used, significant differences are not found on a per cow basis, but the pasture-based operations yield higher net return on a cwt milk produced basis.
+On the one hand, conventional farms are more profitable than pasture-based and semi-pasture-based farms. On the other hand, **when whole-farm measures are used, significant differences are not found on a per cow basis, but the pasture-based operations yield higher net return on a cwt milk produced basis**.
 
 ### Multinomial Logit Production System Choice Estimates
 
@@ -142,5 +142,18 @@ Net returns equations provide insight as to the type of operation yielding the h
 - Pasture-based dairy systems differ in prominence by region, but also by farm and operator demographics.
 - Pasture-based producers are more likely to be smaller-scale and have lower debt, and can be thought of as "extensive," rather than "intensive" grazing operations. **They are less likely to adopt "intensive" technologies.**
 - Semi-pasture-based producers are more likely to be smaller-scale and have lower debt than conventional producers, but are larger than pasture-based producers.
-- Paired I-tests reveal significant differences in profitability among systems, but the conclusion as to which system is more profitable depends upon whether an enterprise or a whole farm measure of net returns is used.
+- Paired t-tests reveal significant differences in profitability among systems, but the conclusion as to which system is more profitable depends upon whether an enterprise or a whole farm measure of net returns is used.
 - The net returns analysis underscore the importance of farm size.
+
+# 老师点评
+
+1.应该花更多的时间在方程一的解释上
+
+2.为什么不分区域回归？
+
+分区域回归后，无法比较不同系数统计上是否显著。保留每个回归结果，之后再做F检验。
+
+3.在答辩时，引言需要点出：选题背景+研究目的。背景介绍不用花太多篇幅。
+
+4.先介绍数据情况，再介绍Data Description。
+
