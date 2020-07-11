@@ -5,8 +5,7 @@
 2.四项消费支出的对比图复合图，折线图或者条形图
 */
 
-global path "C:\Users\mudaozi\Documents\WeChatPlatform\Stata_Data_Managemet\绘图"
-
+global path "D:\PyStaData\Stata\Stata_Data_Managemet\绘图"
 import excel using "$path/data/bdata(1)(2)(1).xls", firstrow clear
 
 * 图一
@@ -55,7 +54,7 @@ replace L = "死亡率" in  3
 replace M = "自然增长率" in  3
 
 drop in 1/2
-ssc install nrow, replace
+*ssc install nrow, replace
 nrow
 destring _all, replace
 
