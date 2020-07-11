@@ -1,0 +1,27 @@
+https://www.statalist.org/forums/forum/general-stata-discussion/general/1512191-how-to-find-all-user-written-programs-related-to-text-mining-content-analysis/page2
+
+There is also a few commands for preparing string variables:
+-ngram- and -txttool-
+
+Supervised ML for text classification:
+-svmachines-
+
+Unsupervised topic modeling (cluster identification):
+-ldagibbs-
+
+Document similarity analysis:
+-lsemantica-
+
+
+
+https://journals.sagepub.com/doi/pdf/10.1177/1536867X1401400407
+
+http://sage.cnpereading.com/paragraph/download/10.1177/1536867X19830910
+
+http://www.schonlau.net/publication/17ngram.pdf
+
+https://github.com/aassumpcao/textfind/blob/master/textfind.pdf
+
+http://sage.cnpereading.com/paragraph/download/10.1177/1536867X1801800205
+
+http://sage.cnpereading.com/paragraph/download/10.1177/1536867X1801800107

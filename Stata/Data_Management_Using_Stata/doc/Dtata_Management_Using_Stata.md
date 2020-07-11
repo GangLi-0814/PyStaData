@@ -56,7 +56,7 @@ Stata != commands ==> 掌握核心，补充外部，会看 help 和 Manual 是�
 > 4. 得到无礼的回应：很多黑客圈子中看似无礼的行为并不是存心冒犯。相反，它是直接了当，一针见血式的交流风格，这种风格更注重解决问题，而不是使人感觉舒服而却模模糊糊。 
 
 ## 排版规范
-本讲义采用 Markdown 编写，...
+本讲义采用 Markdown 编写
 ## 鸣谢
 
 # 1. Stata 入门介绍
@@ -209,6 +209,8 @@ viewsource regress_postestimation.sthlp // example of a postestimation entry
 
 #### 1.2.1.3 快捷键
 
+cheat sheet
+
 ### 1.2.2 基本语法
 #### 1.2.2.1 语法结构
 
@@ -218,7 +220,7 @@ viewsource regress_postestimation.sthlp // example of a postestimation entry
 
 ###  1.2.4 外部命令安装
 
-## 1.3 环境配置（Work flow）
+## 1.3 环境配置
 ### 1.3.1 路径定义
 ### 1.3.2 profile 设置
 ### 1.3.4 Do-file Editor
@@ -227,7 +229,7 @@ Stata16 中的新功能
 ### 1.3.6 Sublime Text 3 环境配置 
 
 # 2. Stata 数据管理
-[Kohler_2012.pdf](C:\Stata16\ado\personal\PX_A_2020a\A2_data\refs\Kohler_2012.pdf)
+[Kohler_2012.pdf](D:\Stata16\ado\personal\PX_A_2020a\A2_data\refs\Kohler_2012.pdf)
 
 ## 2.1 数据处理
 ### 2.1.1 数据导入与导出
@@ -1817,8 +1819,10 @@ python script pyex5.py
 
 # 11. Stata 与经典算法
 
+## 11.1 二分法
+
 # 12. 有趣的外部命令
-## 11.1 -statapush- 
+## 12.1 -statapush- 
 `statapush` 可以使用 Stata 发送邮件。在耗时比较长的程序运行时，通过 `statapush`让程序运行结束后，发送邮件提醒。
 
 # 13.其他
@@ -1840,7 +1844,7 @@ python script pyex5.py
 |snipaste |截图||
 |Iobit Uninstaller|卸载软件||
 |Seer|预览文件夹||
-|potplayer|视频播放器||
+|PotPlayer|视频播放器||
 |Q-Dir|文件夹可视化||
 |Ditto|剪切板管理工具||
 |Typora|markdown编辑器||
@@ -1850,4 +1854,6 @@ python script pyex5.py
 |Renamer|批量重命名||
 |FastStone Capture|截图||
 |Cmder|Windows 命令行||
+|adsafe|去除弹窗广告||
+|Qtranslate|小巧的翻译工具||
 ### 13.6.2 Chrome 插件
