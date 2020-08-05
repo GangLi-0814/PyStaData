@@ -1,0 +1,3 @@
+Content of new file. 
+Hi there!
+New line
