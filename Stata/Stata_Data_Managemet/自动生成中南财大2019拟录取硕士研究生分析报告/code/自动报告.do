@@ -1,4 +1,4 @@
-cd "C:\Users\mudaozi\Documents\WeChatPlatform\Stata_Data_Managemet\自动生成中南财大2019拟录取硕士研究生分析报告"
+cd "D:\PyStaData\Stata\Stata_Data_Managemet\自动生成中南财大2019拟录取硕士研究生分析报告"
 
 ************************
 * 下载并转换为 Excel
