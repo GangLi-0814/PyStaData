@@ -1,0 +1,16 @@
+\beamer@sectionintoc {1}{市场和价格}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{绪论}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{供求理论}{4}{0}{1}
+\beamer@subsubsectionintoc {1}{2}{1}{供给和需求}{5}{0}{1}
+\beamer@subsubsectionintoc {1}{2}{2}{均衡及其变动}{7}{0}{1}
+\beamer@subsubsectionintoc {1}{2}{3}{弹性理论}{9}{0}{1}
+\beamer@sectionintoc {2}{生产者、消费者与竞争性市场}{10}{0}{2}
+\beamer@subsectionintoc {2}{1}{消费者行为理论}{10}{0}{2}
+\beamer@subsectionintoc {2}{2}{生产者理论}{11}{0}{2}
+\beamer@sectionintoc {3}{市场结构与竞争策略}{12}{0}{3}
+\beamer@subsectionintoc {3}{1}{市场结构}{12}{0}{3}
+\beamer@subsectionintoc {3}{2}{竞争策略}{13}{0}{3}
+\beamer@sectionintoc {4}{ 信息、市场失灵与政府角色}{14}{0}{4}
+\beamer@subsectionintoc {4}{1}{一般均衡与经济效率}{14}{0}{4}
+\beamer@subsectionintoc {4}{2}{信息不对称的市场}{15}{0}{4}
+\beamer@subsectionintoc {4}{3}{外部性与公共物品}{16}{0}{4}
