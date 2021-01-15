@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.12.22)  14 JAN 2021 00:36
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.12.22)  15 JAN 2021 10:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1586,13 +1586,13 @@ Package fontspec Info: Font family 'FandolHei-Regular(0)' created for font
 File: figures/Wechat_QR.jpeg Graphic file (type bmp)
 <figures/Wechat_QR.jpeg>
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <20.74> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 349.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 352.
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <12> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 349.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 352.
 
 
 LaTeX Font Warning: Font shape `TU/lmss/m/sc' in size <12> not available
-(Font)              Font shape `TU/lmr/m/sc' tried instead on input line 349.
+(Font)              Font shape `TU/lmr/m/sc' tried instead on input line 352.
 
 [24
 
@@ -1606,31 +1606,20 @@ LaTeX Font Warning: Font shape `TU/lmss/m/sc' in size <12> not available
 \tf@snm=\write8
 \openout8 = `MicroEcon_Notes_Pindyck.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 351.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 351.
- (./MicroEcon_Notes_Pindyck.aux
-
-Package pdfbase Warning: Rerun to get internal references right!
-
-)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 351.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 351.
-
-
-Package rerunfilecheck Warning: File `MicroEcon_Notes_Pindyck.out' has changed.
-
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `MicroEcon_Notes_Pindyck.out':
-(rerunfilecheck)             Before: 29149511D5149B7405EDA6FAD61C73F4;1424
-(rerunfilecheck)             After:  73DD76F6A12BA92F14241497830096B4;1555.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 354.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 354.
+ (./MicroEcon_Notes_Pindyck.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 354.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 354.
+Package rerunfilecheck Info: File `MicroEcon_Notes_Pindyck.out' has not changed
+.
+(rerunfilecheck)             Checksum: 73DD76F6A12BA92F14241497830096B4;1555.
  ) 
 Here is how much of TeX's memory you used:
- 32449 strings out of 479418
- 703265 string characters out of 5884584
- 1016078 words of memory out of 5000000
- 49225 multiletter control sequences out of 15000+600000
+ 32453 strings out of 479418
+ 703297 string characters out of 5884584
+ 1017190 words of memory out of 5000000
+ 49229 multiletter control sequences out of 15000+600000
  539405 words of font info for 101 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  65i,15n,81p,821b,719s stack positions out of 5000i,500n,10000p,200000b,80000s
