@@ -1,0 +1,442 @@
+﻿[
+	{
+		"_name": "CrossRef",
+		"_alias": "CrossRef",
+		"_description": "CrossRef Search",
+		"_icon": "https://www.crossref.org/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "http://crossref.org/openurl?{z:openURL}&pid=zter:zter321",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "http://crossref.org/favicon.ico"
+	},
+	{
+		"_name": "Google Scholar",
+		"_alias": "Google Scholar",
+		"_description": "Google Scholar Search",
+		"_icon": "http://scholar.google.com/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "http://scholar.google.com/scholar?as_q=&as_epq={z:title}&as_occt=title&as_sauthors={rft:aufirst?}+{rft:aulast?}&as_ylo={z:year?}&as_yhi={z:year?}&as_sdt=1.&as_sdtp=on&as_sdtf=&as_sdts=22&",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"rft": "info:ofi/fmt:kev:mtx:journal",
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "http://scholar.google.com/favicon.ico"
+	},
+	{
+		"_name": "Google Scholar - Title Only",
+		"_alias": "Google Scholar",
+		"_description": "Google Scholar Search - Title Only",
+		"_icon": "http://scholar.google.com/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "http://scholar.google.com/scholar?as_q=&as_epq={z:title}&as_occt=title&as_sdt=1.&as_sdtp=on&as_sdtf=&as_sdts=22&",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"rft": "info:ofi/fmt:kev:mtx:journal",
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "http://scholar.google.com/favicon.ico"
+	},
+		{
+		"_name": "Google Patent",
+		"_alias": "Google Scholar",
+		"_description": "Google Patent - Search",
+		"_icon": "http://scholar.google.com/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "https://patents.google.com/?q=({z:title})&oq=({z:title})",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"rft": "info:ofi/fmt:kev:mtx:journal",
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "http://scholar.google.com/favicon.ico"
+	},
+	{
+		"_name": "Google",
+		"_alias": "Google",
+		"_description": "Google Search",
+		"_icon": "https://www.google.com/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "https://www.google.com/#q={z:title}+{rft:aufirst?}+{rft:aulast?}",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#"
+		},
+		"_iconSourceURI": "https://www.google.com/favicon.ico"
+	},
+	{
+		"_name": "Web of Science",
+		"_alias": "WOS",
+		"_description": "Web of Science Search",
+		"_icon": "https://raw.githubusercontent.com/bwiernik/zotero-tools/master/locate_engines_icons/wok_favicon_citing.ico.png",
+		"_hidden": false,
+		"_urlTemplate": "http://ws.isiknowledge.com/cps/openurl/service?url_ver=Z39.88-2004&{z:openURL}",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"rft": "info:ofi/fmt:kev:mtx:journal",
+			"z": "http://www.zotero.org/namespaces/openSearch#"
+		},
+		"_iconSourceURI": "http://login.webofknowledge.com/error/WOK5/images/wok_favicon.ico"
+	},
+	{
+		"_name": "WOS Citing Articles",
+		"_alias": "WOS Citing Articles",
+		"_description": "Web of Science Citing Articles Search",
+		"_icon": "https://raw.githubusercontent.com/bwiernik/zotero-tools/master/locate_engines_icons/wok_favicon_citing.ico.png",
+		"_hidden": false,
+		"_urlTemplate": "http://ws.isiknowledge.com/cps/openurl/service?url_ver=Z39.88-2004&svc_val_fmt=info:ofi/fmt:kev:mtx:sch_svc&svc.citing=yes&{z:openURL}",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"rft": "info:ofi/fmt:kev:mtx:journal",
+			"z": "http://www.zotero.org/namespaces/openSearch#"
+		},
+		"_iconSourceURI": "http://www.proquest.com/favicon.ico"
+	},
+	{
+		"_name": "WOS Related Articles",
+		"_alias": "WOS Related Articles",
+		"_description": "Web of Science Related Articles Search",
+		"_icon": "https://raw.githubusercontent.com/bwiernik/zotero-tools/master/locate_engines_icons/wok_favicon_related.ico.png",
+		"_hidden": false,
+		"_urlTemplate": "http://ws.isiknowledge.com/cps/openurl/service?url_ver=Z39.88-2004&svc_val_fmt=info:ofi/fmt:kev:mtx:sch_svc&svc.related=yes&{z:openURL}",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"rft": "info:ofi/fmt:kev:mtx:journal",
+			"z": "http://www.zotero.org/namespaces/openSearch#"
+		},
+		"_iconSourceURI": "http://www.proquest.com/favicon.ico"
+	},
+	{
+		"_name": "Sci-Hub DOI",
+		"_alias": "Sci-Hub DOI",
+		"_description": "SciHub Lookup Lookup",
+		"_icon": "https://figurebed-iseex.oss-cn-hangzhou.aliyuncs.com/img/20201016200912.png",
+		"_hidden": false,
+		"_urlTemplate": "http://sci-hub.tw/{z:DOI}",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#"
+		},
+		"_iconSourceURI": "https://figurebed-iseex.oss-cn-hangzhou.aliyuncs.com/img/20201016200912.png"
+	},
+	{
+		"_name": "Sci-Hub URL",
+		"_alias": "Sci-Hub URL",
+		"_description": "SciHub URL Lookup",
+		"_icon": "https://figurebed-iseex.oss-cn-hangzhou.aliyuncs.com/img/20201016200912.png",
+		"_hidden": false,
+		"_urlTemplate": "http://sci-hub.tw/{z:url}",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#"
+		},
+		"_iconSourceURI": "https://figurebed-iseex.oss-cn-hangzhou.aliyuncs.com/img/20201016200912.png"
+	},
+			{
+		"_name": "Sci-Hub最新网址",
+		"_alias": "Sci-Hub最新网址",
+		"_description": "Sci-Hub最新网址",
+		"_icon": "https://figurebed-iseex.oss-cn-hangzhou.aliyuncs.com/img/20201016200912.png",
+		"_hidden": false,
+		"_urlTemplate": "https://iseex.github.io/scihub/",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "https://figurebed-iseex.oss-cn-hangzhou.aliyuncs.com/img/20201016200912.png"
+	},
+		{
+		"_name": "iJournal期刊影响因子（首选）",
+		"_alias": "iJournal期刊影响因子",
+		"_description": "期刊影响因子查询（仅支持搜索ISSN）",
+		"_icon": "https://ijournal.topeditsci.com/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "https://ijournal.topeditsci.com/search?keywordType=title&keyword={rft:jtitle?}&ifStart2019=&ifEnd2019=&jcr=&sub=&isDomestic=&selfCitingRate=all&compatriotRate=all&totalReviewRatio=all&categoryId=&pageNum=1&order=&orderType=",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"rft": "info:ofi/fmt:kev:mtx:journal",
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "https://ijournal.topeditsci.com/favicon.ico"
+	},
+		{
+		"_name": "Letpub期刊搜索",
+		"_alias": "Letpub期刊搜索",
+		"_description": "Letpub期刊搜索（仅支持搜索ISSN）",
+		"_icon": "https://www.letpub.com.cn/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "http://www.letpub.com.cn/index.php?page=journalapp&view=search&searchname={rft:jtitle?}",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"rft": "info:ofi/fmt:kev:mtx:journal",
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "https://www.letpub.com.cn/favicon.ico"
+	},
+		{
+		"_name": "期刊影响因子查询",
+		"_alias": "期刊影响因子查询",
+		"_description": "期刊影响因子查询（仅支持搜索ISSN）",
+		"_icon": "https://www.xueky.com/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "https://www.xueky.com/rank.php?qk={rft:jtitle?}",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"rft": "info:ofi/fmt:kev:mtx:journal",
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "https://www.xueky.com/favicon.ico"
+	},
+			{
+		"_name": "期刊近五年影响因子",
+		"_alias": "期刊近五年影响因子",
+		"_description": "期刊近五年影响因子",
+		"_icon": "https://figurebed-iseex.oss-cn-hangzhou.aliyuncs.com/img/20201016200307.png",
+		"_hidden": false,
+		"_urlTemplate": "http://www.greensci.net/search?kw={rft:jtitle?}",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"rft": "info:ofi/fmt:kev:mtx:journal",
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "https://figurebed-iseex.oss-cn-hangzhou.aliyuncs.com/img/20201016200307.png"
+	},
+		{
+		"_name": "Unpaywall",
+		"_alias": "Unpaywall",
+		"_description": "Unpaywall Lookup",
+		"_icon": "https://oadoi.org/static/img/favicon.png",
+		"_hidden": false,
+		"_urlTemplate": "https://oadoi.org/{z:DOI}",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#"
+		},
+		"_iconSourceURI": "https://oadoi.org/static/img/favicon.png"
+	},
+		{
+		"_name": "LibGen",
+		"_alias": "LibGen",
+		"_description": "Look up books on Library Genesis",
+		"_icon": "http://gen.lib.rus.ec/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "http://gen.lib.rus.ec/search.php?req={rft:aufirst?}+{rft:aulast?}+{rft:title?}+{z:ISBN?}",
+		"_urlParams": [],
+		"_method": "GET",
+		"_urlNamespaces": {
+			"rft": "info:ofi/fmt:kev:mtx:book",
+			"xmlns": "http://a9.com/-/spec/opensearch/1.1/",
+			"z": "http://www.zotero.org/namespaces/openSearch#"
+		},
+		"_iconSourceURI": "http://gen.lib.rus.ec/favicon.ico"
+	},
+		{
+		"_name": "Wikipedia",
+		"_alias": "Wikipedia",
+		"_description": "Wikipedia",
+		"_icon": "https://zh.wikipedia.org/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "https://zh.wikipedia.org/wiki/{z:title}",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "https://zh.wikipedia.org/favicon.ico"
+	},
+	{
+		"_name": "ProQuest",
+		"_alias": "ProQuest",
+		"_description": "ProQuest Search",
+		"_icon": "https://www.proquest.com/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "http://proquest.umi.com/pqdweb?SQ=TI(+{z:title}+)+YR(+{z:year?}+)&RQT=305&querySyntax=PQ&searchInterface=1&moreOptState=CLOSED&TS=1139706667&JSEnabled=1&DBId=-1",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"rft": "info:ofi/fmt:kev:mtx:journal",
+			"z": "http://www.zotero.org/namespaces/openSearch#"
+		},
+		"_iconSourceURI": "http://www.proquest.com/favicon.ico"
+	},
+			{
+		"_name": "Zlibrary Book",
+		"_alias": "Zlibrary Book",
+		"_description": "Zlibrary Book",
+		"_icon": "https://z-lib.org/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "https://b-ok.cc/s/{z:title}",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "https://z-lib.org/favicon.ico"
+	},
+		{
+		"_name": "Zlibrary Articles",
+		"_alias": "Zlibrary Articles",
+		"_description": "Zlibrary Articles",
+		"_icon": "https://z-lib.org/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "https://booksc.xyz/s/{z:title}",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "https://z-lib.org/favicon.ico"
+	},
+		{
+		"_name": "SooPAT专利搜索",
+		"_alias": "SooPAT专利搜索",
+		"_description": "SooPAT专利搜索",
+		"_icon": "http://www.soopat.com/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "http://www.soopat.com/Home/Result?SearchWord={z:title}&FMZL=Y&SYXX=Y&WGZL=Y&FMSQ=Y",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "http://www.soopat.com/favicon.ico"
+	},
+	{
+		"_name": "百度学术搜索",
+		"_alias": "BaiDu",
+		"_description": "百度学术搜索",
+		"_icon": "http://xueshu.baidu.com/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "https://xueshu.baidu.com/s?wd={z:title}&rsv_bp=0&tn=SE_baiduxueshu_c1gjeupa&rsv_spt=3&ie=utf-8&f=8&rsv_sug2=0&sc_f_para=sc_tasktype%3D%7BfirstSimpleSearch%7D",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "http://xueshu.baidu.com/favicon.ico"
+	},
+	{
+		"_name": "CNKI搜索",
+		"_alias": "CNKI",
+		"_description": "CNKI搜索",
+		"_icon": "http://cnki.net/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "http://kns.cnki.net/kns/brief/default_result.aspx?txt_1_sel=SU%24%=%7C&txt_1_value1={z:title}&txt_1_special1=%&txt_extension=&currentid=txt_1_value1&dbJson=coreJson&dbPrefix=SCDB&db_opt=CJFQ,CDFD,CMFD,CPFD,IPFD,CCND,CCJD&singleDB=SCDB&db_codes=CJFQ,CDFD,CMFD,CPFD,IPFD,CCND,CCJD&singleDBName=againConfigJson=false&action=scdbsearch&ua=1.11",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "http://cnki.net/favicon.ico"
+	},
+		{
+		"_name": "CNKI新版",
+		"_alias": "CNKI",
+		"_description": "CNKI新版",
+		"_icon": "http://kns8.cnki.net/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "http://kns8.cnki.net/kns/DefaultResult/Index?dbcode=SCDB&kw={z:title}&korder=SU",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "http://kns8.cnki.net/favicon.ico"
+	},
+			{
+		"_name": "万方搜索",
+		"_alias": "万方搜索",
+		"_description": "万方搜索",
+		"_icon": "http://www.wanfangdata.com.cn/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "http://www.wanfangdata.com.cn/search/searchList.do?searchType=all&showType=&pageSize=&searchWord={z:title}&isTriggerTag=",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "http://www.wanfangdata.com.cn/favicon.ico"
+	},
+
+	{
+		"_name": "谷粉学术",
+		"_alias": "谷粉学术",
+		"_description": "谷粉学术",
+		"_icon": "https://img.99lb.net/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "https://cc.gufenxueshu.com/scholar?q={z:title}",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "https://img.99lb.net/favicon.ico"
+	},
+		{
+		"_name": "Glgoo学术",
+		"_alias": "Glgoo学术",
+		"_description": "Glgoo学术",
+		"_icon": "https://xue.glgoo.org/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "https://xue.xiayige.org/scholar?hl=zh-CN&q={z:title}&btnG=&lr=",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "https://xue.glgoo.org/favicon.ico"
+	},
+		{
+		"_name": "科学上网",
+		"_alias": "科学上网",
+		"_description": "科学上网（仅供学习科研使用）",
+		"_icon": "https://iseex.github.io/images/paper-plane.ico",
+		"_hidden": false,
+		"_urlTemplate": "https://iseex.github.io/gifts/",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "https://iseex.github.io/images/paper-plane.ico"
+	},
+		{
+		"_name": "文献互助",
+		"_alias": "文献互助",
+		"_description": "青柠学术文献互助QQ群",
+		"_icon": "https://iseex.github.io/images/qq.ico",
+		"_hidden": false,
+		"_urlTemplate": "https://jq.qq.com/?_wv=1027&k=5kAWTlU",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "https://iseex.github.io/images/qq.ico"
+	},
+			{
+		"_name": "青柠学术",
+		"_alias": "青柠学术",
+		"_description": "青柠学术",
+		"_icon": "https://iseex.github.io/images/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "https://iseex.github.io",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "https://iseex.github.io/images/favicon.ico"
+	}
+]

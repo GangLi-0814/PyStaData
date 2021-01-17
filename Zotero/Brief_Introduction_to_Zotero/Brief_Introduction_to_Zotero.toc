@@ -1,0 +1,12 @@
+\beamer@sectionintoc {1}{What's Zotero?}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Problem}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Options}{5}{0}{1}
+\beamer@sectionintoc {2}{Why Zotero?}{7}{0}{2}
+\beamer@subsectionintoc {2}{1}{Comparison}{8}{0}{2}
+\beamer@subsectionintoc {2}{2}{Features}{9}{0}{2}
+\beamer@sectionintoc {3}{How to Install?}{10}{0}{3}
+\beamer@subsectionintoc {3}{1}{Set up}{11}{0}{3}
+\beamer@subsectionintoc {3}{2}{Configuration}{12}{0}{3}
+\beamer@sectionintoc {4}{How to Use?}{13}{0}{4}
+\beamer@subsectionintoc {4}{1}{Basic Usage}{14}{0}{4}
+\beamer@subsectionintoc {4}{2}{Advanced Usage}{17}{0}{4}

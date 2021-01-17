@@ -1,0 +1,15 @@
+		{
+		"_name": "Connected Papers",
+		"_alias": "Connected Papers文献网络",
+		"_description": "Connected Papers文献网络",
+		"_icon": "https://www.connectedpapers.com/favicon.ico",
+		"_hidden": false,
+		"_urlTemplate": "https://www.connectedpapers.com/search?q={z:title}+{z:year}",
+		"_urlParams": [],
+		"_urlNamespaces": {
+			"rft": "info:ofi/fmt:kev:mtx:journal",
+			"z": "http://www.zotero.org/namespaces/openSearch#",
+			"": "http://a9.com/-/spec/opensearch/1.1/"
+		},
+		"_iconSourceURI": "https://www.connectedpapers.com/favicon.ico"
+	}
