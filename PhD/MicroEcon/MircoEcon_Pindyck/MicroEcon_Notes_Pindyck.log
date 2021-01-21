@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.12.22)  18 JAN 2021 21:13
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.12.22)  19 JAN 2021 22:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1608,11 +1608,11 @@ LaTeX Font Warning: Font shape `TU/lmss/m/sc' in size <12> not available
 \tf@snm=\write8
 \openout8 = `MicroEcon_Notes_Pindyck.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 388.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 388.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 389.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 389.
  (./MicroEcon_Notes_Pindyck.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 388.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 388.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 389.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 389.
 Package rerunfilecheck Info: File `MicroEcon_Notes_Pindyck.out' has not changed
 .
 (rerunfilecheck)             Checksum: 961E321AFF7DEC0309A592D9AF4A0413;1555.
