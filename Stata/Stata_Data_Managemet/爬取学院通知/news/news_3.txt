@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 minimal-ui"/>
+<meta http-equiv="pragma" content="no-cache" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="telephone=no" name="format-detection" />
+<title>工作通知</title>
+<meta name="keywords" content="工商管理学院">
+<meta name="description" content="中南财经政法大学">
+
+<link type="text/css" href="/_css/_system/system.css" rel="stylesheet"/>
+<link type="text/css" href="/_upload/site/1/style/1/1.css" rel="stylesheet"/>
+<link type="text/css" href="/_upload/site/00/6c/108/style/84/84.css" rel="stylesheet"/>
+<link type="text/css" href="/_js/_portletPlugs/simpleNews/css/simplenews.css" rel="stylesheet" />
+<link type="text/css" href="/_js/_portletPlugs/sudyNavi/css/sudyNav.css" rel="stylesheet" />
+<link type="text/css" href="/_js/_portletPlugs/datepicker/css/datepicker.css" rel="stylesheet" />
+
+<script language="javascript" src="/_js/jquery.min.js" sudy-wp-context="" sudy-wp-siteId="108"></script>
+<script language="javascript" src="/_js/jquery.sudy.wp.visitcount.js"></script>
+<script type="text/javascript" src="/_js/_portletPlugs/sudyNavi/jquery.sudyNav.js"></script>
+<script type="text/javascript" src="/_js/_portletPlugs/datepicker/js/jquery.datepicker.js"></script>
+<script type="text/javascript" src="/_js/_portletPlugs/datepicker/js/datepicker_lang_HK.js"></script>
+<link href="/_upload/tpl/02/ba/698/template698/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+<link href="/_upload/tpl/02/ba/698/template698/wap_resources/css/style.css" type="text/css" rel="stylesheet">
+<script src="/_upload/tpl/02/ba/698/template698/wap_resources/extends/extends.js" type="text/javascript"></script>
+</head>
+
+<body class="list rem">
+
+   <!--Start||Top-->
+  <div class="wrapper top">
+    <div class="inner clearfix">
+      <!--search begin-->
+      <div class="wp-panel search-panel panel-2" frag="面板2">
+        <div class="wp-window search-window window-2" frag="窗口2" portletmode="search">
+                      <!--search component-->
+            <div class="wp-search clearfix">
+              <form method="post" action="/_web/search/doSearch.do?locale=zh_CN&request_locale=zh_CN&_p=YXM9MTA4JnQ9Njk4JmQ9MjIzNCZwPTEyJmY9NDA5NiZtPVNOJnxibm5Db2x1bW5WaXJ0dWFsTmFtZT00MDk2Jg__" target="_blank">
+                <div class="search-input">
+                  <input class="search-title" name="keyword" type="text" placeholder="Search">
+                </div>
+                <div class="search-btn">
+                  <input class="search-submit" name="submit" type="submit" value="">
+                </div>
+              </form>
+            </div>
+            <!--//copy the above code to customize the search-->
+          
+        </div>
+      </div>
+      <!--//search end-->
+
+    </div>
+  </div>
+  <!--End||Top-->
+
+  <!--Start||Header-->
+  <div class="wrapper header">
+    <div class="inner clearfix">
+
+      <!--logo begin-->
+      <div class="wp-panel logo-panel panel-3" frag="面板3"> <a class="navi-aside-toggle"></a><img class="bg"
+          src="/_upload/tpl/02/ba/698/template698/wap_resources/images/headbg.png">
+        <div class="wp-window logo-window window-3" frag="窗口3" portletmode="simpleSiteAttri">
+          <a href="/mainm.htm" title="返回工商管理学院首页" class="logo"><img border='0' src='/_upload/site/00/6c/108/logo.png' /></a></span>
+          
+        </div>
+      </div>
+      <!--//logo end-->
+    </div>
+  </div>
+  <!--End||Header-->
+
+<!--Start||Navi-->
+<div class="wrapper navi">
+  <div class="inner clearfix">
+    <div class="wp-panel main-nav-panel panel-4" frag="面板4">
+      <div class="wp-window main-nav-window window-4" frag="窗口4">
+         
+          
+          <ul class="wp-menu clearfix" data-nav-aside='{"title":"导航","index":0}'>
+            
+            <li class="menu-item i1"><a class="menu-link" href="http://gsxy.zuel.edu.cn/main.htm" target="_self">首页</a> 
+               
+            </li>
+            
+            <li class="menu-item i2"><a class="menu-link" href="/4098/listm.htm" target="_self">学院概况</a> 
+               
+              <i class="menu-switch-arrow"></i>
+              <ul class="sub-menu clearfix">
+                
+                <li class="sub-item i2-1"><a class="sub-link" href="/4111/listm.htm" target="_self">学院简介</a> 
+                   
+                </li>
+                
+                <li class="sub-item i2-2"><a class="sub-link" href="/zlwyjwsmwjzg/listm.htm" target="_self">愿景、使命、价值观、战略</a> 
+                   
+                </li>
+                
+                <li class="sub-item i2-3"><a class="sub-link" href="/4112/listm.htm" target="_self">组织机构</a> 
+                   
+                </li>
+                
+                <li class="sub-item i2-4"><a class="sub-link" href="/4113/listm.htm" target="_self">学院领导</a> 
+                   
+                </li>
+                
+                <li class="sub-item i2-5"><a class="sub-link" href="/zlzxwyh/listm.htm" target="_self">战略咨询委员会</a> 
+                   
+                </li>
+                
+                <li class="sub-item i2-6"><a class="sub-link" href="/yzjy/listm.htm" target="_self">院长寄语</a> 
+                   
+                </li>
+                
+                <li class="sub-item i2-7"><a class="sub-link" href="/4114/listm.htm" target="_self">系所介绍</a> 
+                   
+                </li>
+                
+              </ul>
+               
+            </li>
+            
+            <li class="menu-item i3"><a class="menu-link" href="/4099/listm.htm" target="_self">学科建设</a> 
+               
+              <i class="menu-switch-arrow"></i>
+              <ul class="sub-menu clearfix">
+                
+                <li class="sub-item i3-1"><a class="sub-link" href="/sjxkjszscjj/listm.htm" target="_self">首届学科建设终身成就奖</a> 
+                   
+              <i class="menu-switch-arrow"></i>
+              <ul class="sub-menu clearfix">
+                
+                <li class="sub-item i3-1-1"><a class="sub-link" href="/xkjszscjjjj/listm.htm" target="_self">学科建设终身成就奖简介</a> 
+                   
+                </li>
+                
+                <li class="sub-item i3-1-2"><a class="sub-link" href="/wyjjsjs/listm.htm" target="_self">邬义钧教授介绍</a> 
+                   
+                </li>
+                
+                <li class="sub-item i3-1-3"><a class="sub-link" href="/yxyjsjs/listm.htm" target="_self">余鑫炎教授介绍</a> 
+                   
+                </li>
+                
+                <li class="sub-item i3-1-4"><a class="sub-link" href="/oyxcjsjs/listm.htm" target="_self">欧阳旭初教授介绍</a> 
+                   
+                </li>
+                
+                <li class="sub-item i3-1-5"><a class="sub-link" href="/lxdjsjs/listm.htm" target="_self">李晓丹教授介绍</a> 
+                   
+                </li>
+                
+                <li class="sub-item i3-1-6"><a class="sub-link" href="/whfjsjs/listm.htm" target="_self">万后芬教授介绍</a> 
+                   
+                </li>
+                
+              </ul>
+               
+                </li>
+                
+                <li class="sub-item i3-2"><a class="sub-link" href="/4116/listm.htm" target="_self">学科介绍</a> 
+                   
+                </li>
+                
+                <li class="sub-item i3-3"><a class="sub-link" href="/4117/listm.htm" target="_self">精品课程</a> 
+                   
+                </li>
+                
+                <li class="sub-item i3-4"><a class="sub-link" href="/4118/listm.htm" target="_self">专业介绍</a> 
+                   
+                </li>
+                
+                <li class="sub-item i3-5"><a class="sub-link" href="/xkfzlc/listm.htm" target="_self">学科发展历程</a> 
+                   
+                </li>
+                
+                <li class="sub-item i3-6"><a class="sub-link" href="/xkts/listm.htm" target="_self">学科特色</a> 
+                   
+                </li>
+                
+                <li class="sub-item i3-7"><a class="sub-link" href="/kyjg/listm.htm" target="_self">科研机构</a> 
+                   
+                </li>
+                
+              </ul>
+               
+            </li>
+            
+            <li class="menu-item i4"><a class="menu-link" href="/4100/listm.htm" target="_self">师资队伍</a> 
+               
+              <i class="menu-switch-arrow"></i>
+              <ul class="sub-menu clearfix">
+                
+                <li class="sub-item i4-1"><a class="sub-link" href="/4119/listm.htm" target="_self">师资队伍</a> 
+                   
+              <i class="menu-switch-arrow"></i>
+              <ul class="sub-menu clearfix">
+                
+                <li class="sub-item i4-1-1"><a class="sub-link" href="/5298/listm.htm" target="_self">工商管理系</a> 
+                   
+                </li>
+                
+                <li class="sub-item i4-1-2"><a class="sub-link" href="/5299/listm.htm" target="_self">营销管理系</a> 
+                   
+                </li>
+                
+                <li class="sub-item i4-1-3"><a class="sub-link" href="/5300/listm.htm" target="_self">农业经济管理系</a> 
+                   
+                </li>
+                
+                <li class="sub-item i4-1-4"><a class="sub-link" href="/5301/listm.htm" target="_self">旅游管理系</a> 
+                   
+                </li>
+                
+                <li class="sub-item i4-1-5"><a class="sub-link" href="/5302/listm.htm" target="_self">经济贸易系</a> 
+                   
+                </li>
+                
+                <li class="sub-item i4-1-6"><a class="sub-link" href="/5303/listm.htm" target="_self">物流与管理科学系</a> 
+                   
+                </li>
+                
+                <li class="sub-item i4-1-7"><a class="sub-link" href="/5304/listm.htm" target="_self">人力资源管理系</a> 
+                   
+                </li>
+                
+              </ul>
+               
+                </li>
+                
+                <li class="sub-item i4-2"><a class="sub-link" href="/4120/listm.htm" target="_self">博导风采</a> 
+                   
+                </li>
+                
+                <li class="sub-item i4-3"><a class="sub-link" href="/gdrc/listm.htm" target="_self">高端人才</a> 
+                   
+                </li>
+                
+                <li class="sub-item i4-4"><a class="sub-link" href="/kzjs/listm.htm" target="_self">客座教授</a> 
+                   
+                </li>
+                
+                <li class="sub-item i4-5"><a class="sub-link" href="/hzds/listm.htm" target="_self">合作导师</a> 
+                   
+                </li>
+                
+                <li class="sub-item i4-6"><a class="sub-link" href="/xzjf/listm.htm" target="_self">行政教辅</a> 
+                   
+                </li>
+                
+              </ul>
+               
+            </li>
+            
+            <li class="menu-item i5"><a class="menu-link" href="/4101/listm.htm" target="_self">本科教学</a> 
+               
+              <i class="menu-switch-arrow"></i>
+              <ul class="sub-menu clearfix">
+                
+                <li class="sub-item i5-1"><a class="sub-link" href="/4121/listm.htm" target="_self">教学通知</a> 
+                   
+                </li>
+                
+                <li class="sub-item i5-2"><a class="sub-link" href="/4122/listm.htm" target="_self">辅修双学位</a> 
+                   
+              <i class="menu-switch-arrow"></i>
+              <ul class="sub-menu clearfix">
+                
+                <li class="sub-item i5-2-1"><a class="sub-link" href="/4125/listm.htm" target="_self">辅修通知</a> 
+                   
+                </li>
+                
+                <li class="sub-item i5-2-2"><a class="sub-link" href="/4126/listm.htm" target="_self">招生简章</a> 
+                   
+                </li>
+                
+                <li class="sub-item i5-2-3"><a class="sub-link" href="/4127/listm.htm" target="_self">培养方案</a> 
+                   
+                </li>
+                
+                <li class="sub-item i5-2-4"><a class="sub-link" href="/4128/listm.htm" target="_self">辅修用表</a> 
+                   
+                </li>
+                
+                <li class="sub-item i5-2-5"><a class="sub-link" href="/4129/listm.htm" target="_self">规章制度</a> 
+                   
+                </li>
+                
+              </ul>
+               
+                </li>
+                
+                <li class="sub-item i5-3"><a class="sub-link" href="/4123/listm.htm" target="_self">规章制度</a> 
+                   
+                </li>
+                
+                <li class="sub-item i5-4"><a class="sub-link" href="/4124/listm.htm" target="_self">表格下载</a> 
+                   
+                </li>
+                
+              </ul>
+               
+            </li>
+            
+            <li class="menu-item i6"><a class="menu-link" href="/4102/listm.htm" target="_self">研博培养</a> 
+               
+              <i class="menu-switch-arrow"></i>
+              <ul class="sub-menu clearfix">
+                
+                <li class="sub-item i6-1"><a class="sub-link" href="/4130/listm.htm" target="_self">硕博招生</a> 
+                   
+                </li>
+                
+                <li class="sub-item i6-2"><a class="sub-link" href="/4131/listm.htm" target="_self">公告通知</a> 
+                   
+                </li>
+                
+                <li class="sub-item i6-3"><a class="sub-link" href="/4132/listm.htm" target="_self">招聘信息</a> 
+                   
+                </li>
+                
+                <li class="sub-item i6-4"><a class="sub-link" href="/4133/listm.htm" target="_self">讲座信息</a> 
+                   
+                </li>
+                
+                <li class="sub-item i6-5"><a class="sub-link" href="/4134/listm.htm" target="_self">学生风采</a> 
+                   
+                </li>
+                
+                <li class="sub-item i6-6"><a class="sub-link" href="/4135/listm.htm" target="_self">规章制度</a> 
+                   
+                </li>
+                
+                <li class="sub-item i6-7"><a class="sub-link" href="/4136/listm.htm" target="_self">教师用表</a> 
+                   
+                </li>
+                
+                <li class="sub-item i6-8"><a class="sub-link" href="/4137/listm.htm" target="_self">学生用表</a> 
+                   
+                </li>
+                
+                <li class="sub-item i6-9"><a class="sub-link" href="/dbgs/listm.htm" target="_self">答辩公示</a> 
+                   
+                </li>
+                
+              </ul>
+               
+            </li>
+            
+            <li class="menu-item i7"><a class="menu-link" href="/4103/listm.htm" target="_self">科研外事</a> 
+               
+              <i class="menu-switch-arrow"></i>
+              <ul class="sub-menu clearfix">
+                
+                <li class="sub-item i7-1"><a class="sub-link" href="/4138/listm.htm" target="_self">科研通知</a> 
+                   
+                </li>
+                
+                <li class="sub-item i7-2"><a class="sub-link" href="/kycx/listm.htm" target="_self">科研诚信</a> 
+                   
+                </li>
+                
+                <li class="sub-item i7-3"><a class="sub-link" href="/4139/listm.htm" target="_self">外事通知</a> 
+                   
+                </li>
+                
+              </ul>
+               
+            </li>
+            
+            <li class="menu-item i8"><a class="menu-link" href="/4104/listm.htm" target="_self">学生工作</a> 
+               
+              <i class="menu-switch-arrow"></i>
+              <ul class="sub-menu clearfix">
+                
+                <li class="sub-item i8-1"><a class="sub-link" href="/4140/listm.htm" target="_self">工作通知</a> 
+                   
+                </li>
+                
+                <li class="sub-item i8-2"><a class="sub-link" href="/4141/listm.htm" target="_self">心理动态</a> 
+                   
+                </li>
+                
+                <li class="sub-item i8-3"><a class="sub-link" href="/4142/listm.htm" target="_self">团学活动</a> 
+                   
+                </li>
+                
+                <li class="sub-item i8-4"><a class="sub-link" href="/4143/listm.htm" target="_self">学生党建</a> 
+                   
+                </li>
+                
+                <li class="sub-item i8-5"><a class="sub-link" href="/4144/listm.htm" target="_self">就业实习</a> 
+                   
+                </li>
+                
+                <li class="sub-item i8-6"><a class="sub-link" href="/4145/listm.htm" target="_self">工商学苑</a> 
+                   
+                </li>
+                
+                <li class="sub-item i8-7"><a class="sub-link" href="/4146/listm.htm" target="_self">工商视界</a> 
+                   
+                </li>
+                
+                <li class="sub-item i8-8"><a class="sub-link" href="/bjfc/listm.htm" target="_self">班级风采</a> 
+                   
+                </li>
+                
+              </ul>
+               
+            </li>
+            
+            <li class="menu-item i9"><a class="menu-link" href="/4105/listm.htm" target="_self">校友工作</a> 
+               
+              <i class="menu-switch-arrow"></i>
+              <ul class="sub-menu clearfix">
+                
+                <li class="sub-item i9-1"><a class="sub-link" href="/xyhd/listm.htm" target="_self">校友活动</a> 
+                   
+                </li>
+                
+                <li class="sub-item i9-2"><a class="sub-link" href="/zlwy/listm.htm" target="_self">战略委员</a> 
+                   
+                </li>
+                
+                <li class="sub-item i9-3"><a class="sub-link" href="/4147/listm.htm" target="_self">校友风采</a> 
+                   
+                </li>
+                
+                <li class="sub-item i9-4"><a class="sub-link" href="/4148/listm.htm" target="_self">校友名录</a> 
+                   
+                </li>
+                
+                <li class="sub-item i9-5"><a class="sub-link" href="/4149/listm.htm" target="_self">校友捐赠</a> 
+                   
+                </li>
+                
+              </ul>
+               
+            </li>
+            
+            <li class="menu-item i10"><a class="menu-link" href="/4106/listm.htm" target="_self">国际教育</a> 
+               
+              <i class="menu-switch-arrow"></i>
+              <ul class="sub-menu clearfix">
+                
+                <li class="sub-item i10-1"><a class="sub-link" href="/4151/listm.htm" target="_self">公告通知</a> 
+                   
+                </li>
+                
+                <li class="sub-item i10-2"><a class="sub-link" href="/4152/listm.htm" target="_self">规章制度</a> 
+                   
+                </li>
+                
+                <li class="sub-item i10-3"><a class="sub-link" href="/4153/listm.htm" target="_self">学生风采</a> 
+                   
+                </li>
+                
+                <li class="sub-item i10-4"><a class="sub-link" href="/4154/listm.htm" target="_self">资料下载</a> 
+                   
+                </li>
+                
+              </ul>
+               
+            </li>
+            
+            <li class="menu-item i11"><a class="menu-link" href="http://gsxy.zuel.edu.cn/4159/list.htm" target="_self">高端培训</a> 
+               
+              <i class="menu-switch-arrow"></i>
+              <ul class="sub-menu clearfix">
+                
+                <li class="sub-item i11-1"><a class="sub-link" href="/zxjj/listm.htm" target="_self">项目简介</a> 
+                   
+                </li>
+                
+                <li class="sub-item i11-2"><a class="sub-link" href="/4160/listm.htm" target="_self">课程模块</a> 
+                   
+                </li>
+                
+                <li class="sub-item i11-3"><a class="sub-link" href="/qyglgjyxb/listm.htm" target="_self">高级研修班</a> 
+                   
+                </li>
+                
+                <li class="sub-item i11-4"><a class="sub-link" href="/4159/listm.htm" target="_self">培训动态</a> 
+                   
+                </li>
+                
+                <li class="sub-item i11-5"><a class="sub-link" href="/4161/listm.htm" target="_self">师资团队</a> 
+                   
+                </li>
+                
+                <li class="sub-item i11-6"><a class="sub-link" href="/xyfc/listm.htm" target="_self">学员风采</a> 
+                   
+                </li>
+                
+                <li class="sub-item i11-7"><a class="sub-link" href="/zscx/listm.htm" target="_self">证书查询</a> 
+                   
+                </li>
+                
+              </ul>
+               
+            </li>
+            
+          </ul>
+           
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--aside begin-->
+<div class="wp-navi-aside" id="wp-navi-aside">
+  <div class="aside-inner">
+    <div class="navi-aside-wrap"></div>
+  </div>
+  <div class="navi-aside-mask"></div>
+</div>
+<!--//aside end--> 
+
+<!--End||Navi--> 
+
+<!--Start||Container-->
+<div class="wrapper container">
+  <div class="inner clearfix">
+    <div class="wp-column-news">
+      <div class="column-news-box">
+        <div class="list-head" frag="面板20">
+          <div class="list-meta clearfix" frag="窗口20" portletmode="simpleColumnAttri">
+            
+              <div class="column-path"><span class="path-name">当前位置：</span><a href="/mainm.htm" target="_self">首页</a><span class='possplit'>&nbsp;&nbsp;</span><a href="/4104/listm.htm" target="_self">学生工作</a><span class='possplit'>&nbsp;&nbsp;</span><a href="/4140/listm.htm" target="_self">工作通知</a></div>
+            
+          </div>
+        </div>
+        <div class="column-news-con" frag="面板21">
+          <div class="column-news-list clearfix" frag="窗口21" portletmode="simpleList">
+            
+              <ul class="cols_list clearfix">
+                
+                <li class="cols n1"> <span class="cols_title"><a href='/2020/1128/c4140a258130/pagem.htm' target='_blank' title='工商管理学院2019级本科生寻找“最美”系列活动通知'>工商管理学院2019级本科生寻找“最美”系列活动通知</a></span> <span class="cols_date">2020-11-28</span> </li>
+                
+                <li class="cols n2"> <span class="cols_title"><a href='/2020/1128/c4140a258123/pagem.htm' target='_blank' title='工商管理学院2020年度“榜样工商”之十佳青年（团队）称号拟授予名单公示'>工商管理学院2020年度“榜样工商”之十佳青年（团队）称号拟授予名单公示</a></span> <span class="cols_date">2020-11-28</span> </li>
+                
+                <li class="cols n3"> <span class="cols_title"><a href='/2020/1128/c4140a258122/pagem.htm' target='_blank' title='工商管理学院第三十一届“博文杯”大学生百项实证创新基金项目初审结果公示'>工商管理学院第三十一届“博文杯”大学生百项实证创新基金项目初审结果公示</a></span> <span class="cols_date">2020-11-28</span> </li>
+                
+                <li class="cols n4"> <span class="cols_title"><a href='/2020/1128/c4140a258111/pagem.htm' target='_blank' title='关于开展本科2019级“百年献礼—党的光辉照我心”主题征文活动的通知'>关于开展本科2019级“百年献礼—党的光辉照我心”主题征文活动的通知</a></span> <span class="cols_date">2020-11-28</span> </li>
+                
+                <li class="cols n5"> <span class="cols_title"><a href='/2020/1127/c4140a258106/pagem.htm' target='_blank' title='工商管理学院十一月团日活动评选结果公示'>工商管理学院十一月团日活动评选结果公示</a></span> <span class="cols_date">2020-11-27</span> </li>
+                
+                <li class="cols n6"> <span class="cols_title"><a href='/2020/1126/c4140a257988/pagem.htm' target='_blank' title='关于2020年“校友导航”系列主题讲座的预约通知'>关于2020年“校友导航”系列主题讲座的预约通知</a></span> <span class="cols_date">2020-11-26</span> </li>
+                
+                <li class="cols n7"> <span class="cols_title"><a href='/2020/1125/c4140a257849/pagem.htm' target='_blank' title='关于举办2020年“书香工商”系列活动启动仪式的预约通知'>关于举办2020年“书香工商”系列活动启动仪式的预约通知</a></span> <span class="cols_date">2020-11-25</span> </li>
+                
+                <li class="cols n8"> <span class="cols_title"><a href='/2020/1123/c4140a257502/pagem.htm' target='_blank' title='工商管理学院关于开展2020年“励志”“学习之星”“育贤”“文华”奖学金评选活动的通知'>工商管理学院关于开展2020年“励志”“学习之星”“育贤”“文华”奖学金评选活动的通知</a></span> <span class="cols_date">2020-11-23</span> </li>
+                
+                <li class="cols n9"> <span class="cols_title"><a href='/2020/1130/c4140a258222/pagem.htm' target='_blank' title='2020年工商管理学院团学组织负责人名单公示'>2020年工商管理学院团学组织负责人名单公示</a></span> <span class="cols_date">2020-11-23</span> </li>
+                
+                <li class="cols n10"> <span class="cols_title"><a href='/2020/1120/c4140a257362/pagem.htm' target='_blank' title='工商管理学院2019级本科生年级学生干部公示'>工商管理学院2019级本科生年级学生干部公示</a></span> <span class="cols_date">2020-11-20</span> </li>
+                
+                <li class="cols n11"> <span class="cols_title"><a href='/2020/1119/c4140a257204/pagem.htm' target='_blank' title='工商管理学院2017级“反电诈”学习活动圆满完成'>工商管理学院2017级“反电诈”学习活动圆满完成</a></span> <span class="cols_date">2020-11-19</span> </li>
+                
+                <li class="cols n12"> <span class="cols_title"><a href='/2020/1118/c4140a257118/pagem.htm' target='_blank' title='湖北青年“美美追梦人”品读习近平总书记经典话语'>湖北青年“美美追梦人”品读习近平总书记经典话语</a></span> <span class="cols_date">2020-11-18</span> </li>
+                
+                <li class="cols n13"> <span class="cols_title"><a href='/2020/1118/c4140a257104/pagem.htm' target='_blank' title='工商管理学院第三十届“博文杯”大学生百项实证创新基金项目校级获奖成果公示'>工商管理学院第三十届“博文杯”大学生百项实证创新基金项目校级获奖成果公示</a></span> <span class="cols_date">2020-11-18</span> </li>
+                
+                <li class="cols n14"> <span class="cols_title"><a href='/2020/1115/c4140a256402/pagem.htm' target='_blank' title='关于举办“职场有约”之“职存高远”商业企划大赛的报名通知'>关于举办“职场有约”之“职存高远”商业企划大赛的报名通知</a></span> <span class="cols_date">2020-11-15</span> </li>
+                
+              </ul>
+            
+ <div id="wp_paging_w21"> 
+<ul class="wp_paging clearfix"> 
+     <li class="pages_count"> 
+         <span class="per_page">每页&nbsp;<em class="per_count">14</em>&nbsp;记录&nbsp;</span> 
+         <span class="all_count">总共&nbsp;<em class="all_count">1418</em>&nbsp;记录&nbsp;</span> 
+     </li> 
+     <li class="page_nav"> 
+         <a class="first" href="/4140/listm1.htm" target="_self"><span>第一页</span></a> 
+         <a class="prev" href="/4140/listm2.htm" target="_self"><span>&lt;&lt;上一页</span></a> 
+         <a class="next" href="/4140/listm4.htm" target="_self"><span>下一页&gt;&gt;</span></a> 
+         <a class="last" href="/4140/listm102.htm" target="_self"><span>尾页</span></a> 
+     </li> 
+     <li class="page_jump"> 
+         <span class="pages">页码&nbsp;<em class="curr_page">3</em>/<em class="all_pages">102</em></span> 
+         <span><input class="pageNum" type="text" /><input type="hidden" class="currPageURL" value=""></span></span> 
+         <span><a class="pagingJump" href="javascript:void(0);" target="_self">跳转到&nbsp;</a></span> 
+     </li> 
+</ul> 
+</div> 
+<script type="text/javascript"> 
+     $().ready(function() { 
+         $("#wp_paging_w21 .pagingJump").click(function() { 
+             var pageNum = $("#wp_paging_w21 .pageNum").val(); 
+             if (pageNum === "") { alert('请输入页码！'); return; } 
+             if (isNaN(pageNum) || pageNum <= 0 || pageNum > 102) { alert('请输入正确页码！'); return; } 
+             var reg = new RegExp("/list", "g"); 
+             var url = "/4140/listm.htm"; 
+             window.location.href = url.replace(reg, "/list" + pageNum); 
+         }); 
+     }); 
+</script> 
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End||Container--> 
+
+ <!--Start||Footer-->
+  <div class="wrapper footer">
+    <div class="inner">
+      <div class="foot_top clearfix">
+        <a href="http://gsxy.zuel.edu.cn/main.htm"><img src="/_upload/tpl/02/ba/698/template698/wap_resources/images/logo2.png"></a>
+      </div>
+      <div class="foot_cen clearfix">
+        <img src="/_upload/tpl/02/ba/698/template698/wap_resources/images/zi.png">
+      </div>
+      <div class="foot_bot clearfix"  frag="窗口91" portletmode="simpleSiteAttri">
+        <p class="copyright"><span>版权所有： 中南财经政法大学工商管理学院 2020</span></p>
+					<p class="copyright"><span>电话：027-88386757</span><span>邮箱：gsglxy@zuel.edu.cn</span></p>
+					<p class="copyright"><span>地址：湖北省武汉市东湖高新技术开发区南湖大道182号</span></p>
+<p class="copyright"><span>邮政编码：430073</span></p>
+      </div>
+    </div>
+  </div>
+  <!--End||Footer-->
+
+</body>
+<script type="text/javascript" src="/_upload/tpl/02/ba/698/template698/wap_resources/js/base.js"></script>
+<script type="text/javascript" src="/_upload/tpl/02/ba/698/template698/wap_resources/js/app.js"></script>
+<script type="text/javascript">
+$(function(){
+	// Initial SDAPP
+	new SDAPP({
+		"menu":{
+			type:"aside"
+		}
+	});
+		
+});
+</script>
+
+<!--Coding by Yu Shang/ @ 2018-07-30-->
+</html>
+ <img src="/_visitcount?siteId=108&type=2&columnId=4140" style="display:none" width="0" height="0"></image>
