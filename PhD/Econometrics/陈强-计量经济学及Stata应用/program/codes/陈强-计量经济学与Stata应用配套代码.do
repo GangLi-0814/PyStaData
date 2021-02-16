@@ -212,3 +212,212 @@ reg lntc lnq lnpl lnpk lnpf [aw=1/e2f]
 reg lntc lnq lnpl lnpk lnpf [aw=1/e2f],r
 log close
 exit
+
+******************
+* 第 8 章 自相关
+******************
+
+* 时间序列算子
+
+help tsvarlist
+
+L. // 滞后 lag
+D. // 差分 difference
+L2. // 二阶滞后
+L(1/4). //同时表示一阶至四阶滞后
+L(0/1). // 表示当前值和一阶滞后
+D2. // 二阶差分
+LD. // 一阶差分的滞后值
+
+* 画残差图
+scatter e1 L.e1
+ac e1 // 残差自相关图 ac: autocorrelation
+
+* BG 检验
+estat bgodfrey, lags(p) nomiss0
+/*
+- 选择项“lags(p)”用来指定 BG 检验的滞后阶数p，默认
+“lags(1)”，即 p = 1;
+- 选择项“nomiss0”表示进行不添加 0 的 BG 检验，默认以
+0 代替缺失值，即 Davidson-MacKinnon 的方法。
+*/
+
+/*
+如何确定滞后阶数 p ?一个简单方法是，看自相关图。
+在使用 Stata 命令 ac 画自相关图时，所有落在 95%的置信区 域(以阴影表示)以外的自相关系数均显著地不等于 0。
+
+确定滞后阶数 p 的另一方法是，设定一个较大的 p 值，作回归。然后看最后一个系数的显著性;如果不显著，考虑滞后期，以此类推，直至显著为止。
+*/
+
+
+* Q 检验
+wntestq e1, lags(p)
+/*
+其中，“wntestq”指 white noise test Q，因为白噪声没有自相 关。选择项“lags(p)”用来指定滞后阶数，默认滞后阶数为
+min{floor(n / 2)  -2, 40}。
+*/
+corrgram e1, lags(p)
+/*
+其中，“corrgram”表示 correlogram，即画自相关图。选择项 “lags(p)”用来指定滞后阶数，而默认滞后阶数也是
+min{floor(n / 2)  2, 40}。
+*/
+
+* DW检验
+estat dwatson
+/*
+作完 OLS 回归后可使用命令“estat dwatson”显示 DW 统
+计量。由于 DW 检验的局限性，Stata 并不提供其临界值。
+*/
+
+* HAC 稳健标准误
+newey y x1 x2 x3, lags(p)
+
+/*
+其中，必选项“lag(p)”用来指定截断参数 p ，即用于计算
+HAC 标准误的最高滞后阶数。
+*/
+
+* 处理一阶自相关的 FGLS
+prais y x1 x2 x3, corc
+/*
+选择项“corc ”表示使用 CO 估计法，默认为 PW 估计法。
+*/
+
+
+use ${d}/icecream.dta, clear
+/*
+数据说明：
+数据集 icecream.dta 包含了下列变量的 30 个月度时间序列数据:consumption(人均冰淇淋消费量)，income(平均家庭收入)，price(冰淇淋价格)，temp(平均华氏气温)，time(时间)。
+*/
+
+tsset time
+tw connect consumption time, msymbol(circle) yaxis(1) || connect temp time, msymbol(triangle) yaxis(2)
+
+reg consumption temp price income
+/*
+气温(temp)与收入(income)均在 1%的水平上显著为正，表示气 温越高、收入越高，则冰淇淋的消费量越大;
+价格(price)的系数为负，表明价格越高，则消费量越低，但并不 显著( p值为 0.222)。
+由于这是时间序列，怀疑扰动项存在自相关。
+*/
+predict e1, residual
+tw scatter e1 l.e1 || lfit e1 l.e1
+/*
+扰动项很可能存在一阶正自相关。
+*/
+
+tw scatter e1 l2.e1 || lfit e1 l2.e1
+/*
+扰动项不存在二阶正自相关。
+*/
+
+ac e1 // 残差自相关图
+/*
+阴影部分为置信度为 95%的置信区间(区域)。
+各阶自相关系数的取值均在 95%的置信区间之内，故可接受各 阶自相关系数为 0 的原假设。
+ 但一阶自相关系数已很接近置信区间的边界，故仍怀疑存在
+一阶自相关，而更高阶自相关可忽略。
+*/
+
+estat bgodfrey // BG 检验
+/*
+BG 检验的 p 值为 0.039 6，故可在 5%的显著性水平上拒绝“无 自相关”的原假设，而认为存在自相关。
+*/
+
+estat bgodfrey, nomiss0
+/*
+依然可在 5%水平上拒绝“无自相关”的原假设。
+*/
+
+wntestq e1
+/*
+其中，“Prob > chi2(13)= 0.016”表明默认的滞后阶数为
+13 阶，且可在 5%水平上拒绝“无自相关”的原假设。
+*/
+
+corrgram e1
+/*
+上表汇报了从 1-13 阶的自相关系数(AC)，Q 统计量(Q)及其相应 p 值(Prob>Q)。
+*/
+
+estat dwatson
+/*
+由于 DW=1.02，离 2 较远而靠近 0，可大致判断存在正自相关。
+*/
+
+/*
+由于扰动项存在自相关，故普通标准误不准确，应使用异方差
+自相关稳健的 HAC 标准误。 由于 $n^{1/4} = 30^{1/4} \approx$ ，取Newey-West估计量滞后阶数为p=3:
+*/
+newey consumption temp price income, lag(3)
+/*
+Newey-West 标准误与 OLS 标准误相差无几(但略大)。
+*/
+
+/*
+考察 Newey-West 标准误是否对于截断参数敏感，将滞后阶数
+增大一倍，再重新估计。
+*/
+newey consumption temp price income,lag(6)
+/*
+无论截断参数为 3 还是 6，Newey-West 标准误变化不大。
+*/
+
+* 由于存在自相关，故考虑使用 FGLS，进行更有效率的估计。
+
+prais consumption temp price income, corc //CO估计法
+/*
+使用 CO 估计法得到的系数估计值与 OLS 比较接近，但样本容 量降为 29(损失一个样本观测值)。
+上表最后一行显示，经过模型转换后 DW 值改进为 1.55。
+*/
+
+prais consumption temp price income, nolog //PW估计法
+/*
+虽然 PW 法使 DW 统计量进一步改进为 1.85，但收入(income) 的系数估计值却变为负数(-0.0008)，似乎 PW 反而不如 OLS 稳健。
+*/
+
+/*
+自相关可能由于模型设定不正确。 在解释变量中加入气温(temp)的滞后，然后进行 OLS 回归
+*/
+
+reg consumption temp L.temp price income
+/*
+气温的滞后项(L.temp)在 1%的水平上显著地不等于 0，但符号 为负(系数为-0.0022);
+当期气温仍然显著地为正(系数为 0.0053)。这可能意味着，当气 温上升时，对冰淇淋的需求上升，但不会在当月全部消费完，而 增加冰箱中的冰淇淋库存，导致下期对冰淇淋的开支下降。
+*/
+
+estat bgodfrey
+/*
+由于 p 值为 0.73，故可放心接受“无自相关”的原假设。
+*/
+
+estat dwatson
+/*DW 值也改进为 1.58。 通过修改模型设定，加入气温滞后项，扰动项不再存在自相关。
+*/
+
+/*究竟应使用哪种模型，在一定程度上取决于研究者的判断。
+可在研究报告中同时列出各种模型的结果，以说明系数估计值 与标准误的稳健性(不依估计方法的改变而剧烈变化)，给读者自己 判断的机会。
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
