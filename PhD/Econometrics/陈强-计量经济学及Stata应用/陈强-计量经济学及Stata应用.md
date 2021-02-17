@@ -261,6 +261,8 @@ $$
 
 总体回归函数（PRF）与样本回归函数（SRF）
 
+可使用蒙特卡洛法进行模拟，所谓“蒙特卡罗法”(Monte Carlo Methods，MC)，是通过计算机模拟，从总体抽取大量随机样本的计算方法。
+
 计量经济学的主要任务之一就是通过数据 $\{x_i,y_i\}_{i=1}^n$ 来获取关于总体参数 $(\alpha, \beta)$ 的信息。
 
 ### 4.2 OLS估计量的推导
@@ -318,11 +320,15 @@ $$
 
 ### 4.3 OLS 的正交性
 
-正交：若内积空间中两向量的内积为 0 ，则称它们是正交的。
+**正交：若内积空间中两向量的内积为 0 ，则称它们是正交的。**
 
 OLS **残差与解释变量及拟合值的正交性**是 OLS 的重要特征，为推导证明提供了方便。
 
 ### 4.4 平方和分解公式
+
+<img src="./images/4-0-1.png" style="zoom:50%;"/>
+
+(图片来源：古扎拉蒂《计量经济学基础》（第五版）p.24)
 
 平方和分解公式能够成立，正是由于 OLS 的正交性。
 
@@ -337,13 +343,13 @@ $$
 将离差 $(y_i - \bar y)$ 写为 $(y_i - \hat y_i + \hat y_i - \bar y)$ ，则可将 TSS 写为：
 $$
 \sum_{i=1}^n (y_i - \bar y)^2 = \sum_{i=1}^n (y_i - \hat y_i + \hat y_i - \bar y)^2 = \sum_{i=1}^n (e_i + \hat y_i - \bar y)^2 \\
-= \sum_{i=1}^n e_i^2 + \sum_{i=1}^n(\hat y_i - \bar y)^2 + 2 \sum_{i=1}^ne_i(\hat y_i - \bar y)
+= \sum_{i=1}^n e_i^2 + \sum_{i=1}^n(\hat y_i - \bar y)^2 + 2 \color{red}{\sum_{i=1}^ne_i(\hat y_i - \bar y)}
 $$
 只需证明交叉项 $\sum_{i=1}^ne_i(\hat y_i - \bar y)=0$ 即可，而这由 OLS 的正交性所保证：
 $$
 \sum_{i=1}^n e_i(\hat y_i-\bar y) = \sum_{i=1}^n e_i \hat y_i - \sum_{i=1}^ne_i = 0 - 0 = 0
 $$
-如果没有常数项，则无法保证 $\sum_{i=1}^n e_i = 0$ ，故平方和分解公式不成立。
+**如果没有常数项，则无法保证 $\sum_{i=1}^n e_i = 0$ ，故平方和分解公式不成立。此时，使用非中心 $R^2$ （uncentered $R^2$）。**
 
 ---
 
@@ -355,8 +361,51 @@ $$
 
 在有常数项的情况下，拟合优度等于被解释变量 $y_i$ 与拟合值 $\hat y_i$ 之间相关系数的平方，即 $R^2 = [Corr(y_i,\hat y_i)]^2$ ，故记为 $R^2$ 。
 
+$R^2$ 只反映了拟合程度的好坏，评估回归方程是否显著应使用 F 检验。​
 
 ### 4.6 无常数项的回归
+
+无常数项的一元线性回归模型可以写为：
+$$
+y_i = \beta x_i + \epsilon_i \quad（i=1, ..., n）
+$$
+依然进行 OLS 估计，最小化残差平方和为：
+$$
+\min_{\hat \beta} \sum_{i=1}^n e_i^2 = \sum_{i=1}^n (y_i - \hat \beta x_i)^2 
+$$
+一阶条件为：
+$$
+\frac{d}{d \hat \beta} \sum_{i=1}^n e_i^2 = -2 \sum_{i=1}^n (y_i - \hat \beta x_i) x_i = 0
+$$
+消去方程左边 $-2$ ，可得：
+$$
+\sum_{i=1}^n (y_i - \hat \beta x_i) x_i = 0
+$$
+求解 $\hat \beta$ 可得：
+$$
+\hat \beta = \frac{\sum_{i=1}^n x_iy_i}{\sum_{i=1}^n x_i^2}
+$$
+如果回归模型无常数项，则平方和分解公式不成立，不宜使用 $R^2$ 来度量拟合优度。
+
+记 $e_i = y_i - \hat \beta x_i$，则正规方程可写为：
+$$
+\sum_{i=1}^n x_ie_i = 0
+$$
+ 记拟合值为 $\hat y_i \equiv \hat \beta x_i$，则容易证明残差仍与拟合值正交：
+$$
+\sum_{i=1}^n \hat y_i e_i = \sum_{i=1}^n \hat \beta x_ie_i = \hat \beta \sum_{i=1} x_ie_i= \hat \beta \cdot0 = 0
+$$
+仍可利用 OLS 的正交性将 $\sum_{i=1}^n y_i^2$ 分解为：
+$$
+\sum_{i=1} y_i^2 = \sum_{i=1}^n (\hat y_i + e_i)^2 = \sum_{i=1}^n \hat y_i^2 + 2\underbrace{\sum_{i=1}^n \hat y_ie_i}_{=0} + \sum_{i=1}^n e_i^2 = \sum_{i=1}^n \hat y_i^2 + \sum_{i=1}^n e_i^2
+$$
+$\sum_{i=1}^n \hat y_i^2$ 为可由模型解释的部分，而 $\sum_{i=1}^n e_i^2$ 为模型不可解释的部分。
+
+定义非中心 $R^2$ ：
+$$
+R_{uc}^2 = \frac{\sum_{i=1}^n \hat y_i^2}{\sum_{i=1}^n y_i^2}
+$$
+如果无常数项，Stata 汇报的 $R^2$ 正是 $R_{uc}^2$ 。  
 
 ### 4.7 一元回归的 Stata 实例
 
@@ -369,6 +418,11 @@ reg lnw s, noc // 无常数项回归
 ### 4.8 PRF与SRF: 蒙特卡洛法
 
 ```Stata
+/*
+PRF: y_i = 1 + 2x_i + \epsilon_i \quad (i=1, ..., 30)
+解释变量：$x_i ~ N(3, 2^2)$，扰动项 $\epsilon_i ~ N(0,3^2)$，样本容量为 30 。
+*/
+
 clear
 set obs 30
 set seed 10101
@@ -378,7 +432,7 @@ gen e = rnormal(0, 9)
 gen y = 1*x + e
 reg y x
 
-tw function PRF = 1+2*x, range(-5 15) || \\\
+tw function PRF = 1+2*x, range(-5 15) || ///
 scatter y x || lfit y x, lp(dash)
 ```
 
@@ -386,7 +440,9 @@ scatter y x || lfit y x, lp(dash)
 
 ### 5.1 二元线性回归
 
-使用一元线性回归会存在遗漏变量的问题，所以需要纳入更多的解释变量。先来看二元线性回归：
+使用一元线性回归会存在遗漏变量的问题，所以需要纳入更多的解释变量。
+
+假设二元线性回归模型：
 $$
 y_i = \alpha + \beta x_{i1} + \gamma x_{i2} + \epsilon_{i} \quad (i = 1,...,n)
 $$
@@ -396,9 +452,7 @@ $\beta$ 为在给定 $x_2$ 条件下，$x_1$ 对 $y$ 的边际效应（忽略扰
 
 $\gamma$ 为在给定 $x_1$ 条件下，$x_2$ 对 $y$ 的边际效应。
 
-
-
-最优化问题：残差平方和最小
+**最优化问题：残差平方和最小**
 $$
 \min_{\hat \alpha, \hat \beta, \hat \gamma} \sum_{i=1}^n e_{i}^2 = \sum_{i=1}^n (y_i -\hat \alpha-\hat \beta x_{i1} -\hat \gamma x_{i2})^2
 $$
@@ -425,7 +479,7 @@ $$
 \begin{Bmatrix}
 y_1 = x_1'\beta+\epsilon_1 \\
 y_2 = x_2'\beta+\epsilon_2 \\
-\vdots
+\vdots \\
 y_n = x_n'\beta+\epsilon_n
 \end{Bmatrix}
 $$
@@ -610,7 +664,7 @@ E(\hat \beta) = E_{X}E(\hat \beta|X) = E_{X}(\beta) = \beta
 $$
 ---
 
-SLR.4 球型扰动项（spherical disturbance）假定
+**SLR.4 球型扰动项（spherical disturbance）假定**
 
 球型扰动项（spherical disturbance）满足同方差、无自相关性质，扰动项 $\epsilon$ 的协方差矩阵可写为：
 $$
@@ -821,7 +875,7 @@ test expr + tenure = s // H_0: \beta_3 + \beta_4 = \beta_2
 
 ### 7.1 异方差的后果
 
-**“条件异方差”（**简称“异方差”）是违背球型扰动假设的一种情形，即条件方差 $Var(\epsilon_i|X)$ 依赖于 $i$ ，而不是常数 $\sigma^2$ 。
+**“条件异方差”**（简称“异方差”）是违背球型扰动假设的一种情形，即**条件方差 $Var(\epsilon_i|X)$ 依赖于 $i$ ，而不是常数 $\sigma^2$ 。**
 
 在异方差的情况下：
 
@@ -833,13 +887,16 @@ test expr + tenure = s // H_0: \beta_3 + \beta_4 = \beta_2
 
 <img src="./images/7-1.png" style="zoom:70%"/>
 
-OLS 回归线在 $x_i$ 较小时可以较精确地估计，而在 $x_i$ 较大时则难以准确估计。方差较大的数据包含的信息量较小，但 OLS 却对所有数据等量齐观进行处理，故异方差的存在使得 OLS 的效率降低。
+OLS 回归线在 $x_i$ 较小时可以较精确地估计，而在 $x_i$ 较大时则难以准确估计。
+
+方差较大的数据包含的信息量较小，但 OLS 却对所有数据等量齐观进行处理，故异方差的存在使得 OLS 的效率降低。
 
 在异方差的情况下，加权最小二乘法（Weigthed Least Square，WLS）才是 BLUE 。WLS 通过对不同数据所包含信息量的不同进行相应的处理以提高估计效率。比如，给予信息量大的数据更大的权重。
 
 ### 7.2 异方差的例子
 
-（1）考虑消费函数：
+- （1）**考虑消费函数：**
+
 $$
 c_i = \alpha + \beta y_i + \epsilon_i
 $$
@@ -847,11 +904,11 @@ $$
 
 其中，$c_i$ 为消费， $y_i$ 为收入。富人的消费计划较有弹性，而穷人的消费多为必需品，很少变动。富人的消费支出更难测量，包含较多测量误差。$Var(\epsilon_i|y_i)$ 可能随 $y_i$ 的上升而变大。
 
-（2）企业的投资、销售收入与利润：大型企业的商业活动可能动辄以亿元计，而小型企业则以万元计；因此，扰动项的规模也不相同。如将大、中、小型企业放在一起回归，可能存在异方差。
+- （2）**企业的投资、销售收入与利润：**大型企业的商业活动可能动辄以亿元计，而小型企业则以万元计；因此，扰动项的规模也不相同。如将大、中、小型企业放在一起回归，可能存在异方差。
 
-（3） 组间异方差：如果样本包含两组(类)数据，则可能存在组内同方差，但组间异方差的情形。比如，第一组为自我雇佣者（企业主、个体户）的收入，而第二组为打工族的收入；自我雇佣者的收入波动可能比打工族更大。
+- （3） **组间异方差：**如果样本包含两组(类)数据，则可能存在组内同方差，但组间异方差的情形。比如，第一组为自我雇佣者（企业主、个体户）的收入，而第二组为打工族的收入；自我雇佣者的收入波动可能比打工族更大。
 
-（4） 组平均数：如果数据本身就是组平均数，则大组平均数的方差通常要比小组平均数的方差小。比如，考虑全国各省的人均  GDP ，每个省一个数据。人口较多 的省份其方差较小，方差与人口数成反比。
+- （4） **组平均数：**如果数据本身就是组平均数，则大组平均数的方差通常要比小组平均数的方差小。比如，考虑全国各省的人均  GDP ，每个省一个数据。人口较多 的省份其方差较小，方差与人口数成反比。
 
 ### 7.3 异方差的检验
 
@@ -859,25 +916,27 @@ $$
 
 观察**“残差 $e_i$ 与拟合值 $\hat y_i$ 的散点图”**或者**“残差 $e_i$ 与某个解释变量 $x_{ik}$ 的散点图”**。
 
-#### 7.3.2 BP 检验（Breusch and pagan, 1979）
+画图是直观方法，但不严格。
+
+#### 7.3.2 BP 检验（Breusch and Pagan, 1979）
 
 假设回归模型：
 $$
 y_i = \beta_1 + \beta_2x_{i2} + \cdots + \beta_Kx_{ik}+\epsilon_i
 $$
-记 $x_i = \begin{matrix}(1 & x_{i2} & \cdots x_{iK}）\end{matrix}$ 。
+记 $X_i = \begin{matrix}(1 & x_{i2} & \cdots & x_{iK}）\end{matrix}$ 。
 
-假设样本数据为 iid，则 $Var(\epsilon_i |X)= Var(\epsilon_i|x_i)$ 。
+**假设样本数据为 iid** ，则 $Var(\epsilon_i |X)= Var(\epsilon_i|X_i)$ 。
 
 “条件同方差”的原假设为：
 $$
-H_0: Var(\epsilon_i|x_i) = \sigma^2
+H_0: Var(\epsilon_i|X_i) = \sigma^2
 $$
-由于 $Var(\epsilon_i|x_i) = E(\epsilon_{i}^2|x_i)-[\underbrace{E(\epsilon_i^2|x_i)^2}_{=0}]=E(\epsilon_i^2|x_i)$ ，原假设可写为：
+由于 $Var(\epsilon_i|X_i) = E(\epsilon_{i}^2|X_i)-[\underbrace{E(\epsilon_i|X_i)}_{=0}]^2=E(\epsilon_i^2|X_i)$ ，原假设可写为：
 $$
-H_0: E(\epsilon_i^2|x_i) = \sigma_i^2
+H_0: E(\epsilon_i^2|X_i) = \sigma_i^2
 $$
-如果 $H_0$ 不成立，则条件方差 $E(\epsilon_i^2|x_i)$ 是 $x_i$ 的函数，称为“条件方差函数”。
+如果 $H_0$ 不成立，则条件方差 $E(\epsilon_i^2|X_i)$ 是 $X_i$ 的函数，称为“条件方差函数”（conditional variance function）。
 
 假设此条件方差函数为线性函数：
 $$
@@ -887,17 +946,44 @@ $$
 $$
 H_0: \delta_2 = \cdots=\delta_K=0
 $$
-由于扰动项 $\epsilon_i$ 不可观测，故使用残差平方和 $e_i^2$ 替代，进行辅助回归：
+由于扰动项 $\epsilon_i$ 不可观测，故使用残差平方和 $e_i^2$ 替代，进行辅助回归（auxiliary regression）：
 $$
 e_i^2 = \delta_1 + \delta_2x_{i2} + \cdots+\delta_Kx_{iK} + error_{i}
 $$
 记此辅助回归的拟合优度为 $R^2$ 。$R^2$ 越高，则辅助回归方程越显著，越可拒绝 $H_0: \delta_2 = \cdots=\delta_K=0$ 。
 
-Breusch and pagan(1979) 使用 LM 统计量，进行 LM 检验：
+Breusch and pagan(1979) 使用 LM 统计量，进行 LM 检验（Lagrange Multiplier Test）：
 $$
 LM = n R^2 \stackrel{d}{\rightarrow} \chi^2(K-1)
 $$
 如果 LM 大于 $\chi^2(K-1)$ 的临界值，则拒绝同方差的原假设。
+
+---
+
+【问题】为什么 LM 统计量是 $nR^2$ 呢?
+
+在大样本中，$nR^2$ 与检验整个方程显著性的 F 统计量渐近等价。
+
+首先，对于辅助回归，检验原假设 $H_0: \delta_2 = \cdots=\delta_K=0$ 的 F 统计量：
+$$
+F =\frac{R^2/(K-1)}{(1-R^2)/(n-K)} \sim F(K-1,n-K)
+$$
+其次，在大样本情况下，F 分布与 $\chi^2$ 分布是等价的。即：
+$$
+(K-1)F = \frac{(n-K)R^2}{(1-R^2)} \stackrel{d}{\rightarrow} \chi^2(K-1)
+$$
+在原假设 $H_0: \delta_2 = \cdots=\delta_K=0$ 成立的情况下，辅助回归方程常数项回归，故：
+
+当 $n \rarr \infin$ 时，$R^2 \stackrel{p}{\rightarrow} 0$，而 $ (1-R^2) \stackrel{p}{\rightarrow} 1 $  。
+
+因此：
+$$
+(K-1)F = \frac{(n-K)R^2}{(1-R^2)} \stackrel{p}{\rightarrow} (n-K)R^2
+$$
+在大样本下，$(n-K)R^2$ 与 $nR^2$ 并无差别，故 LM 检验与 F 检验渐近等价。
+
+---
+
 
 如果认为异方差主要依赖被解释变量拟合值 $\hat y_i$ ，可将辅助回归改为：
 $$
@@ -905,7 +991,7 @@ e_i^2 = \delta_1 +\delta_2 \hat y_i + error_i
 $$
 然后检验 $H_0: \delta_2 = 0$ （可使用 F 或 LM 统计量）。
 
-**Breusch and pagan(1979) 的最初检验假设扰动项 $\epsilon_i$ 服从正态分布，有一定的局限性。**
+**Breusch and pagan(1979) 的最初检验假设扰动项 $\epsilon_i$ 服从正态分布，有一定的局限性。**Koenker(1981) 将此假定减弱为 iid ，使得 BP 检验在实际中较多采用。
 
 #### 7.3.3 怀特检验（White, 1980）
 
@@ -935,7 +1021,7 @@ $$
 
 #### 7.4.1 使用“ OLS + 稳健标准误”
 
-如发现异方差，一种处理方法是，仍进行 OLS 回归（OLS 依然无偏、一致且渐近正态），但使用在异方差情况下也成立的稳健标准误。这是最简单，也是目前通用的方法。
+**如发现异方差，一种处理方法是，仍进行 OLS 回归（OLS 依然无偏、一致且渐近正态），但使用在异方差情况下也成立的稳健标准误。这是最简单，也是目前通用的方法。**
 
 只要样本容量较大，即使在异方差的情况下，只要使用稳健标准误，则所有参数估计、假设检验均可照常进行。
 
@@ -943,13 +1029,13 @@ $$
 
 方差较小的观测值包含的信息量较大。对于异方差的另一处理方法是，给予方差较小的观测值较大的权重，然后进行加权最小 二乘法估计。
 
-WLS 的基本思想是：通过变量转换，使得变换后的模型满足球形扰动项的假定(变为同方差)，然后进行 OLS 估计，即为最有效率的 BLUE。
+**WLS 的基本思想是：通过变量转换，使得变换后的模型满足球形扰动项的假定（变为同方差），然后进行 OLS 估计，即为最有效率的 BLUE 。**
 
 考虑线性回归模型：
 $$
-y_i = \beta_1 + \beta_2x_{i2} + \cdots+\beta_k x_{ik} + \epsilon_i
+y_i = \beta_1 + \beta_2x_{i2} + \cdots+\beta_K x_{iK} + \epsilon_i
 $$
-假定 $Var(\epsilon_i|x_i) \equiv \sigma_i^2 = \sigma_i^2v_i$ ，且 $\{v_i\}_{i}^n$ 已知。
+*假定 $Var(\epsilon_i|x_i) \equiv \sigma_i^2 = \sigma_i^2v_i$ ，且 $\{v_i\}_{i=1}^n$ 已知。*
 
 两边同乘权重 $1/\sqrt{v_i}$ 可得：
 $$
@@ -960,9 +1046,9 @@ $$
 $$
 Var(\epsilon_i/\sqrt{v_i}) = \frac{1}{v_i}Var(\epsilon_i) = \frac{\sigma^2v_i}{v_i} = \sigma^2
 $$
-对乘以权数后的方程进行 OLS 回归，即为 WLS 。
+对**乘以权数后的方程**进行 OLS 回归，即为 WLS 。
 
-加权之后的回归方程满足球形扰动项的假定，即是 BLUE 。
+加权之后的回归方程满足球形扰动项的假定，故是 BLUE 。
 
 可将 WLS 定义为最小化“加权残差平方和”，即：
 $$
@@ -1238,14 +1324,1267 @@ y = \alpha + \beta x_1 + \gamma x_2 + \epsilon
 $$
 其中，解释变量 $x_1, x_2$ 与扰动项 $\epsilon$ 不相关。
 
+而实际估计的模型为：
+$$
+y = \alpha + \beta x_1 = u
+$$
+遗漏变量 $x_2$ 被归入扰动项 $u = \gamma x_2 + \epsilon$ 。
+
+遗漏变量是否一定导致不一致的估计？
+
+考虑两种情形：
+
+- （1）遗漏变量 $x_2$ 与解释变量 $x_1$ 不相关，即 $Cov(x_1, x_2) = 0$ 
+
+扰动项 $u = \gamma x_2 + u$ 与解释变量 $x_1$ 不相关，因为：
+$$
+Cov(x_1, u) = Cov(x_1, \gamma x_2 + u) = \gamma Cov(x_1,x_2) + Cov(x_1, \epsilon) = 0 + 0 = 0
+$$
+虽然存在遗漏变量，但 OLS 依然可以一致地估计回归系数。但是由于遗漏变量 $x_2$ 被归入扰动项之中，可能增大扰动项的方差，影响 OLS 估计的精度。
+
+- （2）遗漏变量 $x_2$ 与解释变量 $x_1$ 相关，即 $Cov(x_1, x_2) \neq 0$ 
+
+根据大样本理论，OLS 估计不一致，称为“遗漏变量偏差” (omitted variable bias)。比如，研究教育投资回报时，个人能力因无法观测而遗漏，但能力与教育年限正相关。
+
+**存在遗漏变量本身并不要紧；关键在于遗漏变量不能与方程 的解释变量相关。**
+
+解决遗漏变量偏差的方法主要有：
+
+- 加入尽可能多的控制变量(control variable)；
+- **随机实验与自然实验**；
+- 工具变量法；
+- 使用面板数据。
+
 ### 9.2 无关变量
+
+与遗漏变量相反的情形是，在回归方程中加入了与被解释变量无关的变量。假设真实的模型为：
+$$
+y = \alpha + \beta x_1 + \epsilon
+$$
+其中，$Cov(x_1, \epsilon) = 0$ 。而实际估计的模型为：
+$$
+y = \alpha + \beta x_1 + \gamma x_2 + (\epsilon - \gamma x_2)
+$$
+由于真实参数 $\gamma = 0$ （$x_2$ 对 $y$ 无影响），故可将模型写成：
+$$
+y = \alpha + \beta x_1 + \gamma x_2 + \epsilon
+$$
+由于 $x_2$ 与 $y$ 无关，根据“无关变量”的定义，$x_2$ 与 $y$ 的扰动项 $\epsilon$ 无关，即 $Cov(x_2, \epsilon) = 0$ 。
+
+**扰动项 $\epsilon$ 与所有解释变量均无关，故 OLS 一致。但引入无关变量后，受无关变量的干扰，估计量 $\hat \beta$ 的方差一般会增大。**
 
 ### 9.3 建模策略：“由大到小”还是“由小到大”
 
+“由小到大”(specific to general)的建模方式首先从最简单的小模型开始，逐渐增加解释变量。比如，先将被解释变量 $y$ 对关键解释变量 $x$ 回归，然后再加入其他控制变量 $z$ 。 但小模型很可能存在遗漏变量偏差，系数估计不一致，$t$ 检验、$F$ 检验都失效，很难确定如何取舍变量。
+
+“由大到小”(general to specific)的建模方式从尽可能大的模型开始，收集所有可能的解释变量，再逐步剔除不显著的解释变量（可依次剔除最不显著，即 $p$ 值最大的变量）。
+
+虽然冒着包含无关变量的危险，但危害性没有遗漏变量严重。 但在实际操作上，很难找到与被解释变量相关的所有解释变量。 实证研究中，常采用以上两种策略的折中方案。
+
 ### 9.4 解释变量个数的选择
 
-### 9.5 Stata 操作实例
+确定解释变量可供选择的权衡标准如下：
+
+（1）校正的可决系数 $\bar{R}^2$ ：选择解释变量的个数 $K$ 以最大化  $\bar{R}^2$ 。
+
+（2）“赤池信息准则”(Akaike Information Criterion，AIC)：选择解释变量的个数 $K$，使得目标函数最小化:
+$$
+\min_{K} AIC = \ln{(\frac{SSR}{n})} + \frac{2}{n}K
+$$
+其中，$SSR$ 为残差平方和 $\sum_{i=1}^n e_i^2$ 。第一项对模型拟合优度的奖励（减少残差平方和 $SSR$），第二项对解释变量过度的惩罚（为解释变量个数 $K$ 的增函数），当 $K$ 上升时，第一项下降而第二项上升。
+
+（3）“贝叶斯信息准则”(Bayesian Information Criterion，BIC)或 “施瓦茨信息准则”(Schwarz Information Criterion，SIC 或 SBIC)：选择解释变量的个数 $K$，使得目标函数最小化：
+$$
+\min_{K} BIC = \ln{\frac{SSR}{n}} + \frac{\ln{n}}{n}K
+$$
+BIC 准则与 AIC 准则仅第二项有差别。
+
+一般来说，$\ln{n} > 2$，故 BIC 准则对于解释变量过多的惩罚比 AIC 准则更为严厉。BIC 准则更强调模型的简洁性。
+
+由于现实样本通常有限，而 BIC 准则可能导致模型过小（对解释 变量过多的惩罚太严厉），故 AIC 准则依然很常用。
+
+```Stata
+estat ic // information criterion
+```
+
+（4）“由大到小序贯 t 规则”(general-to-specific sequential t rule)。
+
+这种方法常用于时间序列模型，比如 $AR(p)$ 。
+
+首先，设最大滞后期 $p_{max}$，令 $\hat p = p_{max}$ 进行估计，并对最后一阶系数的显著性进行 $t$ 检验。
+
+如果接受该系数为 0，则令 $\hat p = p_{max}-1$ ，重新进行估计，再对（新的）最后一阶系数的显著性进行 $t$ 检验，如果显著，则停止；否则， 令 ;  $\hat p = p_{max}-2$；以此类推。
+
+### 9.5 对函数形式的检验
+
+很多经济关系是非线性的。多元线性回归可看作是非线性关系的一阶线性近似。如果存在非线性项，但被遗漏，则会导致遗漏变量偏差，这是模型设定误差的一种形式。
+
+假设真实模型为：
+$$
+y = \alpha + \beta x + (\gamma x^2 + \epsilon)
+$$
+其中，$Cov(x,\epsilon) = 0$，而平方项 $\gamma x^2$ 被遗漏。
+
+解释变量与扰动项相关：
+$$
+Cov(x,\gamma x^2+\epsilon) = \gamma Cov(x,x^2) + Cov(x, \epsilon) = \gamma Cov(x, x^2) = 0
+$$
+遗漏高次项会导致遗漏变量偏差。
+
+“Ramsey’s RESET检验”(Regression Equation Specification Error Test)(Ramsey, 1969)的基本思想:如果怀疑遗漏非线性项，就把非线性项引入方程，检验其系数是否显著。
+
+假设线性回归模型为：
+$$
+y = \alpha + \beta x_1 + \gamma x_2 + \epsilon
+$$
+记此回归的拟合值为：
+$$
+\hat y = \hat \alpha + \hat \beta x_1 + \hat \gamma x_2
+$$
+考虑辅助回归：
+$$
+y = \alpha + \beta x_1 + \gamma x_2 + \delta_2 \hat y^2 + \delta_3 \hat y^3 + \delta_4 \hat y^4 + \epsilon
+$$
+对 $H_0: \delta_2 = \delta_3 = \delta_4 = 0$ 作 F 检验。
+
+如果拒绝 $H_0$ ，说明模型中应有高次项；
+
+如果接受 $H_0$ ，则可使用线性模型。
+
+RESET 检验的缺点是，在拒绝 $H_0$ 的情况下，并不提供具体遗漏哪些高次项的信息。
+
+也可直接将解释变量 $x_1$ 与 $x_2$ 的高次项放回辅助回归中，比如：
+$$
+y = \alpha + \beta x_1 + \gamma x_2 + \delta_2 x_1^2 + \delta_3x_2^2 + \delta_4x_1x_2 + \epsilon
+$$
+然后检验 $H_0: \delta_3 = \delta_3 = \delta_4 = 0$ 。
+
+关于如何确定回归方程的函数形式，最好从经济理论出发。在缺乏理论指导的情况下，可先从线性模型出发，然后进行 RESET 检验，看是否应加入非线性项。
+
+```Stata
+/*
+estat ovtest,rhs
+其中，“ovtest”表示 omitted variable test，因为遗漏高次项的 后果类似于遗漏解释变量。
+选择项“rhs”表示使用解释变量的幂为非线性项，即方程(9.16); 默认使用yˆ2, yˆ3, yˆ4为非线性项，即方程(9.15)。
+以数据集 grilic.dta 为例。
+*/
+use ${d}/grilic.dta, clear
+qui reg lnw s expr tenure smsa rns
+estat ovtest
+estat ovtest,rhs // 直接使用解释变量的高次项进行 RESET 检验
+
+gen expr2 = expr^2
+reg lnw s expr expr2 tenure smsa rns
+estat ovtest,rhs
+```
 
 
 
-###   
+### 9.6 多重共线性
+
+如果在解释变量中，某一解释变量可由其他解释变量线性表出，则存在“严格多重共线性”(strict multicollinearity) 。
+
+此时数据矩阵 $X$ 不满列秩，$(X'X)^{-1}$ 不存在，无法定义 OLS 估计量 $\hat \beta = (X'X)^{-1}X'y$ 。
+
+比如，解释变量 $x_2$ 正好是解释变量 $x_3$ 的两倍，则无法区分 $x_2$ 与 $x_3$ 对被解释变量 $y$ 的影响。
+
+严格多重共线性在现实中较少出现，实践中更常见的是近似（非严格）的多重共线性，简称“多重共线性”或“共线性”。
+
+**多重共线性的主要表现是：如果将第 $k$ 个解释变量 $x_k$ 对其余解释变量 $\{x_1,\cdots,x_{k-1},x_{k+1},\cdots,x_K\}$  进行回归，所得可决系数（记为 $R_k^2$）较高。**
+
+在多重共线性的情况下，OLS 仍是 BLUE ，因为高斯-马尔可夫定理并未排除多重共线性的情形。
+
+多重共线性的通常症状是，虽然整个回归方程的 $R^2$ 较大、F 检验也很显著，但单个系数的 t 检验却不显著。
+
+另一症状是，增减解释变量使得系数估计值发生较大变化（比如，加入的解释变量与已有解释变量构成多重共线性）。
+
+如果两个（或多个）解释变量之间高度相关，则不易区分它们对被解释变量的单独影响力。
+
+在严格多重共线性的极端情况下，一个变量刚好是其他变量的倍数，则完全无法区分。
+
+$R_k^2$ 越高，解释变量 $x_k$ 与其他解释变量的共线性严重，则 $x_k$ 的系数估计量 $\hat \beta_k$ 的方差越大。
+
+方差 $Var(\hat \beta_k | X)$ 与 $(1-R_k^2)$ 成反比。
+
+定义解释变量 $x_k$ 的方差膨胀因子（Variance Inflation Factor, VIF）为：
+$$
+VIF_k \equiv \frac{1}{1-R_k^2}
+$$
+可将方差写为：
+$$
+Var(\hat \beta_k | X) = VIF \cdot\frac{\sigma^2}{S_k}
+$$
+方差膨胀因子 $VIF_k$ 越大，$x_k$ 的多重共线性问题越严重，其方差 $Var(\hat \beta_k | X)$ 将变得越大。
+
+对于 $K$ 个解释变量 $\{x_1,\cdots,x_K\}$ ，可计算相应的方差膨胀因子 $\{VIF_1, \cdots, VIF_K\}$ 。
+
+**判断是否存在多重共线性的经验规则是，$\{VIF_1, \cdots, VIF_K\}$的最大值不应超过 10。**
+
+> 求解 “$10 = \frac{1}{1-R_k^2}$” 可知，相应的 $R_k^2$ 不应超过 0.9 。
+
+解释变量 $x_k$ 的多重共线性越严重，$R_k^2$ 越接近于 1，方差膨胀因子 $VIF_k$ 将急剧上升。
+
+```Stata
+* 在Stata中画函数考察VIF_k对R_k^2的依赖性
+
+twoway function VIF=1/(1-x),xtitle(R2) xline(0.9,lp(dash)) yline(10,lp(dash)) xlabel(0.1(0.1)1) ylabel(10 100 200 300)
+
+/*
+其中，选择项“xtitle(R2)”指示横轴的标题为 R2; “xline(0.9,lp(dash))”与“yline(10,lp(dash))” 分 别表示在横轴 0.9 与纵轴 10 的位置画一条虚线; “xlabel(0.1(0.1)1)”表示在横轴上，从 0.1 至 1，每隔 0.1 的位置给出标签;“ylabel(10 100 200 300)”表示在纵轴 上 10、100、200 与 300 的位置给出标签
+*/
+```
+
+如果存在多重共线性，可采取的处理方式：
+
+- 如不关心具体的回归系数，只关心整个方程的预测能力，可不必理会多重共线性(假设整个方程显著)。多重共线性的主要后果是使得对单个变量的贡献估计不准，但所有变量的整体效应仍可 较准确地估计。
+- 如关心具体的回归系数，但多重共线性并不影响所关心变量 的显著性，也可不必理会。在方差膨胀的情况下，系数依然显著;如没有多重共线性，只 会更显著。
+- 如多重共线性影响所关心变量的显著性，应设法进行处理。比如，增大样本容量，剔除导致严重共线性的变量，将变量标准化，或对模型设定进行修改。
+
+如回归方程中包含解释变量的多项式(比如，$\beta x+ \gamma x^2$ )，通常导致多重共线性。可能的解决方法是将变量标准化，即减去均值，除以标准差:
+
+$$
+\tilde x = \frac{x - \bar x}{s_x}
+$$
+
+$\bar x$ 为变量 $x$ 的样本均值，$s_x$ 为样本标准差，$\tilde x$ 为标准化之后的变量；然后，以 $\tilde x$ 及其平方 $\tilde x^2$ 作为解释变量。
+
+```Stata
+use ${d}/grilic.dta, clear
+qui reg lnw s expr tenure iq smsa rns
+estat vif
+/*
+最大的 VIF 为 1.12，远小于 10，不必担心多重共线性。
+*/
+gen s2=s^2
+reg lnw s s2 expr tenure smsa rns
+estat vif
+/*
+变量 s 与 s2 的 VIF 分别达到 167.07 与 166.30，远大于 10，存 在多重共线性。
+*/
+reg s2 s
+/*
+R2高达0.9939，说明s与s2所包含信息基本相同，导致严重的 多重共线性。
+*/
+sum s 
+gen sd = (s - r(mean))/r(sd)
+gen sd2 = sd^2
+reg lnw sd sd2 expr tenure smsa rns
+/*
+标准化的线性项(sd)在 1%水平上显著为正，而标准化的平方项 (sd2)不显著;多重共线性似乎有所缓解。
+*/
+est vif
+/*
+VIF 的最大值仅为 1.32，基本不存在多重共线性。
+*/
+reg sd2 sd //R2仅为0.1745
+/*
+由于 sd2 在上面的回归中不显著，去掉 sd2，再次回归
+*/
+reg lnw sd expr tenure smsa rns
+/*
+sd 的回归系数为 0.2291，似乎偏高。
+但 sd 为标准化的变量，故 sd 变化一单位，等于 s 变化一个标 准差，即 2.231828 年
+*/
+* 以此推算 s 的系数，即教育投资的年回报率应为
+dis .2290816/2.231828
+* 再次对比未将变量 s 标准化的回归:
+reg lnw s expr tenure smsa rns
+/*
+是否将变量 s 标准化，对于回归结果(回归系数、标准误)没有任 何实质性影响。
+*/
+```
+
+
+
+### 9.7 极端数据
+
+如果样本数据中的少数观测值离大多数观测值很远，可能对
+
+OLS 的回归系数产生很大影响。
+
+这些数据称为“极端观测值”(outliers) 或“高影响力数据”(influential data)。
+
+<img src="./images/9-2.png" style="zoom:50%;">
+
+```Stata
+use ${d}/nerlove.dta, clear
+reg lntc lnq lnpl lnpk lnpf
+replace lnq=lnq*100 if _n==1 //制造异常值
+/*
+人为制造极端值后，回归系数的估计值变化很大，所有系数都 变得不显著，R2也从0.926降为0.0256 (R2变为负数)。
+*/
+reg lntc lnq lnpl lnpk lnpf if _n>1
+```
+
+**如何发现极端值？**
+
+对于一元回归，可以画 $(x,y)$ 的散点图来考察，但对多元回归行不通。
+
+某个观测值的影响力可通过去掉此观测值对回归系数的影响来衡量。
+
+记 $\hat \beta$ 为全样本的 OLS 估计值，而 $\hat \beta^{(i)}$ 为去掉第 $i$ 个观测值后的 OLS 估计值，关心 $(\hat \beta - \hat \beta^{(i)})$ 的变化幅度及如何决定。
+
+定义第 i 个观测数据对回归系数的“影响力”或“杠杆作用” (leverage)为：
+$$
+lev_i \equiv x_i'(X'X)^{-1}x_i
+$$
+其中，$x_i \equiv \begin{matrix}(1 &x_{i2} & \cdots & x_{iK})'\end{matrix}$ 包含个体 $i$ 的全部解释变量，而 $X = \begin{matrix}(x_1 & x_2 & \cdots &x_n)'\end{matrix}$ 为数据矩阵。
+
+$lev_i$ 与 $(\hat \beta - \hat \beta^{(i)})$ 存在如下关系：
+$$
+\hat \beta - \hat \beta^{(i)} = (\frac{1}{1-lev_i})(X'X)^{-1}x_ie_i
+$$
+$lev_i$ 越大，则 $(\hat \beta - \hat \beta^{(i)})$ 的变化越大。
+
+所有观测数据的影响力 $lev_i$ 满足：
+
+- $0 \leq lev_i \leq 1, \quad (i=1,...,n)$;
+- $\sum_{i=1}^n lev_i = K$（解释变量个数）；
+
+因此，影响力 $lev_i$ 的平均值为 $(K/n)$ 。
+
+如果某些数据的 $lev_i$ 比平均值$(K/n)$ 高很多，则可能对回归系数有很大影响。
+
+```Stata
+/*
+predict lev,leverage
+此命令将计算所有观测数据的影响力，并记为变量lev (可自行 命名)
+*/
+use ${d}/nerlove.dta, clear
+qui reg lntc lnq lnpl lnpk lnpf
+predict lev, leverage
+sum lev
+dis r(max)/r(mean)
+*lev 的最大值是其平均值的 3.41 倍，似乎不大。
+gsort -lev
+list lev in 1/3
+
+/*再次人为制造极端数据，将第一个观测值的产量对数(lnq)乘以100，然后计算 lev
+*/
+replace lnq=lnq*100 if _n==1
+qui reg lntc lnq lnpl lnpk lnpf . predict lev1,lev
+sum lev1
+dis r(max)/r(mean)
+/* 
+lev 的最大值是其平均值的 28.42 倍，故存在极端观测值。
+*/
+```
+
+**如何处理极端值？**
+
+首先，应检查是否因数据输入有误导致极端观测值。
+
+其次，对极端观测值的个体进行背景调查，看是否由与研究课题无关的特殊现象所致，必要时可删除极端数据。
+
+最后，比较稳健的做法是同时汇报“全样本”(full sample)与删 除极端数据后的“子样本”(subsample)的回归结果，让读者自己做判断。
+
+
+
+### 9.8 虚拟变量
+
+虚拟变量陷阱：如在方程中包含 M 个虚拟变量，**会产生严格多重共线性**。因为 如果将这 M 个虚拟变量在数据矩阵 $X$ 中对应的列向量相加，就会得到与常数项完全相同的向量，即 $(1 \cdots 1)'$ （因为 M 类中必居其一）。如模型中没有常数项，可放入 M 个虚拟变量。
+
+考虑有关中国经济的时间序列模型：
+$$
+y_t = \alpha + \beta x_t + \epsilon_t \quad (t=1950, \cdots, 2000)
+$$
+经济结构可能在 1978 年后有变化，引入虚拟变量：
+$$
+D_t = 
+\begin{cases}
+1, 若 t \geq 1978  \\
+0, 其他
+\end{cases}
+$$
+引入虚拟变量的几种情形：
+
+（1）仅引入虚拟变量 $D_t$ 本身，回归方程为：
+$$
+y_t = \alpha + \beta x_t + \gamma D_t + \epsilon_t
+$$
+该模型等价于：
+$$
+y_t = 
+\begin{cases}
+\alpha + \beta x_t + \epsilon_t, \quad 若 t < 1978 \\
+(\alpha + \gamma) + \beta x_t + \epsilon_t，\quad 若 t \geq 1978
+\end{cases}
+$$
+仅引入虚拟变量 $D_t$ 本身，相当于在不同时期给予不同截距项。
+
+<img src="./images/9-3.png" style="zoom:50%;">
+
+（2）引入虚拟变量 $D_t$ ，以及虚拟变量与解释变量的“互动项” (interaction term) $D_tx_t$，回归方程为：
+$$
+y_t = \alpha + \beta x_t + \gamma D_t + \delta D_tx_t + \epsilon_t
+$$
+该模型等价于：
+$$
+y_t = 
+\begin{cases}
+\alpha + \beta x_t + \epsilon_t, \quad 若 t < 1978 \\
+(\alpha+\gamma)+(\beta+\delta)x_t + \epsilon_t, \quad 若 t \geq 1978
+\end{cases}
+$$
+引入虚拟变量以及虚拟变量与解释变量的“互动项” ，相当于在不同时期使用不同的截距项与斜率。
+
+<img src="./images/9-4.png" style="zoom:50%;">
+
+（3）如果仅仅引入互动项，则仅改变斜率(比较少见)。
+
+```Stata
+* 生成虚拟变量
+gen d=(year>=1978)
+/*
+其中，“( )”表示对括弧内的表达式“year>=1978”进行逻 辑判断。如果此表达式为真，则取值为 1;反之，取值为 0
+*/
+tabulate province, generate(prov)
+```
+
+### 9.9 经济结构变动的检验
+
+对于时间序列数据而言，模型系数的稳定性很重要。如果存在“结构变动”（structural break）但未加考虑，也是模型的设定误差。
+
+考虑结构变动已知的情形：检验中国经济是否在 1978 年发生结构变动。
+
+定义第 1 个时期为 $1950 \leq t \leq 1978$，第 2 个时期为 $1978 \leq t \leq 2010$ 。
+
+两个时期对应的回归方程为：
+$$
+y_t = \alpha_1 + \beta_1 x_t + \epsilon_t \quad (1950 \leq t \leq 1978) \\
+y_t = \alpha_2 + \beta_2 x_t + \epsilon_t \quad (1978 \leq t \leq 2010) \\
+$$
+原假设：经济结构在两个时期内没有变化，即 $H_0: \alpha_1 = \alpha_2, \beta_1 = \beta_2$，共有两个约束。
+
+如有 $K$ 个解释变量（包含常数项）,则 $H_0$ 共有 $K$ 个约束。
+
+在无约束的情况下，对两个时期，分别进行回归。
+
+在有约束的情况下，可将模型合并为：
+$$
+y_t = \alpha + \beta x_t + \epsilon_t \quad(1950 \leq t \leq 2010)
+$$
+其中，$\alpha = \alpha_1 = \alpha_2, \beta = \beta_1 = \beta_2$ 。
+
+可将所有样本数据合在一起回归。
+
+传统的“邹检验”（Chow，1960）通过三个回归来检验“无结构变动”的原假设。
+
+- 回归整个样本，$1950 \leq t \leq 2010$，得到残差平方和，记为 $SSR^*$ 。
+- 回归第 1 部分子样本，$1950 \leq t \leq 1978$，得到残差平方和，记为 $SSR_1$ 。
+- 回归第 2 部分子样本，$1978 \leq t \leq 2010$，得到残差平方和，记为 $SSR_2$ 。
+
+将整个样本一起回归为“有约束 OLS”，其残差平方和为$SSR^*$。将样本一分为二，分别进行回归为“无约束 OLS”，其残差平方和为：$SSR = SSR_1 + SSR_2$。
+
+$SSR^* \geq SSR = SSR_1 + SSR_2$，因为有约束 OLS 的拟合优度比无约束 OLS 更差。
+
+如 $H_0$ 成立（无结构变动），则 $(SSR^* - SSR_1 -SSR_2)$ 应较小；施加约束后，不应使残差平方和上升很多。如 $(SSR^* - SSR_1 -SSR_2)$ 很大，则倾向于认为 $H_0$ 不成立，存在结构变动。
+
+在对 m 个线性约束进行联合检验时，似然比检验原理的 F 统计量为：
+$$
+F = \frac{(SSR^*-SSR)/m}{SSR/(n-K)}\sim F(m,n-K)
+$$
+其中，$SSR$ 为无约束的残差平方和，$SSR^*$ 为有约束的残差平方和， $n$ 为样本容量，而 $K$ 为无约束回归的参数个数。
+
+回到检验结构变动的情形，如果有 $K$ 个解释变量（含常数项），则共有 $K$ 个约束条件，而无约束回归的参数个数为$2K$ 。
+
+检验结构变动的 F 统计量：
+$$
+F = \frac{(SSR^*-SSR_1-SSR_2)/K}{(SSR_1+SSR_2)/(n-2K)} \sim F(K,n-2K)
+$$
+其中，$n$ 为样本容量，$K$ 为有约束回归的参数个数（含常数项）。
+
+对于一元回归的例子，$K =2$ 。
+
+检验结构变动的另一方法是引入虚拟变量，并检验所有虚拟变量以及其与解释变量交叉项的系数的联合显著性。
+
+对于 $K=2$ 的情形，可进行如下回归：
+$$
+y_t = \alpha + \beta x_t + \gamma D_t + \delta D_t x_t + \epsilon_t
+$$
+ 检验联合假设 $H_0: \gamma = \delta = 0$ 。
+
+所得 F 统计量与邹检验完全相同，故虚拟变量法与邹检验等价。
+
+与邹检验相比，虚拟变量法的优点包括：
+
+- 只需生成虚拟变量即可检验，十分方便；
+- 邹检验在“球形扰动项”的假设下得到，并不适用于异方差或自相关的情形（在异方差或自相关的情况下，仍可使用虚拟变量法，只要在估计方程 $y_t = \alpha + \beta x_t + \gamma D_t + \delta D_t x_t + \epsilon_t$ 时，使用异方差自相关稳健的 HAC 标准误即可）；
+- 如发现结构变动，邹检验不提供究竟是截距项还是斜率变 动的信息，虚拟变量法可提供这些信息。
+
+```Stata
+* 结构变动
+use ${d}/consumption.dta,clear
+* 先看中国 1978—2013 年“居民人均消费”(c)与“人均国内总产 值”(y)的年度(year)时间趋势图
+twoway connect c y year,msymbol(circle) msymbol(triangle)
+twoway connect c y year,msymbol(circle) msymbol(triangle) xlabel(1980(10)2010) xline(1992)
+
+/*
+考察简单的消费函数:c_t= \alpha + \beta x_1 + \epsilon_t
+首先，使用传统的邹检验来检验消费函数是否在 1992 年发生结 构变动。
+分别对整个样本、1992 年之前及之后的子样本进行回归，获得 其残差平方和:
+*/
+reg c y
+scalar ssr=e(rss)
+reg c y if year<1992
+scalar ssr1=e(rss)
+reg c y if year>=1992
+scalar ssr2=e(rss)
+* 由于n=36，K=2，n- 2K = 32，可计算F 统计量如下:
+di ((ssr-ssr1-ssr2)/2)/((ssr1+ssr2)/32) //15.394558
+
+/*
+其次，使用虚拟变量法进行结构变动的检验。
+生成虚拟变量 d (对于 1992 年及以后，d=1;反之，d=0);以及 虚拟变量 d 与人均收入 y 的互动项 yd:
+*/
+gen d=(year>1991)
+gen yd=y*d
+reg c y d yd
+test d yd
+/*
+虚拟变量法所得 F 统计量为 15.39，与邹检验完全相同。 p值为 0.0000，可在 1%水平上拒绝“无结构变动”的原假设。
+上述检验仅在球形扰动项(同方差、无自相关)的情况下才成立。
+*/
+
+* 下面进行异方差与自相关的检验
+qui reg c y
+estat imtest,white
+tsset year
+estat bgodfrey //BG 检验
+/*
+可在 5%的水平上拒绝“同方差”的原假设。
+可在 1%水平上强烈拒绝“无自相关”的原假设。
+*/
+dis 36^(1/4) // 计算 HAC 标准误的截断参数
+newey c y d yd,lag(3) //将截断参数设为 3，进行 Newey-West 回归。
+test d yd
+/*
+p值为 0.0000，可在 1%水平上拒绝“无结构变动”的原假设， 认为中国的消费函数在 1992 年发生了结构变动。
+*/
+
+```
+
+
+
+### 9.10 缺失数据与线性插值
+
+在数据缺失不严重的情况下，为保持样本容量，可采用“线性插值”(linear interpolation)的方法补上缺失数据。
+
+已知 $x_{t-1}$ 与 $x_{t+1}$ ，但缺失 $x_t$ 的数据，则 $x_t$ 对时间 $t$ 的线性插值为：
+$$
+\hat x_t = \frac{x_{t-1} + x_{t+1}}{2}
+$$
+更一般地，假设与 $x$ （通常为时间）对应的 $y$ 缺失，而最临近的两个点分别为 $(x_0, y_0)$ 与 $(x_1, y_1)$ ，且 $x_0 < x< x_1$ ，则 $y$ 对 $x$ 的线性插值 $\hat y$ 满足：
+
+
+$$
+\frac{\hat y - y_0}{x - x_0} = \frac{y_1 - y_0}{x_1 - x_0}
+$$
+整理可得：
+$$
+\hat y = \frac{y_1-y_0}{x_1-x_0}(x-x_0)+y_0
+$$
+<img src="./images/9-7.png" style="zoom:50%;"/>
+
+线性插值的基本假设是变量以线性速度均匀变化。如变量 $y$ 有指数增长趋势(比如 GDP )，应先取对数，再用 $\ln{y}$ 进行线性插值，以避免偏差。
+
+如需要以原变量 $y$ 进行回归，可将线性插值的对数值 $\hat{\ln{y}}$ 取反对数(antilog)，即计算 $exp(\hat{\ln {y}})$ 。
+
+```Stata
+* 线性插值
+/*
+ipolate y x,gen(newvar)
+其中，“ipolate”表示 interpolate，即将变量 y 对变量 x 进行 线性插值，并将插值的结果记为新变量 newvar。
+*/
+
+use ${d}/consumption.dta,clear
+* 假设 1980 年、1990 年、2000 年及 2010 年的人均 GDP 数据缺失。
+gen y1=y
+replace y1=. if year==1980 | year==1990 | year==2000 | year==2010
+
+* 直接用 y1 对 year 进行线性插值，将结果记为 y2
+ipolate y1 year,gen(y2)
+
+/*
+由于人均 GDP 有指数增长趋势，故更好的做法是，先对 y1 取
+对数，进行线性插值，再取反对数，将结果记为 y3。
+*/
+gen lny1=log(y1)
+ipolate lny1 year,gen(lny3)
+gen y3=exp(lny3)
+
+
+* 对比这两种方法的效果
+list year y y2 y3 if year==1980 | year==1990 | year==2000 | year==2010
+/*
+对比结果：
+直接插值的结果 y2 倾向于高估真实值 y，整体估计效果不如先 取对数再插值的结果 y3 (1980 年的结果是例外)。
+*/
+```
+
+
+
+### 9.11 变量单位的选择
+
+在选择变量单位时，应尽量避免变量间的数量级差别过于悬殊，以免出现计算机运算的较大误差。
+ 比如，通货膨胀率通常小于 1，而如果模型中有 GDP 这个变量，则 GDP 应该使用亿或万亿作为单位。
+
+否则，变量 GDP 的取值将是通货膨胀率的很多倍，即数据矩阵 $X$ 中某列的数值是另一列的很多倍，可能使计算机在对$(X'X)^{-1}$ 进行数值计算时出现较大误差。
+
+电脑的存储空间有限，实际上只能作近似计算，即精确到小数点后若干位。
+
+### Stata 操作实例
+
+```Stata
+* 解释变量个数的选择
+*********************
+use ${d}/icecream.dta,clear
+quietly reg consumption temp price income
+estat ic
+/*
+加入气温的一阶滞后项(L.temp)，重新估计。
+*/
+
+qui reg consumption temp L.temp price income
+estat ic
+/*
+增加解释变量 L.temp 后，AIC 与 BIC 都下降了
+*/
+/*
+加入气温的二阶滞后项(L2.temp)，重新估计。
+*/
+qui reg consumption temp L.temp L2.temp price income
+estat ic
+/*
+加入气温的二阶滞后项后，AIC 与 BIC 比仅包括气温的滞后项上升了。
+*/
+reg consumption temp L.temp L2.temp price income
+/*
+L2.temp 的系数高度不显著( p 值为 0.556)。
+令\hat p = p_{max}-1 (去掉L2.temp)，重新估计。
+*/
+reg consumption temp L.temp price income
+/*
+L.temp 的系数在 1%水平上显著( p值为 0.006)，故最终选择 \hat p = 1 ;此结果与信息准则的结果相同。
+*/
+
+* 对函数形式的检验
+*********************
+/*
+estat ovtest,rhs
+其中，“ovtest”表示 omitted variable test，因为遗漏高次项的 后果类似于遗漏解释变量。
+选择项“rhs”表示使用解释变量的幂为非线性项，即方程(9.16); 默认使用yˆ2, yˆ3, yˆ4为非线性项，即方程(9.15)。
+以数据集 grilic.dta 为例。
+*/
+use ${d}/grilic.dta, clear
+qui reg lnw s expr tenure smsa rns
+estat ovtest
+estat ovtest,rhs // 直接使用解释变量的高次项进行 RESET 检验
+
+gen expr2 = expr^2
+reg lnw s expr expr2 tenure smsa rns
+estat ovtest,rhs
+
+
+* 多重共线性
+*********************
+twoway function VIF=1/(1-x),xtitle(R2) xline(0.9,lp(dash)) yline(10,lp(dash)) xlabel(0.1(0.1)1) ylabel(10 100 200 300)
+
+/*
+其中，选择项“xtitle(R2)”指示横轴的标题为 R2; “xline(0.9,lp(dash))”与“yline(10,lp(dash))” 分 别表示在横轴 0.9 与纵轴 10 的位置画一条虚线; “xlabel(0.1(0.1)1)”表示在横轴上，从 0.1 至 1，每隔 0.1 的位置给出标签;“ylabel(10 100 200 300)”表示在纵轴 上 10、100、200 与 300 的位置给出标签
+*/
+
+use ${d}/grilic.dta, clear
+qui reg lnw s expr tenure iq smsa rns
+estat vif
+/*
+最大的 VIF 为 1.12，远小于 10，不必担心多重共线性。
+*/
+gen s2=s^2
+reg lnw s s2 expr tenure smsa rns
+estat vif
+/*
+变量 s 与 s2 的 VIF 分别达到 167.07 与 166.30，远大于 10，存 在多重共线性。
+*/
+reg s2 s
+/*
+R2高达0.9939，说明s与s2所包含信息基本相同，导致严重的 多重共线性。
+*/
+sum s 
+gen sd = (s - r(mean))/r(sd)
+gen sd2 = sd^2
+reg lnw sd sd2 expr tenure smsa rns
+/*
+标准化的线性项(sd)在 1%水平上显著为正，而标准化的平方项 (sd2)不显著;多重共线性似乎有所缓解。
+*/
+estat vif
+/*
+VIF 的最大值仅为 1.32，基本不存在多重共线性。
+*/
+reg sd2 sd //R2仅为0.1745
+/*
+由于 sd2 在上面的回归中不显著，去掉 sd2，再次回归
+*/
+reg lnw sd expr tenure smsa rns
+/*
+sd 的回归系数为 0.2291，似乎偏高。
+但 sd 为标准化的变量，故 sd 变化一单位，等于 s 变化一个标 准差，即 2.231828 年
+*/
+* 以此推算 s 的系数，即教育投资的年回报率应为
+dis .2290816/2.231828
+* 再次对比未将变量 s 标准化的回归:
+reg lnw s expr tenure smsa rns
+/*
+是否将变量 s 标准化，对于回归结果(回归系数、标准误)没有任 何实质性影响。
+*/
+
+
+* 极端数据
+*********************
+/*
+predict lev,leverage
+此命令将计算所有观测数据的影响力，并记为变量lev (可自行 命名)
+*/
+use ${d}/nerlove.dta, clear
+qui reg lntc lnq lnpl lnpk lnpf
+predict lev, leverage
+sum lev
+dis r(max)/r(mean)
+*lev 的最大值是其平均值的 3.41 倍，似乎不大。
+gsort -lev
+list lev in 1/3
+
+/*再次人为制造极端数据，将第一个观测值的产量对数(lnq)乘以100，然后计算 lev
+*/
+replace lnq=lnq*100 if _n==1
+qui reg lntc lnq lnpl lnpk lnpf 
+predict lev1,lev
+sum lev1
+dis r(max)/r(mean)
+/* 
+lev 的最大值是其平均值的 28.42 倍，故存在极端观测值。
+*/
+
+* 虚拟变量
+**************
+gen d=(year>=1978)
+/*
+其中，“( )”表示对括弧内的表达式“year>=1978”进行逻 辑判断。如果此表达式为真，则取值为 1;反之，取值为 0
+*/
+tabulate province, generate(prov)
+
+
+* 经济结构变动
+*************
+use ${d}/consumption.dta,clear
+* 先看中国 1978—2013 年“居民人均消费”(c)与“人均国内总产 值”(y)的年度(year)时间趋势图
+twoway connect c y year,msymbol(circle) msymbol(triangle)
+twoway connect c y year,msymbol(circle) msymbol(triangle) xlabel(1980(10)2010) xline(1992)
+
+/*
+考察简单的消费函数:c_t= \alpha + \beta x_1 + \epsilon_t
+首先，使用传统的邹检验来检验消费函数是否在 1992 年发生结 构变动。
+分别对整个样本、1992 年之前及之后的子样本进行回归，获得 其残差平方和:
+*/
+reg c y
+scalar ssr=e(rss)
+reg c y if year<1992
+scalar ssr1=e(rss)
+reg c y if year>=1992
+scalar ssr2=e(rss)
+* 由于n=36，K=2，n- 2K = 32，可计算F 统计量如下:
+di ((ssr-ssr1-ssr2)/2)/((ssr1+ssr2)/32) //15.394558
+
+/*
+其次，使用虚拟变量法进行结构变动的检验。
+生成虚拟变量 d (对于 1992 年及以后，d=1;反之，d=0);以及 虚拟变量 d 与人均收入 y 的互动项 yd:
+*/
+gen d=(year>1991)
+gen yd=y*d
+reg c y d yd
+test d yd
+/*
+虚拟变量法所得 F 统计量为 15.39，与邹检验完全相同。 p值为 0.0000，可在 1%水平上拒绝“无结构变动”的原假设。
+上述检验仅在球形扰动项(同方差、无自相关)的情况下才成立。
+*/
+
+* 下面进行异方差与自相关的检验
+qui reg c y
+estat imtest,white
+tsset year
+estat bgodfrey //BG 检验
+/*
+可在 5%的水平上拒绝“同方差”的原假设。
+可在 1%水平上强烈拒绝“无自相关”的原假设。
+*/
+dis 36^(1/4) // 计算 HAC 标准误的截断参数
+newey c y d yd,lag(3) //将截断参数设为 3，进行 Newey-West 回归。
+test d yd
+/*
+p值为 0.0000，可在 1%水平上拒绝“无结构变动”的原假设， 认为中国的消费函数在 1992 年发生了结构变动。
+*/
+
+
+* 线性插值
+**************
+/*
+ipolate y x,gen(newvar)
+其中，“ipolate”表示 interpolate，即将变量 y 对变量 x 进行 线性插值，并将插值的结果记为新变量 newvar。
+*/
+
+use ${d}/consumption.dta,clear
+* 假设 1980 年、1990 年、2000 年及 2010 年的人均 GDP 数据缺失。
+gen y1=y
+replace y1=. if year==1980 | year==1990 | year==2000 | year==2010
+
+* 直接用 y1 对 year 进行线性插值，将结果记为 y2
+ipolate y1 year,gen(y2)
+
+/*
+由于人均 GDP 有指数增长趋势，故更好的做法是，先对 y1 取
+对数，进行线性插值，再取反对数，将结果记为 y3。
+*/
+gen lny1=log(y1)
+ipolate lny1 year,gen(lny3)
+gen y3=exp(lny3)
+
+
+* 对比这两种方法的效果
+list year y y2 y3 if year==1980 | year==1990 | year==2000 | year==2010
+/*
+对比结果：
+直接插值的结果 y2 倾向于高估真实值 y，整体估计效果不如先 取对数再插值的结果 y3 (1980 年的结果是例外)。
+*/
+
+```
+
+## 10. 工具变量法
+
+内生性的来源包括遗漏变量偏差、联立方程偏差(双向因果关 系)，及测量误差偏差(measurement error bias)。
+
+### 10.1 联立方程偏差
+
+### 10.2 测量误差偏差
+
+假设真实模型为：
+$$
+y = \alpha + \beta x^* + \epsilon
+$$
+其中，$\beta \neq  0, Cov(x^*,\epsilon)=0$ 。
+
+$x^*$ 无法观测，只能观测到 $x$ ,二者满足以下关系：
+$$
+x = x^* + u
+$$
+其中，$Cov(x^*,\epsilon) = 0, Cov(x, u) = 0$ 。
+
+根据上面两式可得：
+$$
+y = \alpha + \beta x +(\epsilon - \beta u)
+$$
+新扰动项 $(\epsilon - \beta u)$ 与解释变量 $x$ 存在相关性：
+$$
+Cov(x,\epsilon -\beta u) = Cov(X^* +u, \epsilon -\beta u) \\
+=\underbrace{Cov(x^*,\epsilon)}_{=0} - 
+\beta \underbrace{Cov(x^*,u)}_{=0} +
+\underbrace{Cov(u,\epsilon)}_{=0} -
+\beta Cov(u,u) \\
+= -\beta Var(u) \neq 0
+$$
+故 OLS 不一致，称为“测量误差偏差”（measurement error bias）。
+
+如果被解释变量存在测量误差，后果却不严重。比如，只要被解释变量的测量误差与解释变量不相关，则 OLS 依然一致。
+
+### 10.3 工具变量法
+
+OLS 不一致因内生变量与扰动项相关而引起。
+
+**如能将内生变量分成两部分，一部分与扰动项相关，另一部分与扰动项不相关，可用与扰动项不相关的那部分得到一致估计。**
+
+通常借助另外一个“工具变量”实现这种分离。
+
+在回归方程中，一个有效的工具变量应满足以下两个条件：
+
+- 相关性（relevance）：工具变量与**内生解释变量**相关，即 $Cov(z_t, p_t) \neq 0$ 。
+- 外生性（exogeneity）：工具变量与**扰动项**不相关，即 $Cov(z_t, u_t) = 0$ 。
+
+利用工具变量的这两个性质，可得到对回归系数 $\beta$ 的一致估计。
+
+假设方程为：
+$$
+q_t = \alpha + \beta p_t + u_t
+$$
+两边同时求与 $z_t$ 的协方差：
+$$
+Cov(q_t,z_t) = Cov(\alpha+\beta p_t+u_t,z_t) 
+= \beta Cov(p_t,z_t) + \underbrace{Cov(u_t,z_t)}_{=0} = \beta Cov(p_t,z_t)
+$$
+由于工具变量的外生性，故 $Cov(u_t,z_t) = 0$ 。
+
+由于工具变量的相关性：$Cov(p_t,z_t) \neq 0$ 。
+
+两边同除 $Cov(p_t,z_t)$：
+$$
+\beta = \frac{Cov(q_t,z_t)}{Cov(p_t,z_t)}
+$$
+以样本矩取代总体矩（以样本协方差替代总体协方差），可得一致的“工具变量估计量”（Instrumental Variable Estimator）:
+$$
+\hat \beta_{IV} = \frac{\hat{Cov(q_t,z_t)}}{\hat{Cov(p_t,z_t)}} = \frac{\sum_{i=1}^n (q_t-\bar q)(z_t - \bar z)}{\sum_{i=1}^n(p_t-\bar p)(z_t-\bar z)} \stackrel{p}{\longrightarrow} \frac{Cov(q_t,z_t)}{Cov(p_t,z_t)} = \beta
+$$
+$\bar q, \bar p, \bar z$ 分别为 $q,p,z$ 的样本均值。
+
+如果工具变量与内生变量无关，$Cov(z_t,p_t)=0$ ，则无法定义工具变量法；如果工具变量与内生变量的相关性很弱， $Cov(z_t,p_t) \approx 0$，会导致估计量 $\hat \beta_{IV}$ 的方差变得很大，称为“弱工具变量问题”。
+
+### 10.4 二阶段最小二乘法
+
+工具变量法一般通过“二阶段最小二乘法”（Two Stage Least Square, 2SLS 或 TSLS）来实现。
+
+- 第一阶段回归：用内生解释变量对工具变量回归，即 $p_t \stackrel{OLS}{\longrightarrow} z_t$，得到拟合值 $\hat p_t$ 。
+
+- 第二阶段回归：用被解释变量对第一阶段回归的拟合值进行回归，即 $q_t \stackrel{OLS}{\longrightarrow} \hat p_t$ 。
+
+为什么这样做就能得到一致估计？
+
+首先，将需求方程 $q_t = \alpha + \beta p_t + u_t$ 分解为：
+$$
+q_t = \alpha_0 + \beta \hat p_t + \underbrace{[u_t + \beta (p_t - \hat p_t)]}_{\equiv  \epsilon_t}
+$$
+这是第二阶段的回归，扰动项为 $\epsilon_t \equiv u_t + \beta(p_t - \hat p_t)$ 。 
+
+在第二阶段的回归中，$\hat p_t$ 与扰动项 $\epsilon_t$ 不相关。
+
+---
+
+【命题】在第二阶段的回归中，$\hat p_t$ 与扰动项 $\epsilon_t$ 不相关。
+
+【证明】由于 $\epsilon_t \equiv u_t + \beta(p_t + \hat p_t)$ ，故
+$$
+Cov(\hat p_t, \epsilon_t) = Cov(\hat p_t,u_t) + \beta Cov(\hat p_t , p_t - \hat p_t)
+$$
+首先，由于 $\hat p_t$ 是 $z_t$ 的线性函数（$\hat p_t $为第一阶段回归的拟合值），而 $Cov(z_t, u_t) = 0 $ （工具变量的外生性），故 $Cov(\hat p_t, u_t) = 0$ 。
+
+其次，在第一阶段回归中，拟合值 $\hat p_t$ 与残差 $(p_t - \hat p_t)$ 正交 （OLS 的正交性），故 $Cov(\hat p_t, p_t - \hat p_t) = 0$ 。
+
+---
+
+第二阶段回归的解释变量 $\hat p_t$ 与扰动项 $\epsilon_t$ 不相关，故 2SLS 一致。
+
+**2SLS 的实质：把内生解释变量 $p_t$** 分为两部分，由工具变量 $z_t$ 所造成的外生部分 $(\hat p_t)$，及与扰动项相关的其余部分 $(p_t - \hat p_t)$ ；把解释变量 $q_t$ 对 $p_t$ 中的外生部分 $(\hat p_t)$ 进行回归，从而满足 OLS 对前定变量的要求而得到一致估计。
+
+**如果存在多个工具变量，仍可用 2SLS 法。**
+
+假设 $z_1$ 和 $z_2$ 为两个有效工具变量（满足相关性与外生性），则第一阶段回归变为：
+$$
+p = \alpha_0 + \alpha_1 z_1 + \alpha_2 z_2 + u
+$$
+可得拟合值 $\hat p = \hat \alpha_0 + \hat \alpha_1 z_1 + \hat \alpha_2 z_2$ ，而第二阶段回归不变。
+
+考虑多个内生变量的情形：
+$$
+y = \beta _0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon
+$$
+其中，$x_1$ 和 $x_2$ 均内生，都与 $\epsilon$ 相关。
+
+由于有两个内生变量，至少需要两个工具变量，才能进行 2SLS 估计。
+
+如只有一个工具变量 $z$ ，由第一阶段回归可得，$\hat x_1 = \hat \alpha_0 + \hat \alpha_1 z，\hat x_2 = \hat \gamma_0 + \hat \gamma_1 z$ 。
+
+将 $\hat x_1$ 与 $\hat x_2$ 代入原方程：
+$$
+y = \beta_0 + \beta_1 \hat x_1 + \beta \hat x_2 + v_t
+$$
+$\hat x_1$ 与 $\hat x_2$ 都是 $z$ 的线性函数，故存在严格多重共线性。
+
+阶条件（order condition）：进行 2SLS 估计的必要田间是工具变量个数不少于内生解释变量的个数。
+
+根据阶条件是否满足可分为三种情况：
+
+- 不可识别（unidentified）：工具变量个数小于内生解释变量个数；
+- 恰好识别（just or exactly identified）：工具变量个数等于内生解释变量个数；
+- 过度识别（overidentified）：工具变量个数大于内生解释变量个数。
+
+在恰好识别和过度识别的情况下，都可使用 2SLS；在不可识别的情况下，无法使用 2SLS 。
+
+
+
+进行 2SLS 估计，最好不要自己手工进行两次回归，而直接使用Stata 命令。
+ 2SLS 的 Stata 命令格式为
+
+```Stata
+ivregress 2sls y x1 x2 (x3 = z1 z2),robust first 
+
+/*
+其中，“y”为被解释变量，“x1 x2”为外生解释变量，“x3”
+为内生解释变量，而“z1 z2”为方程外的工具变量。
+选择项“robust”表示使用异方差稳健的标准误(默认为普通 标准误);
+选择项“first”表示显示第一阶段的回归结果。
+*/
+```
+
+在球形扰动项的情况下，2SLS 是最有效率的工具变量法。
+
+在异方差的情况下，存在更有效率的工具变量法，即“广义 矩估计”(Generalized Method of Moments，GMM)。
+
+GMM 是数理统计“矩估计”(Method of Moments，MM)的推广。 GMM 之于 2SLS，正如 GLS 与 OLS 的关系。 在恰好识别或同方差的情况下，GMM 等价于 2SLS。
+
+### 10.5 弱工具变量
+
+### 10.6 对工具变量外生性的过度识别检验
+
+### 10.7 对解释变量内生性的豪斯曼检验:究竟该用 OLS 还是 IV
+
+###   10.8 如何获得工具变量
+
+### 10.9 工具变量法的 Stata 实例
+
+```Stata
+use ${d}/grilic.dta, clear
+
+/*
+数据说明：
+此数据集的主要变量包括：lnw(工资对数)，s(教育年限)，expr(工 龄)，tenure(在现单位的工作年数)，iq(智商)，med(母亲的教育年 限)，kww(在“knowledge of the World of Work”测试中的成绩)， rns(美国南方虚拟变量，住在南方=1)，smsa(大城市虚拟变量，住 在大城市=1)。
+*/
+
+* 1.作为参照系，首先进行 OLS 回归，并使用稳健标准误
+reg lnw s expr tenure rns smsa, r
+/*
+教育投资的年回报率高达 10.26%(似乎太高)，且在 1%的水 平上显著。可能遗漏“能力”，高估了教育的回报率
+*/
+
+* 2.引入智商(iq)作为“能力”的代理变量，再进行 OLS 回归
+reg lnw s iq expr tenure rns smsa, r
+
+
+* 3.由于用 iq 度量能力存在“测量误差”，故 iq 是内生变量。使用变量(med, kww)作为 iq 的工具变量。
+/*
+母亲的教育年限(med)与 KWW 测试成绩(kww)都与 iq 正相关; 并假设 med 与 kww 为外生
+*/
+ivregress 2sls lnw s expr tenure rns smsa (iq = med kww), r first
+/*
+教育投资回报率降为 6.08%，且在 1%水平上显著;比较合理。
+*/
+
+* 4.过度识别检验
+estat overid
+/*
+p值为 0.697，故接受原假设，认为(med, kww)外生
+*/
+
+* 5.工具变量与内生变量的相关性
+/*
+从第一阶段的回归结果可知，工具变量(med, kww)对内生变量 iq 有较好解释力， p 值都小于 0.05。
+正式检验须计算第一阶段回归的普通(非稳健) F 统计量
+*/
+// 使用普通标准误重新进行 2SLS 估计
+quietly ivregress 2sls lnw s expr tenure rns smsa (iq=med kww)
+estat firststage
+/*
+由于 F 统计量为 14.91，超过 10，故认为不存在弱工具变量
+*/
+
+* 6.使用对弱工具变量更不敏感的有限信息最大似然法(LIML)
+ivregress liml lnw s expr tenure rns smsa (iq=med kww), r
+
+/*
+LIML 估计值与 2SLS 非常接近，侧面印证“不存在弱工具变量”
+*/
+
+* 7.使用工具变量法的前提是存在内生解释变量。为此进行豪斯 曼检验，原假设为“所有解释变量均为外生”
+quietly reg lnw iq s expr tenure rns smsa
+estimates store ols
+quietly ivregress 2sls lnw s expr tenure rns smsa (iq=med kww)
+estimates store iv
+hausman iv ols,constant sigmamore
+/*
+传统的豪斯曼检验假定同方差，故在回归中未使用稳健标准误
+p值(Prob>chi2)为 0.0499，可在 5%水平上拒绝“所有解释变 量均为外生”的原假设，认为 iq 内生
+传统的豪斯曼检验在异方差下不成立，下面进行异方差稳健的 DWH 检验:
+*/
+estat endogenous
+/*
+根据 F 统计量与 \chi_2 统计量，二者在大样本下渐近等价。 二者的 p 值都小于 0.05，故认为 iq 内生
+*/
+
+* 8.汇报结果:将以上各种估计法的系数及标准误列在同一表格中，可使用以下命令
+qui reg lnw s expr tenure rns smsa,r
+est sto ols_no_iq
+qui reg lnw iq s expr tenure rns smsa,r
+est sto ols_with_iq
+qui ivregress 2sls lnw s expr tenure rns smsa (iq=med kww),r
+est sto tsls
+qui ivregress liml lnw s expr tenure rns smsa (iq=med kww),r
+est sto liml
+estimates table ols_no_iq ols_with_iq tsls liml,b se
+//用一颗星表示 10%的显著性，两颗星表示 5%的显著性，三 颗星表示 1%的显著性
+estimates table ols_no_iq ols_with_iq tsls liml,star(0.1 0.05 0.01)
+
+* ssc install estout, replace
+esttab ols_no_iq ols_with_iq tsls liml using ${o}/iv.rtf,se r2 mtitle star(* 0.1 ** 0.05 *** 0.01)
+/*
+选择项“se”表示在括弧中显示标准误(默认显示t 统计量，如 果使用选择项“p”则显示 p 值)。
+选择项“r2”表示显示R2。 选择项“mtitle”表示使用模型名称(model title)作为表中每列
+的标题(默认使用被解释变量作为标题)
+选择项“star(* 0.1 ** 0.05 *** 0.01)”表示以星号 表示显著性水平。
+*/
+```
+
+## 11. 二值选择模型
+
+### 11.1 二值选择模型
+
+### 11.2 最大似然估计的原理
+
+### 11.3 二值选择模型的 MLE 估计
+
+### 11.4 边际效应
+
+### 11.5 回归系数的经济意义
+
+### 11.6 拟合优度
+
+### 11.7 准最大似然估计
+
+### 11.8 三类渐进等价的大样本检验
+
+### 11.9 其他离散选择模型
+
+(1) 多值选择(multiple choices):比如，对交通方式的选择(步行、 骑车、自驾车、打的、地铁)，对不同职业的选择，对手机品牌的 选择。
+
+(2) 计数数据(count data):有时被解释变量只能取非负整数。比 如，企业在某段时间内获得的专利数;某人在一定时间内去医院 看病的次数;某省在一年内发生煤矿事故的次数。
+
+(3) 排序数据(ordered data):有些离散数据有着天然的排序。比 如，公司债券的评级(AAA, AA, A, B, C 级)，对“春节联欢晚会” 的满意度(很满意、满意、不满意、很不满意)。
+
+对于以上离散数据，一般也不宜直接进行 OLS 回归，主要估计 方法仍为 MLE。
+
+由于离散选择模型主要用于微观经济学的实证研究中，故是“微观计量经济学”(Microeconometrics)的重要组成部分。
+
+除了离散数据外，微观计量经济学还关注的另一类数据类型为 “受限被解释变量”(limited dependent variable)，即被解释变量的
+
+取值范围受到限制(包括断尾回归、归并回归与样本选择模型等)。
+
+### 11.10 二值选择模型的 Stata 命令与实例
+
+```Stata
+* 二值模型的 Stata 命令
+probit y x1 x2 x3,r //probit 模型 
+logit y x1 x2 x3,r or // logit 模型 
+/*
+选择项“r”表示使用稳健标准误(默认为普通标准误);
+选择项“or”表示显示几率比(odds ratio)，不显示回归系数。
+*/
+
+*完成 Probit 或 Logit 估计后，可进行预测，计算准确预测的百 分比，或计算边际效应:
+
+predict y1 // 计算发生概率的预测值，记为y1 
+estat clas  //计算准确预测的百分比，clas 表示classification
+margins,dydx(*) //计算所有解释变量的平均边际效应,“*”代表所有解释变量
+margins,dydx(*) atmeans //计算所有解释变量在样本均值处的边际效应 
+margins,dydx(*) at(x1=0) // 计算所有解释变量在 x1 = 0 处的平均边际效应
+margins,dydx(x1) //计算解释变量 x1 的平均边际效应
+margins,eyex(*) //计算平均弹性，其中的两个“e”均
+指 elasticity
+margins,eydx(*) //计算平均半弹性， x 变化一单位引起y 变化几个单位 
+margins,dyex(*) //计算平均半弹性，x 变化 1%引起 y 变化百分之几
+```
+
+```Stata
+use ${d}/titanic.dta, clear
+/* 数据描述：
+此数据集由 Dawson(1995)提供，原始数据来自英国贸易委员会 (British Board of Trade)在沉船之后的调查。
+该数据集的被解释变量为 survive(存活=1，死亡=0);
+解释变量包括 child(儿童=1，成年=0)，female(女性=1，男性=0)， class1(头等舱=1，其他=0)，class2(二等舱=1，其他=0)，class3(三 等舱=1，其他=0)，class4(船员=1，其他=0)。
+*/
+list 
+/*
+原始数据只有 24 个观测值，但每个观测值可能重复多次;其重 复次数以最后一列变量 freq 表示。
+第一行数据显示，乘坐三等舱的男孩死亡者有 35 人;第二行数 据显示，乘坐三等舱的女孩死亡者有 17 人;以此类推。
+对于观测值重复的数据，在估计时，须以重复次数(freq)作为 权重才能得到正确结果。
+其效果相当于在数据文件中，将第一行数据重复 35 次，第二行 数据重复 17 次，以此类推 (不同于以方差倒数为权重的 WLS)
+
+假设观测值的重复次数记录于变量 freq，在 Stata 中，可通过 在命令的最后加上“[fweight=freq]”来实现加权计算或估计; 其中“fweight”指“frequency weight”(频数权重)
+*/
+sum [fweight=freq]
+/*
+样本容量为 2201(旅客与船员总人数)，而非 24。从变量 survive 的平均值可知，平均存活率为 0.32。
+*/
+
+* 分别计算小孩、女士以及各等舱旅客的存活率
+sum survive if child [fweight=freq]
+sum survive if female [fweight=freq]
+sum survive if class1 [fweight=freq]
+sum survive if class2 [fweight=freq]
+sum survive if class3 [fweight=freq]
+sum survive if class4 [fweight=freq]
+/*
+小孩、女士、一等舱、二等舱的存活率分别为 0.52、0.73、0.62、 0.41，高于平均存活率;三等舱、船员的存活率分别为 0.25、0.24， 低于平均存活率。
+*/
+
+* LPM 模型
+reg survive child female class1 class2 class3 [fweight=freq],r
+
+/*
+将虚拟变量 class4(船员)作为参照类别，不放入回归方程。
+
+儿童(child)、妇女(female)与头等舱旅客(class1)的存活概率均显 著更高，三等舱旅客(class3)的存活概率显著更低，二等舱旅客 (class2)的存活概率与船员无显著差异。
+*/
+
+* Logit 模型
+logit survive child female class1 class2 class3 [fweight=freq],nolog // 选择项“nolog”表示不显示 MLE 数值计算的迭代过程
+/*
+Logit 估计结果在显著性方面与 OLS 完全一致
+准R2为 0.20。检验整个方程显著性的LR统计量(LR chi2(5)) 为 559.40， p 值为 0.000，整个方程高度显著
+*/
+logit survive child female class1 class2 class3 [fweight=freq],nolog r // 稳健标准误
+
+logit survive child female class1 class2 class3 [fweight=freq],or nolog // 汇报几率比
+/*
+儿童的生存几率比是成年人的近3倍(几率比2.89)，妇女的存活 几率比是男人的 11 倍多(几率比 11.25)，头等舱旅客的存活几率比 是船员的 2.36 倍，三等舱旅客的存活几率比只是船员的 39.8%; 二等舱旅客的存活几率比也略低于船员(几率比 0.85)，但此差别不 显著
+*/
+
+* 计算平均边际效应
+margins, dydx(*)
+/*
+Logit 模型的平均边际效应与 OLS 回归系数相差不大。
+*/
+
+*作为演示，计算在样本均值处的边际效应
+margins, dydx(*) atmeans
+/*
+在样本均值处的边际效应与平均边际效应有所不同
+*/
+
+* 计算模型准确预测的比率
+estat clas
+/*
+正确预测的比率为 (349 + 1364)/2201 = 77.83 %。
+根据 Logit 回归结果，预测每位乘客的存活概率，记为变量 prob。
+*/
+
+predict prob
+list prob survive freq if class1==1 & child==0 & female==1
+/*
+Ms. Rose(头等舱、成年、女性) 的存活概率高达 88.5%。从频率上看，在所有头等舱 的 144 位成年女性中，只有 4 位死亡。
+*/
+
+list prob survive freq if class3==1 & child==0 & female==0
+/*
+Mr. Jack (三等舱、成年、男性)的存活概率仅有 10.4%。从频率上看，在所有三等舱的 462 位成年男性中，只有 75 位生还。
+*/
+
+* Probit 模型
+probit survive child female class1 class2 class3 [fweight=freq],nolog
+margins,dydx(*)
+estat clas
+/*
+Probit的平均边际效应、准R2与正确预测比率与Logit十分接近， 基本等价。
+*/
+
+predict prob1
+corr prob prob1
+/*
+Probit 与 Logit 对个体存活概率的预测相关系数高达 0.9997，基本无差异。
+*/
+```
+
+
+
