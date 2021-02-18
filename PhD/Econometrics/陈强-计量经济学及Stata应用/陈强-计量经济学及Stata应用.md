@@ -20,9 +20,25 @@
 
 #### 3.1.1 导数
 
-一阶导数：表示切线斜率
+一阶导数：
+$$
+\frac{dy}{dx} \equiv f'(x) \equiv \lim_{\Delta x \rightarrow 0} \frac{\Delta y}{\Delta x} \equiv \frac{f(x+\Delta x) - f(x)}{\Delta x}
+$$
 
-二阶导数：表示切线斜率的变化速度
+几何上，表示 $f(x)$ 在 $x$ 处的切线斜率。
+
+二阶导数：
+$$
+\frac{d^2y}{d^2x} \equiv f''(x) \equiv \frac{d(\frac{dy}{dx})}{dx} \equiv [f'(x)]'
+$$
+
+几何上，表示切线斜率的变化速度，即曲线 $f(x)$ 的弯曲程度。
+
+---
+
+【补充】常见求导公式；复合函数求导
+
+---
 
 #### 3.1.2 一元最优化
 
@@ -30,7 +46,7 @@
 
 最大化问题：极大似然估计
 
-一元最大化问题的必要条件为：$f'(x) = 0$
+一元最优化问题（极值）的必要条件为：$f'(x^*) = 0$
 
 最大化问题：$f''(x^*) \leq 0$
 
@@ -40,11 +56,38 @@
 
 对于多元函数 $y = f(x_1,x_2,x_3,..., x_n)$ ，在计算 $y$ 对 $x_1$ 的一阶偏导数时，将给定 $x_2,...,x_n$视为参数，则 $y=f(x_1, x_2, ...,x_n)$可以看成 $x_1$ 的一元函数 $y = f(x_1, \cdot)$ 。
 
+在经济学中，边际效用、生产要素的边际产出都是通过求偏导得到。
+
 #### 3.1.4 多元最优化
 
-一阶条件要求再最优值 $x^*$ 处，所有偏导数均为 0 。
+考虑无约束的多元最大化问题：
+$$
+\max_x f(x) \equiv f(x_1,x_2,...,x_n)
+$$
+其中，$x \equiv (x_1,x_2,...,x_n)$ 。
+
+一阶条件要求在最优值 $x^*$ 处，所有偏导数为 0 ：
+$$
+\frac{\delta f(x^*)}{\delta x_1} = \frac{\delta f(x^*)}{\delta x_2} = 
+\cdots
+\frac{\delta f(x^*)}{\delta x_n} = 0
+$$
 
 #### 3.1.5 积分
+
+考虑计算连续函数 $y=f(x)$ 在区间 $[a,b]$ 上的面积：
+
+<img src="./images/3-4.png" style="zoom:80%;"/>
+
+将区间 $[a,b]$ 划分为 $n$ 等份，即 $[a,x_1], (x_1,x_2], \cdots, (x_{n-1}, b]$ ，从每个区间 $[x_{i-1},x_i]\quad(i=1,2,...,n)$ 中任取一点 $\xi_i$ （记 $a$ 为 $x_0$，而 $b$ 为 $x_n$ ）。
+
+每个区间的长度为 $\Delta x \equiv \frac{b-a}{n} $ ，此面积近似等于 $\sum_{i=1}^n f(\xi_i)\Delta$ 。
+
+不断细分这些区间，让 $n \rightarrow \infty$ ，可得此面积的精确值，即函数 $f(x)$ 在区间 $[a,b]$ 上的定积分（definite integral）: 
+$$
+\int_a^b f(x)dx \equiv \lim_{n \rightarrow \infty } \sum_{i=1}^n f(\xi_i)\Delta x
+$$
+在极限处，将 $\Delta x$ 记为 $dx$ ，将求和符号 $\sum$ 记为 $\int$ 。
 
 定积分的实质就是求和（无穷多项之和）。
 
@@ -52,37 +95,37 @@
 
 #### 3.2.1 矩阵
 
-$A_{m \times n}$，$m$ 表示行，$n$ 表示列。
+$A_{m \times n}$，$m$ 表示行(row dimension)，$n$ 表示列(column dimension)。
 
 A中元素$a_{ij}$表示第 $i$ 行，第 $j$ 列元素。
 
-零矩阵：所有元素都为 0 ，记为 $\bf{0}$ 。
+零矩阵(zero matrix)：所有元素都为 0 ，记为 $\bf{0}$ 。
 
 #### 3.2.2 方阵
 
-方阵：如果 $m=n $，则称 $A$ 为 $n$ 级方阵。
+方阵(square matrix)：如果 $m=n $，则称 $A$ 为 $n$ 级方阵。
 
-对称矩阵：如果满足$a_{ij} = a{ji}$，任意$(i,j=1,...,n)$，则称 $A$ 为对称矩阵。
+对称矩阵(symmetric matrix)：满足$a_{ij} = a{ji}$，任意$(i,j=1,...,n)$，则称 $A$ 为对称矩阵。
 
-对角矩阵：如果方阵 $A$ 的非主对角线元素全部为 0 。
+对角矩阵(diagonal matrix)：方阵 $A$ 的非主对角线元素全部为 0 。
 
-单位矩阵：如果一个 $n$ 级对角矩阵的主对角线元素都为 1 。
+单位矩阵(identity matrix)：一个 $n$ 级对角矩阵的主对角线元素都为 1 。
 
 #### 3.2.3 矩阵的转置
 
-转置矩阵：将矩阵 $A=(a_{ij})_{mn}$ 的第 1 行变为第 1 列，第 2 行变为第 2 列，...... ，第 $m$ 行变为 $m$ 列，可得其转置矩阵，记为 $A^\prime$。
+转置矩阵(transpose)：将矩阵 $A=(a_{ij})_{mn}$ 的第 1 行变为第 1 列，第 2 行变为第 2 列，...... ，第 $m$ 行变为 $m$ 列，可得其转置矩阵，记为 $A^\prime$。
 
 #### 3.2.4 向量
 
-行向量：$m =1 $，则称矩阵 $A_{1 \times n}$ 为 n 维行向量；
+行向量(row vector)：$m =1 $，则称矩阵 $A_{1 \times n}$ 为 n 维行向量；
 
-列向量：如果 $n=1$，则矩阵 $A_{m \times 1}$ 为 m 维列向量。
+列向量(column vector)：如果 $n=1$，则矩阵 $A_{m \times 1}$ 为 m 维列向量。
 
 向量是矩阵的特例。
 
 考察 n 维列向量$a = (\begin{matrix} a_1 & a_2 &...&a_n\end{matrix})'$ 与 $b	 = (\begin{matrix} b_1 & b_2 &...&b_n\end{matrix})'$。
 
-向量 $a$ 和 $b$ 的**内积**或**点乘**可定义为：
+向量 $a$ 和 $b$ 的**内积**(inner product)或**点乘**(dot product)可定义为：
 
  $a'b \equiv (\begin{matrix} a_1 & a_2 &...&a_n\end{matrix})\begin{Bmatrix}b_1\\b_2\\...\\b_n\end{Bmatrix} \equiv a_1b_1 + a_2b_2+...+a_nb_n\equiv\sum_{i=1}^n a_ib_i$
 
@@ -92,7 +135,7 @@ A中元素$a_{ij}$表示第 $i$ 行，第 $j$ 列元素。
 
 #### 3.2.5 矩阵的加法
 
-如果两个矩阵的维度相同，则可相加。
+**如果两个矩阵的维度相同，则可相加。**
 
 对于$m\times n$ 级矩阵 $A = (a_{ij})_{m \times n}, B = (b_{ij})_{m \times n}$，矩阵 $A$与 $B$之和定义为两个矩阵相应元素之和，即：
 $$
@@ -138,7 +181,7 @@ $$
 \begin{cases}
 a_{11}x_{1} + a_{12}x_2 + ... + a_{1n}x_{n} = b_1 \\
 a_{21}x_{1} + a_{22}x_2 + ... + a_{2n}x_{n} = b_2  \\
- ... \\
+\quad\quad\quad\quad\quad\quad \cdots \\
 a_{n1}x_{1} + a_{n2}x_2 + ... + a_{nn}x_{n} = b_n 
 \end{cases}
 $$
@@ -205,6 +248,25 @@ $$
 
 #### 3.2.11 二次型
 
+所谓二次型，就是 $x_1, x_2, ..., x_n$ 的二次齐次多项式：
+$$
+f(x_1, x_2, ..., x_n) = a_{11}x_1^2 + 2a_{12}x_1x_2 + \cdots + 2a_{1n}x_1x_n \\
+\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad+a_{22}x_2^2 + \cdots + 2a_{2n}x_2x_n \\
+\quad\quad\quad\quad\quad\quad\quad\quad+ \cdots \quad \cdots \quad \cdots \quad \cdots \\
+\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad+ a_{nn}x_n^2
+$$
+任何二次型，都可写为 $x'Ax$ 的形式，其中 $A$ 为对称矩阵。
+
+【举例】考虑一般的二维二次型：
+$$
+f(x_1,x_2) = a_{11}x_1^2 + 2a_{12}x_1x_2 + a_{22}x_2^2
+$$
+此二次型可以写为：
+$$
+f(x_1,x_2)=(x_1 \quad x_2)\begin{Bmatrix}a_{11} & a_{12} \\a_{21} & a_{22} \end{Bmatrix} \begin{Bmatrix} x_1 \\ x_2\end{Bmatrix}
+$$
+其中，$a_{21} = a_{12}$ 。
+
 ### 3.3 概率与条件概率
 
 #### 3.3.1 概率
@@ -218,6 +280,18 @@ $$
 $P(A|B) = \frac{P(AB)}{P(B)}$
 
 <img src="./images/3-8.png" />
+
+【举例】一个透明袋子中有 2 个红球，1 个黑球。
+
+$$
+A: 抽到红球; B: 抽到黑球 \\
+P(A) = \frac{2}{3}; P(B) = \frac{1}{3} \\
+AB: 第一次抽出来红球，且第二次抽出黑球。 \\
+P(AB) = \frac{2 \times 1}{3 \times 2} = \frac{1}{3}  \quad (排列组合)\\
+A|B: 已经抽出黑球的情况下，第二次抽出红球。 \\ 
+P(A|B) = 1
+$$
+
 
 #### 3.3.3 独立事件
 
@@ -239,21 +313,23 @@ $$
 
 ### 3.4 分布与条件分布
 
-离散型概率分布
+#### 3.4.1 离散型概率分布
 
-连续型概率分布
+#### 3.4.2 连续型概率分布
 
-多维随机向量的概率分布
+#### 3.4.3 多维随机向量的概率分布
 
-条件分布
+#### 3.4.4 条件分布
 
-随机变量的数字特征
+#### 3.4.5 随机变量的数字特征
 
-随机变量无关的三个层次概念
+#### 3.4.6 迭代期望定律
 
-常用连续型统计分布
+#### 3.4.7 随机变量无关的三个层次概念
 
-统计推断的思想
+#### 3.4.8 常用连续型统计分布
+
+#### 3.4.9 统计推断的思想
 
 ## 4. 一元线性回顾
 
@@ -875,13 +951,24 @@ test expr + tenure = s // H_0: \beta_3 + \beta_4 = \beta_2
 
 ### 7.1 异方差的后果
 
-**“条件异方差”**（简称“异方差”）是违背球型扰动假设的一种情形，即**条件方差 $Var(\epsilon_i|X)$ 依赖于 $i$ ，而不是常数 $\sigma^2$ 。**
+**“条件异方差”**（简称“异方差”）是违背球型扰动假设的一种情形，即**条件方差 $Var(\epsilon_i|X)$ 依赖于 $i$ （ 为 $\sigma _i ^2$ ），而不是常数 $\sigma^2$ 。**
 
 在异方差的情况下：
 
 - OLS 估计量依然无偏、一致且渐进正态。因为在证明这些性质时，未用到“同方差”的假定；
-- OLS 估计量方差 $Var(\hat \beta|X)$ 的表达式不再是 $\sigma^2(X'X)^{-1}$ ，因为 $Var(\epsilon|X) \neq \sigma^2I$ 。使用普通标准误的 t 检验、F 检验失效。
+- OLS 估计量方差 $Var(\hat \beta|X)$ 的表达式不再是 $\sigma^2(X'X)^{-1}$ ，因为 $Var(\epsilon|X) \neq \sigma^2I$ 。**使用普通标准误的 t 检验、F 检验失效。**
 - 高斯-马尔可夫定理不再成立，OLS 不再是 BLUE 。
+
+---
+
+【总结】异方差的后果
+
+1. $\beta$ 估计量无偏：用 OLS估计所得参数估计量 $\hat \beta$ 仍具有无偏性，即 $E(\hat \beta) = \beta$ 。 
+2. $\beta$ 估计量非有效：存在异方差时，$\hat \beta_{OLS}$ 不是 $\beta$ 的有效估计；直接计算 $Se(\hat \beta)$ 有误 。
+3. t检验、F 检验失效
+
+---
+
 
 【举例】考虑一元回归 $y_i = \alpha + \beta x_i + \epsilon$，假设 $Var(\epsilon_i | X)$ 是解释变量 $x_i$ 的增函数，即 $x_i$ 越大则 $Var(\epsilon_i|X)$ 越大。
 
@@ -906,7 +993,7 @@ $$
 
 - （2）**企业的投资、销售收入与利润：**大型企业的商业活动可能动辄以亿元计，而小型企业则以万元计；因此，扰动项的规模也不相同。如将大、中、小型企业放在一起回归，可能存在异方差。
 
-- （3） **组间异方差：**如果样本包含两组(类)数据，则可能存在组内同方差，但组间异方差的情形。比如，第一组为自我雇佣者（企业主、个体户）的收入，而第二组为打工族的收入；自我雇佣者的收入波动可能比打工族更大。
+- （3） **组间异方差：**如果样本包含两组（类）数据，则可能存在组内同方差，但组间异方差的情形。比如，第一组为自我雇佣者（企业主、个体户）的收入，而第二组为打工族的收入；自我雇佣者的收入波动可能比打工族更大。
 
 - （4） **组平均数：**如果数据本身就是组平均数，则大组平均数的方差通常要比小组平均数的方差小。比如，考虑全国各省的人均  GDP ，每个省一个数据。人口较多 的省份其方差较小，方差与人口数成反比。
 
@@ -914,15 +1001,19 @@ $$
 
 #### 7.3.1 画残差图
 
-观察**“残差 $e_i$ 与拟合值 $\hat y_i$ 的散点图”**或者**“残差 $e_i$ 与某个解释变量 $x_{ik}$ 的散点图”**。
+观察**“残差 $e_i$ 与拟合值 $\hat y_i$ 的散点图”**或者**“残差 $e_i$ 与某个解释变量 $x_{ik}$ 的散点图”**。画图是直观方法，但不严格。
 
-画图是直观方法，但不严格。
+<img src="./images/7-0-1.png" style="zoom:70%"/>
+
+（图片来源：古扎拉蒂《计量经济学基础》（第五版）, p.377）
+
+上图中，图（a） 未发现两变量之间有任何系统性关系，图（b）到图（e）表明两变量呈现一定的关系。图（c）表示呈现线性关系，图（d）和图（e）表示 $\hat u_i^2$ 与 $\hat Y_i^2$ 呈现二次关系。**利用图示虽然是非正式的方法，但是却有可能对数据进行变换，使变换后的数据不具有异方差性（如通过对数变换对原始数据进行压缩）。**
 
 #### 7.3.2 BP 检验（Breusch and Pagan, 1979）
 
 假设回归模型：
 $$
-y_i = \beta_1 + \beta_2x_{i2} + \cdots + \beta_Kx_{ik}+\epsilon_i
+y_i = \beta_1 + \beta_2x_{i2} + \cdots + \beta_Kx_{iK}+\epsilon_i
 $$
 记 $X_i = \begin{matrix}(1 & x_{i2} & \cdots & x_{iK}）\end{matrix}$ 。
 
@@ -936,7 +1027,7 @@ $$
 $$
 H_0: E(\epsilon_i^2|X_i) = \sigma_i^2
 $$
-如果 $H_0$ 不成立，则条件方差 $E(\epsilon_i^2|X_i)$ 是 $X_i$ 的函数，称为“条件方差函数”（conditional variance function）。
+**如果 $H_0$ 不成立**，则条件方差 $E(\epsilon_i^2|X_i)$ 是 $X_i$ 的函数，称为“条件方差函数”（conditional variance function）。
 
 假设此条件方差函数为线性函数：
 $$
@@ -962,7 +1053,7 @@ $$
 
 【问题】为什么 LM 统计量是 $nR^2$ 呢?
 
-在大样本中，$nR^2$ 与检验整个方程显著性的 F 统计量渐近等价。
+**在大样本中，$nR^2$ 与检验整个方程显著性的 F 统计量渐近等价。**
 
 首先，对于辅助回归，检验原假设 $H_0: \delta_2 = \cdots=\delta_K=0$ 的 F 统计量：
 $$
@@ -993,11 +1084,25 @@ $$
 
 **Breusch and pagan(1979) 的最初检验假设扰动项 $\epsilon_i$ 服从正态分布，有一定的局限性。**Koenker(1981) 将此假定减弱为 iid ，使得 BP 检验在实际中较多采用。
 
+---
+
+【总结】BP 检验步骤（伍德里奇《计量经济学导论》（第五版）p.225）
+
+1. 使用 OLS 估计原模型 $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_kx_k + u$，得到OLS 残差平方 $\hat u^2$ （每次观测得到一个）。
+
+2. 做 $\hat u^2 = \delta_0 + \delta_1 x_1 + \delta_2 x_2 + \cdots + \delta_k x_k + 误差$ 回归，记下此回归的 $R^2 \rarr R_{\hat u ^2}^2$ 。
+3. 计算 F 统计量或者 LM 统计量并计算 p 值。（前者使用 $F_{k, n-k-1}$ 分布，后者使用 $\chi_k^2$ 分布）。**如果这个 p 值很小，即低于选定的显著性水平，那么就拒绝同方差性的原假设。**
+
+如果 BP 检验得到一个足够小的 p 值，那么就应该采取修正措施，使用异方差-稳健标准误，或者 WLS 。
+
+---
+
+
 #### 7.3.3 怀特检验（White, 1980）
 
 BP 检验假设**条件方差函数为线性函数**，可能忽略了高次项。
 
-怀特检验(White, 1980)在 BP 检验的辅助回归中加入所有的 二次项（含平方项与交叉项）。
+怀特检验(White, 1980)在 BP 检验的辅助回归中加入所有的二次项（含平方项与交叉项）。
 
 考虑以下二元回归：
 $$
@@ -1025,6 +1130,23 @@ $$
 
 只要样本容量较大，即使在异方差的情况下，只要使用稳健标准误，则所有参数估计、假设检验均可照常进行。
 
+---
+
+【补充】何谓“稳健标准误”？（伍德里奇《计量经济学导论》（第五版）p.219）
+
+在一般多元回归模型：
+$$
+y = \beta_0 + \beta_1x_1 + \beta_2 x_2 + \cdots + \beta_k x_k + u
+$$
+在假定 MLR.1~MLR.4 下，$Var(\hat \beta_j)$ 的一个有效估计量是：
+$$
+\hat{Var(\hat \beta_j)} = \frac{\sum_{i=1}^n \hat r_{ij}^2 \hat u_i^2}{SSR_j^2}
+$$
+其中，$\hat r_{ij}^2$ 表示将 $x_j$ 对所有其他自变量做回归所得到的第 $i$ 个残差，而 $SSR_j$ 则是这个回归的残差平方和。上式的**平方根**被称为 $\hat \beta_j^2$ 的异方差-稳健标准误（heteroskedasticity-robust standard error）。 
+
+---
+
+
 #### 7.4.2 加权最小二乘法（WLS）
 
 方差较小的观测值包含的信息量较大。对于异方差的另一处理方法是，给予方差较小的观测值较大的权重，然后进行加权最小 二乘法估计。
@@ -1039,7 +1161,7 @@ $$
 
 两边同乘权重 $1/\sqrt{v_i}$ 可得：
 $$
-\frac{y_i}{\sqrt{v_i}} = \beta_1\frac{1}{\sqrt{v_i}} + \beta_2\frac{x_{i2}}{\sqrt{v_i}} + \cdots+\beta_k \frac{x_{ik}}{\sqrt{v_i}} + \frac{\epsilon_i}{\sqrt{v_i}}
+\frac{y_i}{\sqrt{v_i}} = \beta_1\frac{1}{\sqrt{v_i}} + \beta_2\frac{x_{i2}}{\sqrt{v_i}} + \cdots+\beta_K \frac{x_{iK}}{\sqrt{v_i}} + \frac{\epsilon_i}{\sqrt{v_i}}
 $$
 
 新扰动项 $\epsilon_i/\sqrt{v_i}$ 不再有异方差，因为：
@@ -1062,11 +1184,11 @@ WLS 的 $R^2$ 通常没有太大的意义，它衡量的是变换之后的解释
 
 使用 WLS 虽然可以得到 BLUE 估计，但是必须知道每位个体的方差，即 $\{\sigma_i^2\}_{i=1}^n$ 。实践中通常不知道 $\{\sigma_i^2\}_{i=1}^n$ ，故 WLS 事实上是不可行（infeasible）的。
 
-解决办法：先用样本数据估计 $\{\sigma_i^2\}_{i=1}^n$ ，然后再使用 WLS ，称为 “可行加权最小二乘法” （Feasible WLS，简称 FWLS ）。
+**解决办法：先用样本数据估计 $\{\sigma_i^2\}_{i=1}^n$ ，然后再使用 WLS ，称为 “可行加权最小二乘法” （Feasible WLS，简称 FWLS ）。**
 
 在进行 BP 检验时，进行如下辅助回归：
 $$
-e_i^2 = \delta_1 + \delta_2x_{i2} + \cdots + \delta_kx_{iK} + error_i
+e_i^2 = \delta_1 + \delta_2x_{i2} + \cdots + \delta_K x_{iK} + error_i
 $$
 其中，$e_i^2$ 为原方程的残差平方。
 
@@ -1082,7 +1204,7 @@ $$
 $$
 对此方程进行 OLS 回归，可得 $\ln{e_i^2}$ 的预测值，记为 $\ln{\hat \sigma_i^2}$ 。
 
-得到拟合值 $\hat \sigma_i^2 = exp(\ln{\hat \sigma_i^2})$ （一定为正）。
+**得到拟合值 $\hat \sigma_i^2 = exp(\ln{\hat \sigma_i^2})$ （一定为正）。**
 
 以 $1/\hat \sigma_i^2$ 为权重对原方程进行 WLS 估计，记此估计量为 $\hat \beta_{FWLS}$ 。
 
@@ -1118,11 +1240,11 @@ use ${d}/nerlove.dta, clear
 reg lntc lnq lnpl lnpk lnpf
 
 
-* 残差图 -rvfplot- (residual-versus-fitted plot)
+* 1.残差图 -rvfplot- (residual-versus-fitted plot)
 rvfplot //残差与拟合值的散点图
 rvpplot lnq // 残差与解释变量 lnq 的散点图
 
-* BP 检验
+* 2.BP 检验
 estat hettest, iid rhs 
 /*
 其中：
@@ -1143,13 +1265,13 @@ estat hettest lnq, iid // 使用变量 lnq 进行 BP 检验
 各种形式 BP 检验的 p 值都等于 0.0000，故强烈拒绝同方差的原 假设，认为存在异方差。
 */
 
-* 怀特检验
+* 3.怀特检验
 estat imtest, white // imtest:  information matrix test(信息矩阵检验)
 /*结果解读：
 p值(Prob>chi2)等于 0.0000，强烈拒绝同方差的原假设，认 为存在异方差。
 */
 
-* WLS
+* 4.WLS
 /*
 得到扰动项方差的估计值 ${\hat \sigma_{i}^2}_{i=1}^n$ 后，可作为权重进行 WLS 估计。 假设已把 ${\hat \sigma_{i}^2}_{i=1}^n$ 存储在变量 var 上，可通过如下 Stata 命令来实现 WLS ：
 
@@ -1157,11 +1279,13 @@ reg y x1 x2 x3 [aw=1/var]
 
 其中，“aw”表示 analytical weight，为扰动项方差(不是标准差)的倒数。
 */
+
 quietly reg lntc lnq lnql lnpk lnpf
 predict e1, residual
 gen e2 = e1^2
 gen lne2 = log(e2)
 reg lne2 lnq // 假设 $\ln{\hat \sigma_{i}^2}$ 为变量 `lnq' 的线性函数进行辅助回归
+
 /*
 结果解读：变量lnq在1%水平上显著，但R2仅为0.1309，且常数项不显著 ( p值为 0.26)。
 */
@@ -2432,13 +2556,105 @@ esttab ols_no_iq ols_with_iq tsls liml using ${o}/iv.rtf,se r2 mtitle star(* 0.1
 
 ### 11.1 二值选择模型
 
+线性概率模型（Linear Probability Model, LPM）：
+$$
+y_i = \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots+\beta_Kx_{iK} = x_i'\beta+\epsilon_i \quad (i=1,\cdots,n)
+$$
+其中，解释变量 $x_i \equiv (x_{i1} \quad x_{i2} \quad \cdots x_{iK})'$，而参数 $\beta \equiv (\beta_1 \quad \beta_2 \quad \cdots \beta_K)'$ 。
+
+LPM的优点：计算方便，容易得到边际效应（即回归系数）。
+
+LPM的缺点：所作的预测值可能出现 $\hat y >1$ 或 $\hat y < 0$ 。
+
+<img src="./images/11-1.png" style="zoom:50%;"/>
+
+为使 $ \hat y$ 介于 $[0,1]$ ，在给定 $x$ 的情况下，考虑 $y$ 的两点分布概率：
+$$
+\begin{cases}
+P(y=1|x) = \color{blue}{F(x,\beta)} \\
+P(y=0 | x) = 1 - \color{blue}{F(x,\beta)}
+\end{cases}
+$$
+ 函数 $\color{blue}{F(x,\beta)}$ 称为连接函数（link function），因为它将 $x$ 与 $y$ 连接起来。
+
+**选择合适的连接函数（比如某随机变量的累积分布函数），可保证 $0\leq \hat y \leq 1$ ，并将 $\hat y$ 理解为 “$y=1$” 发生的概率。**因为：
+$$
+E(y|x) = 1\cdot P(y=1|x) + 0 \cdot P(y=0|x) = P(y=1|x)
+$$
+如果 $F(x,\beta)$ 为标准正态的累积分布函数，则：
+$$
+P(y=1|x) = F(x,\beta) = \Phi(x'\beta) = \int_{-\infty}^{x'\beta} \phi(t)dt
+$$
+$\phi(\cdot)$ 和 $\Phi(\cdot)$ 分别为标准正态分布的密度与累积分布函数；此模型为 Probit 。
+
+如果 $F(x,\beta)$ 为逻辑分布（logistic distribution）的累积分布函数： 
+$$
+P(y=1|x) = F(x,\beta) = \Lambda(x'\beta) \equiv \frac{exp(x'\beta)}{1+exp(x'\beta)}
+$$
+其中，函数 $\Lambda(\cdot)$ 的定义为 $\Lambda(z) = \frac{exp(z)}{1+exp(z)}$ ；此模型为 Logit 。
+
+逻辑分布的密度函数关于原点对称，期望为 0，方差为 $\pi^2/3$  （大于标准正态的方差），具有厚尾（fat tails）。
+
+Probit 与 Logit 都很常用，二者的估计结果（比如边际效应）通常很接近。
+
+Logit 模型的优势在于，逻辑分布的累积分布函数有解析表达式（标准正态没有），故计算 Logit 更为方便；而且 Logit 的回归系数更易解释其经济意义。
+
+<img src="./images/11-2.png" style="zoom:50%;"/>
+
 ### 11.2 最大似然估计的原理
+
+Probit 与 Logit 模型本质上都是非线性模型，无法通过变量转换变为线性模型。对于非线性模型，常使用最大似然估计法（Maximum Likelihood Estimation，MLE 或 ML）。
+
+
 
 ### 11.3 二值选择模型的 MLE 估计
 
 ### 11.4 边际效应
 
+在非线性模型中，估计量 $\hat \beta_{ML}$ 一般并非边际效应。
+
+以 Probit 模型为例，计算变量 $x_k$ 的边际效应：
+$$
+\frac{\delta P(y=1|x)}{\delta x_k} = \frac{\delta \Phi(x'\beta)}{\delta x_k} = \frac{\delta \Phi(x'\beta)}{\delta(x'\beta)} \cdot\frac{\delta(x'\beta)}{\delta x_k} = \phi(x'\beta) \cdot\beta_k
+$$
+由于 Probit 与 Logit 所用分布函数不同，其参数估计值不直接可比。需分别计算二者的边际效应，然后比较。
+
+对于非线性模型，边际效应通常不是常数，随着向量 $x$ 而变。
+
+非线性模型常用的边际效应概念：
+
+- （1）平均边际效应 (average marginal effect)：分别计算在每个样 本观测值上的边际效应，然后进行简单算术平均。
+
+- （2）样本均值处的边际效应 (marginal effect at mean)：计算在 $x = \bar x$ 处的边际效应。
+- （3） 在某代表值处的边际效应 (marginal effect at a representative value)：给定 $x^*$ ，计算在 $x = x^*$ 处的边际效应。
+
+在非线性模型中，样本均值处的个体行为并不等于样本中个 体的平均行为(average behavior of individuals differs from behavior of the average individual)。**对于政策分析而言，使用平均边际效应( Stata 的默认方法)，或 在某代表值处的边际效应通常更有意义。**
+
 ### 11.5 回归系数的经济意义
+
+$\hat \beta_{ML}$ 并非边际效应，那代表什么含义？
+
+对于 Logit 模型，记事件发生的概率为 $p\equiv P(y=1|x)$ ，则事件不发生的概率为 $1-p = P(y=0|x)$ 。
+
+由于 $p=\frac{exp(x'\beta)}{1+exp(x'\beta)}，1-p = \frac{1}{1+exp(x'\beta)}$ ，故事件发生与不发生的几率比为：
+$$
+\frac{p}{1-p} = exp(x'\beta)
+$$
+$\frac{p}{1-p}$ 称为“几率比”（odd ratio）或相对风险（relative risk）。
+
+对上式两边取对数：
+$$
+\ln{(\frac{p}{1-p})} = \ln{exp(x'\beta)} = x'\beta= \beta_1x_1 + \cdots + \beta_K x_K
+$$
+$\ln{(\frac{p}{1-p})}$ 称为 “对数几率比”（log-odd ratio）。
+
+回归系数 $\hat \beta_j$ 表示，变量 $x_j$ 增加一个微小量引起对数几率比的边际变化。取对数意味着百分比的变化，故可把 $\hat \beta_j$ 视为半弹性（semi-elasticity），即 $x_j$ 增加一单位引起几率比 $(\frac{p}{1-p})$ 的变化百分比。
+
+【举例】$\hat \beta_j = 0.12$ ，意味着 $x_j$ 增加 1 单位引起几率比增加 12% 。
+
+$exp(\hat \beta_j) = e^{0.12} = 1.13$ ，表示当 $x_j$ 增加一单位时，新几率比时原几率比的 1.13 倍，或增加 13% ，因为 $exp(\hat \beta_j) -1 = 1.13 -1 = 0.13 $ 。 
+
+如果 $\hat \beta_j$ 较小，则 $exp(\hat \beta_j) - 1 \approx \hat \beta_j$ （将 $exp(\hat \beta_j)$ 泰勒展开），以上两种方法基本等价。 
 
 ### 11.6 拟合优度
 

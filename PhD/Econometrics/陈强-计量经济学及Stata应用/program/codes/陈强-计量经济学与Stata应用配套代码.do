@@ -142,18 +142,19 @@ use ${d}/nerlove.dta, clear
 reg lntc lnq lnpl lnpk lnpf
 
 
-* 残差图 -rvfplot- (residual-versus-fitted plot)
+* 1.残差图 -rvfplot- (residual-versus-fitted plot)
 rvfplot //残差与拟合值的散点图
 rvpplot lnq // 残差与解释变量 lnq 的散点图
 
-* BP 检验
+
+* 2.BP 检验
 estat hettest, iid rhs 
 /*
 其中：
 - “estat”指 post-estimation statistics(估计后统计量)，即在完成估计后所计算的后续统计量。 
-- “hettest”表示 heteroskedasticity test。
-- 选择项“iid”表示仅假定数据为 iid，而无须正态假定。
-- 选择项“rhs”表示，使用方程右边的全部解释变量进行辅助回 归，默认使用拟合值 yˆ 进行辅助回归。
+- “hettest” 表示 heteroskedasticity test。
+- 选择项 “iid” 表示仅假定数据为 iid，而无须正态假定。
+- 选择项 “rhs” 表示，使用方程右边的全部解释变量进行辅助回归，默认使用拟合值 \hat y 进行辅助回归。
 
 estat hettest [varlist], iid //指定使用 varlist 进行辅助回归
 */
@@ -164,33 +165,38 @@ estat hettest, iid rhs // 使用所有解释变量进行 BP 检验
 estat hettest lnq, iid // 使用变量 lnq 进行 BP 检验
 /*
 结果解读：
-各种形式 BP 检验的 p 值都等于 0.0000，故强烈拒绝同方差的原 假设，认为存在异方差。
+各种形式 BP 检验的 p 值都等于 0.0000，故强烈拒绝同方差的原假设，认为存在异方差。
 */
 
-* 怀特检验
+
+
+* 3.怀特检验
+
 estat imtest, white // imtest:  information matrix test(信息矩阵检验)
 /*结果解读：
 p值(Prob>chi2)等于 0.0000，强烈拒绝同方差的原假设，认 为存在异方差。
 */
 
-* WLS
+* 4.WLS
 /*
-得到扰动项方差的估计值 ${\hat \sigma_{i}^2}_{i=1}^n$ 后，可作为权重进行 WLS 估计。 假设已把 ${\hat \sigma_{i}^2}_{i=1}^n$ 存储在变量 var 上，可通过如下 Stata 命令来实现 WLS ：
-
+得到扰动项方差的估计值 ${\hat \sigma_{i}^2}_{i=1}^n$ 后，可作为权重进行 WLS 估计。
+假设已把 ${\hat \sigma_{i}^2}_{i=1}^n$ 存储在变量 var 上，可通过如下 Stata 命令来实现 WLS ：
 reg y x1 x2 x3 [aw=1/var]
-
 其中，“aw”表示 analytical weight，为扰动项方差(不是标准差)的倒数。
 */
+
 quietly reg lntc lnq lnql lnpk lnpf
 predict e1, residual
 gen e2 = e1^2
 gen lne2 = log(e2)
 reg lne2 lnq // 假设 $\ln{\hat \sigma_{i}^2}$ 为变量 `lnq' 的线性函数进行辅助回归
+
 /*
 结果解读：变量lnq在1%水平上显著，但R2仅为0.1309，且常数项不显著 ( p值为 0.26)。
 */
 
 reg lne2 lnq, noc //去掉常数项重新进行辅助回归
+
 /*
 结果解读：
 R2上升为 0.7447(尽管无常数项的R2与有常数项的R2不可比)， 残差平方的变动与 lnq 高度相关。
@@ -845,8 +851,7 @@ list prob survive freq if class1==1 & child==0 & female==1
 Ms. Rose(头等舱、成年、女性) 的存活概率高达 88.5%。从频率上看，在所有头等舱 的 144 位成年女性中，只有 4 位死亡。
 */
 
-list prob survive freq if class3==1 & child==0
-& female==0
+list prob survive freq if class3==1 & child==0 & female==0
 /*
 Mr. Jack (三等舱、成年、男性)的存活概率仅有 10.4%。从频率上看，在所有三等舱的 462 位成年男性中，只有 75 位生还。
 */
