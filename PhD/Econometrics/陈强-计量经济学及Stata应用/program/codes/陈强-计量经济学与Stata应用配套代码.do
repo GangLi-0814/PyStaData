@@ -33,6 +33,13 @@ reg y x
 tw function PRF = 1+2*x, range(-5 15) || ///
 scatter y x || lfit y x, lp(dash)
 
+* 一元回归实例
+use ${d}/grilic.dta, clear
+/*
+数据说明：此数据集包括 758 位美国年轻男 子的教育投资回报率数据
+*/
+reg lnw s
+reg lnw s, noc // 无常数项回归
 ************************
 * 第 5 章 多元线性回归
 ************************
@@ -134,13 +141,15 @@ test expr + tenure = s // H_0: \beta_3 + \beta_4 = \beta_2
 *****************
 * 第 7 章 异方差
 *****************
+
 use ${d}/nerlove.dta, clear
 /*
-数据说明：此数据集包括以下变量:tc (总成本)，q (总产量)，pl (工资率)， pk (资本的使用成本) 与 pf (燃料价格)，以及相应的对数值 lntc， lnq，lnpl，lnpk 与 lnpf。
+数据说明：此数据集包括以下变量:
+tc (总成本)，q (总产量)，pl (工资率)， pk (资本的使用成本) 与 pf (燃料价格)；
+以及相应的对数值 lntc， lnq，lnpl，lnpk 与 lnpf。
 */
 
 reg lntc lnq lnpl lnpk lnpf
-
 
 * 1.残差图 -rvfplot- (residual-versus-fitted plot)
 rvfplot //残差与拟合值的散点图

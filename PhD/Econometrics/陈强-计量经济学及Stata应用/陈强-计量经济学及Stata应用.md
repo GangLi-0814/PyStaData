@@ -334,13 +334,30 @@ $$
 
 #### 3.4.9 统计推断的思想
 
-## 4. 一元线性回顾
+## 4. 一元线性回归
 
 ### 4.1 一元线性回归模型
 
 总体回归函数（PRF）与样本回归函数（SRF）
 
+<img src="./images/3-0-1.png" style="zoom:50%;"/>
+
 可使用蒙特卡洛法进行模拟，所谓“蒙特卡罗法”(Monte Carlo Methods，MC)，是通过计算机模拟，从总体抽取大量随机样本的计算方法。
+
+```Stata
+* PRF 和 SRF：蒙特卡罗模拟
+clear
+set obs 30
+set seed 10101
+
+gen x = rnormal(3, 4)
+gen e = rnormal(0, 9)
+gen y = 1*x + e //Data Generation Process
+reg y x
+
+tw function PRF = 1+2*x, range(-5 15) || ///
+scatter y x || lfit y x, lp(dash)
+```
 
 计量经济学的主要任务之一就是通过数据 $\{x_i,y_i\}_{i=1}^n$ 来获取关于总体参数 $(\alpha, \beta)$ 的信息。
 
@@ -407,7 +424,23 @@ OLS **残差与解释变量及拟合值的正交性**是 OLS 的重要特征，�
 
 <img src="./images/4-0-1.png" style="zoom:50%;"/>
 
-(图片来源：古扎拉蒂《计量经济学基础》（第五版）p.24)
+(图片来源：古扎拉蒂《经济计量学精要》（第四版）p.54)
+
+由上图可知，$Y$ 的观测值围绕其均值（total variation）可分解为两部分，一部分来自回归线（ESS），另一部分来自随机扰动（RSS）。
+
+---
+
+【注释】TSS、ESS 和 RSS 的叫法在不同的教材会有区别
+
+在伍德里奇的教材中，定义总平方和（total sum of squares, SST）、解释平方和（explained sum of squares, SSE） 和残差平方和（residual sum of squares，SSR）。
+
+在古扎拉蒂的教材中，定义总平方和（TSS）、解释平方和（ESS）、残差平方和（RSS）。
+
+在 Stata 汇报的结果中：解释平方和（SS of Model）、残差平方和（SS of Residual）和 总平方和（SS of Total）。
+
+<img src="./images/4-0-2.png" style="zoom:80%;"/>
+
+---
 
 平方和分解公式能够成立，正是由于 OLS 的正交性。
 
@@ -438,7 +471,7 @@ $$
 0 \leq R^2 \equiv \frac{\sum_{i=1}^n(\hat y_i - \bar y)^2}{\sum_{i=1}^n (y_i-\bar y)^2} = 1 - \frac{\sum_{i=1}^ne_{i}^2}{\sum_{i=1}^n (y_i-\bar y)^2} \leq 1
 $$
 
-在有常数项的情况下，拟合优度等于被解释变量 $y_i$ 与拟合值 $\hat y_i$ 之间相关系数的平方，即 $R^2 = [Corr(y_i,\hat y_i)]^2$ ，故记为 $R^2$ 。
+有常数项的情况下，拟合优度等于被解释变量 $y_i$ 与拟合值 $\hat y_i$ 之间相关系数的平方，即 $R^2 = [Corr(y_i,\hat y_i)]^2$ ，故记为 $R^2$ 。
 
 $R^2$ 只反映了拟合程度的好坏，评估回归方程是否显著应使用 F 检验。​
 
@@ -489,7 +522,10 @@ $$
 ### 4.7 一元回归的 Stata 实例
 
 ```Stata
-use grilic.dta, clear
+use ${d}/grilic.dta, clear
+/*
+数据说明：此数据集包括 758 位美国年轻男子的教育投资回报率数据
+*/
 reg lnw s
 reg lnw s, noc // 无常数项回归
 ```
@@ -550,7 +586,7 @@ $x_{i1}$ 为个体 $i$ 的第 1 个解释变量，$x_{i2}$ 为个体 $i$ 的第 
 
 **采用矩阵形式**，可将原模型写成：
 $$
-y_i = (\begin{matrix} 1 & x_{i2} & ... & x_{ik} \end{matrix}) \begin{Bmatrix} \beta_1 \\ \beta_2 \\ ... \\ \beta_K \end{Bmatrix} + \epsilon_i = \mathbf{x_{i}^\mathrm{'}} \mathbf{\beta} + \epsilon_i
+y_i = (\begin{matrix} 1 & x_{i2} & ... & x_{ik} \end{matrix}) \begin{Bmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_K \end{Bmatrix} + \epsilon_i = \mathbf{x_{i}^\mathrm{'}} \mathbf{\beta} + \epsilon_i
 $$
 
 将所有这 $n$ 个方程叠放：
@@ -595,11 +631,107 @@ X =
 \end{Bmatrix}_{n \times K}
 $$
 
-### * 5.3 OLS 估计量的推导
+### 5.3 OLS 估计量的推导
 
+对于多元回归模型，OLS 估计量的最小化问题为：
+$$
+\min_{\hat \beta_1, \cdots,\hat \beta_K} \quad \sum_{i=1}^n e_i^2 = \sum_{i=1}^n (y_i - \hat \beta_1 - \hat \beta_2 x_{i2} - \hat \beta_3 x_{i3} - \cdots - \hat \beta_K x_{iK})^2
+$$
+一阶条件为：
+$$
+\begin{cases}
+\frac{\delta}{\delta \hat \beta_1} \sum_{i=1}^n e_i^2 = -2 \sum_{i=1}^n (y_i - \hat \beta_1 - \hat \beta_2 x_{i2} - \cdots - \hat \beta_K x_{iK}) = 0 \\
+\frac{\delta}{\delta \hat \beta_2} \sum_{i=1}^n e_i^2 = -2 \sum_{i=1}^n (y_i - \hat \beta_1 - \hat \beta_2 x_{i2} - \cdots - \hat \beta_K x_{iK})x_{i2} = 0  \\
+\qquad \qquad \qquad \qquad \qquad \qquad\qquad\vdots \\
+\frac{\delta}{\delta \hat \beta_K} \sum_{i=1}^n e_i^2 = -2 \sum_{i=1}^n (y_i - \hat \beta_1 - \hat \beta_2 x_{i2} - \cdots - \hat \beta_K x_{iK})x_{iK} = 0  
+\end{cases}
+$$
+消去方程左边的 “-2” 可得：
+$$
+\begin{cases}
+\sum_{i=1}^n (y_i - \hat \beta_1 - \hat \beta_2 x_{i2} - \cdots - \hat \beta_K x_{iK}) = 0 \\
+\sum_{i=1}^n x_{i2} (y_i - \hat \beta_1 - \hat \beta_2 x_{i2} - \cdots - \hat \beta_K x_{iK}) = 0  \\
+\qquad \qquad \qquad \qquad\qquad\vdots \\
+\sum_{i=1}^n x_{iK}(y_i - \hat \beta_1 - \hat \beta_2 x_{i2} - \cdots - \hat \beta_K x_{iK}) = 0  
+\end{cases}
+$$
+这是包含 $K$ 个未知数 $(\hat \beta_1, \hat \beta_2, \cdots, \hat \beta_K)$ 与 $K$ 个方程的联立方程组，称为 “正规方程组” （normal equations）。
+
+满足此正规方程组的 $\hat \beta \equiv \begin{matrix}(\hat \beta_1 & \hat \beta_2 & \cdots & \hat \beta_K) \end{matrix}$ 称为 OLS 估计量。
+
+由于残差 $e_i \equiv y_i - \hat \beta_1 - \hat \beta_2 x_{i2} - \cdots - \hat \beta_Kx_{iK}$ ，故正规方程组可写为：
+$$
+\begin{cases}
+\sum_{i=1}^n e_i = 0 \\
+\sum_{i=1}^n x_{i2}e_i = 0 \\
+\qquad\quad  \vdots\\
+\sum_{i=1}^n x_{iK}e_i = 0 
+\end{cases}
+$$
+上式每一方程都是乘积求和的形式，可用向量内积表示。
+
+第 1 个方程可写为：
+$$
+\sum_{i=1}^n e_i = \begin{matrix}(1&1&\cdots&1)\end{matrix}\begin{Bmatrix}e_1 \\e_2\\\vdots\\e_n\end{Bmatrix} = 0
+$$
+第 2 个方程可写为：
+$$
+\sum_{i=1}^n x_{i2}e_i = \begin{matrix}(x_{12}&x_{22}&\cdots&x_{n2})\end{matrix}\begin{Bmatrix}e_1 \\e_2\\\vdots\\e_n\end{Bmatrix} = 0
+$$
+依此类推，第 K 个方程可写为：
+$$
+\sum_{i=1}^n x_{iK}e_i = \begin{matrix}(x_{1K}&x_{2K}&\cdots&x_{nK})\end{matrix}\begin{Bmatrix}e_1 \\e_2\\\vdots\\e_n\end{Bmatrix} = 0
+$$
+残差向量 $e \equiv \begin{matrix}(e_1&e_2&\cdots&e_n)\end{matrix}$ 与每个解释变量都正交，这是 OLS 估计量的一大特征。将以上内积以矩阵形式表示：
+$$
+\underbrace{
+\begin{Bmatrix}
+1 & 1 & \cdots & 1 \\
+x_{12}&x_{22}&\cdots&x_{n2} \\
+\cdots &\cdots&\cdots&\cdots \\
+x_{1K}&x_{2K}&\cdots&x_{nK}
+\end{Bmatrix}
+}_{X'}
+\underbrace{
+\begin{Bmatrix}
+e_1 \\
+e_2 \\
+\vdots \\
+e_{n}
+\end{Bmatrix}
+}_{e}
+=
+\underbrace{
+\begin{Bmatrix}
+0 \\
+0 \\
+\vdots \\
+0
+\end{Bmatrix}
+}_{0}
+$$
+$X'$ 为数据矩阵 $X$ 的转置。正规方程组可简洁的写为：
+$$
+X'e = 0
+$$
+从 $e_i = y_i - (\hat \beta_1 + \hat \beta_2 x_{i2} + \hat \beta_3 x_{i3} + \cdots + \hat \beta_K x_{iK})$ 出发，可将残差向量写为：
+$$
+e = y - X \hat \beta
+$$
+代入正规方程组可得：
+$$
+X'(y-X\hat \beta) = 0
+$$
+乘开并移项可知，最小二乘估计量 $\hat \beta$ 满足：
+$$
+(X'X)_{K \times K} \hat \beta_{K \times 1} = X'_{K\times n} y_{n \times 1}
+$$
+假设 $(X'X)^{-1}$ 存在，求解 OLS 估计量：
 $$
 \mathbf{\hat \beta = (X^\mathrm{'}X)^{-1}X^\mathrm{'}y}
 $$
+
+这就是多元回归 OLS 的估计量。
 
 ### 5.4 OLS 的几何解释
 
@@ -765,7 +897,7 @@ $$
 
 ### 5.8 对单个系数 t 检验
 
-SLR.5 在给定 $X$ 的情况下，$\epsilon|X$ 的条件分布为正态，即 $\epsilon|X \sim N(0, \sigma^2I_n)$ 。
+**SLR.5 在给定 $X$ 的情况下，$\epsilon|X$ 的条件分布为正态，即 $\epsilon|X \sim N(0, \sigma^2I_n)$ 。**
 
 **假设检验是一种概率意义上的反证法。**首先假设原假设成立，然后看在原假设成立的前提下，是否导致不太可能发生“小概率事件”在一次抽样的样本中出现。
 
