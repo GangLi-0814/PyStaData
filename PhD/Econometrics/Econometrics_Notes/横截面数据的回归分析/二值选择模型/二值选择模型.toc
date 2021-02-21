@@ -1,0 +1,8 @@
+\beamer@sectionintoc {1}{只有一个虚拟自变量}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{只有一个虚拟自变量}{3}{0}{1}
+\beamer@sectionintoc {2}{多类别虚拟变量}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{多类别虚拟变量}{4}{0}{2}
+\beamer@sectionintoc {3}{虚拟变量的交互作用}{5}{0}{3}
+\beamer@subsectionintoc {3}{1}{虚拟变量的交互作用}{5}{0}{3}
+\beamer@sectionintoc {4}{线性概率模型}{6}{0}{4}
+\beamer@subsectionintoc {4}{1}{线性概率模型}{6}{0}{4}

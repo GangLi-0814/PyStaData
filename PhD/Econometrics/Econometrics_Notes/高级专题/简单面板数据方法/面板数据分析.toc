@@ -1,0 +1,12 @@
+\beamer@sectionintoc {1}{混合横截面数据}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{混合横截面数据}{3}{0}{1}
+\beamer@sectionintoc {2}{两时期面板数据分析}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{两时期面板数据分析}{4}{0}{2}
+\beamer@sectionintoc {3}{多于两期的差分法}{5}{0}{3}
+\beamer@subsectionintoc {3}{1}{多于两期的差分法}{5}{0}{3}
+\beamer@sectionintoc {4}{固定效应}{6}{0}{4}
+\beamer@subsectionintoc {4}{1}{虚拟变量回归}{6}{0}{4}
+\beamer@subsectionintoc {4}{2}{固定效应还是一阶差分？}{7}{0}{4}
+\beamer@subsectionintoc {4}{3}{非平衡面板数据的固定效应法}{8}{0}{4}
+\beamer@sectionintoc {5}{随机效应}{9}{0}{5}
+\beamer@subsectionintoc {5}{1}{随机效应还是固定效应？}{9}{0}{5}

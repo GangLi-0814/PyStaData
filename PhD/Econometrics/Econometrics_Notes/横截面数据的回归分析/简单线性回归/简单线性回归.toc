@@ -1,0 +1,16 @@
+\beamer@sectionintoc {1}{PRF 与 SRF }{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{PRF 与 SRF}{3}{0}{1}
+\beamer@sectionintoc {2}{OLS 推导 }{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{OLS 推导}{4}{0}{2}
+\beamer@sectionintoc {3}{拟合优度}{5}{0}{3}
+\beamer@subsectionintoc {3}{1}{拟合优度}{5}{0}{3}
+\beamer@sectionintoc {4}{度量单位和函数形式}{6}{0}{4}
+\beamer@subsectionintoc {4}{1}{改变度量单位对 OLS 统计量的影响}{6}{0}{4}
+\beamer@subsectionintoc {4}{2}{非线性因素}{7}{0}{4}
+\beamer@subsectionintoc {4}{3}{“线性”回归的含义}{8}{0}{4}
+\beamer@sectionintoc {5}{OLS 估计量的期望值和方差}{9}{0}{5}
+\beamer@subsectionintoc {5}{1}{OLS 的无偏性}{9}{0}{5}
+\beamer@subsectionintoc {5}{2}{OLS 估计量的方差}{10}{0}{5}
+\beamer@subsectionintoc {5}{3}{误差方差的估计}{11}{0}{5}
+\beamer@sectionintoc {6}{过原点回归及对常数回归}{12}{0}{6}
+\beamer@subsectionintoc {6}{1}{过原点回归及对常数回归}{12}{0}{6}

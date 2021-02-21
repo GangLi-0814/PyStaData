@@ -1,0 +1,40 @@
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\headcommand {\beamer@framepages {1}{1}}
+\headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\beamer@sectionpages {1}{2}}
+\headcommand {\beamer@subsectionpages {1}{2}}
+\headcommand {\sectionentry {1}{数据的测度单位对 OLS 估计量的影响}{3}{数据的测度单位对 OLS 估计量的影响}{0}}
+\headcommand {\beamer@subsectionpages {3}{2}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{3}{数据的测度单位对 OLS 估计量的影响}}
+\headcommand {\slideentry {1}{1}{1}{3/3}{数据的测度单位对 OLS 估计量的影响}{0}}
+\headcommand {\beamer@framepages {3}{3}}
+\headcommand {\beamer@sectionpages {3}{3}}
+\headcommand {\beamer@subsectionpages {3}{3}}
+\headcommand {\sectionentry {2}{对函数形式的进一步讨论}{4}{对函数形式的进一步讨论}{0}}
+\headcommand {\beamer@subsectionpages {4}{3}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{4}{二次项}}
+\headcommand {\slideentry {2}{1}{1}{4/4}{二次项}{0}}
+\headcommand {\beamer@framepages {4}{4}}
+\headcommand {\beamer@subsectionpages {4}{4}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{5}{交互项}}
+\headcommand {\slideentry {2}{2}{1}{5/5}{交互项}{0}}
+\headcommand {\beamer@framepages {5}{5}}
+\headcommand {\beamer@sectionpages {4}{5}}
+\headcommand {\beamer@subsectionpages {5}{5}}
+\headcommand {\sectionentry {3}{拟合优度和回归元选择的探讨}{6}{拟合优度和回归元选择的探讨}{0}}
+\headcommand {\beamer@subsectionpages {6}{5}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{6}{调整拟合优度}}
+\headcommand {\slideentry {3}{1}{1}{6/6}{调整拟合优度}{0}}
+\headcommand {\beamer@framepages {6}{6}}
+\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{7}{利用 $\bar R^2$ 在两个非嵌套模型中进行选择}}
+\headcommand {\slideentry {3}{2}{1}{7/7}{利用 $\bar R^2$ 在两个非嵌套模型中进行选择}{0}}
+\headcommand {\beamer@framepages {7}{7}}
+\headcommand {\slideentry {3}{2}{2}{8/8}{利用 $\bar R^2$ 在两个非嵌套模型中进行选择}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\beamer@partpages {1}{8}}
+\headcommand {\beamer@subsectionpages {7}{8}}
+\headcommand {\beamer@sectionpages {6}{8}}
+\headcommand {\beamer@documentpages {8}}
+\headcommand {\gdef \inserttotalframenumber {8}}

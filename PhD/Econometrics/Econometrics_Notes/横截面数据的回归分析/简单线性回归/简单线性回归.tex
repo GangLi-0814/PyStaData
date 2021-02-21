@@ -63,67 +63,72 @@
 
 
 %%%%%%%%%%%%%%%
-% 1. 定义及后果 
+% 1. PRF 与 SRF 
 %%%%%%%%%%%%%%%
-\section{异方差的定义及后果 }
-\subsection{异方差的定义}
-\begin{frame}{定义}
-\linespread{1.5}
-“条件异方差”（简称“异方差”）是违背球型扰动假设的一种情形，即条件方差 $Var(\epsilon_i|X)$ 依赖于 $i$ （ 为 $\sigma _i ^2$ ），而不是常数 $\sigma^2$ 。
-\end{frame}
-
-\subsection{异方差的后果}
-\begin{frame}{异方差的后果}
-\linespread{1.5}
-\begin{enumerate}
-  \item $\beta$ 估计量无偏：用 OLS估计所得参数估计量 $\hat \beta$ 仍具有无偏性，即 $E(\hat \beta) = \beta$ 。
-  \item $\beta$ 估计量非有效：存在异方差时，$\hat \beta_{OLS}$ 不是 $\beta$ 的有效估计；直接计算 $Se(\hat \beta)$ 有误 。
-  \item t检验、F 检验失效
-\end{enumerate}
+\section{PRF 与 SRF  }
+\subsection{PRF 与 SRF}
+\begin{frame}{PRF 与 SRF}
 \end{frame}
 
 %%%%%%%%%%%%%%%
-% 2. 异方差检验
+% 2. OLS 推导
 %%%%%%%%%%%%%%%
-\section{异方差的检验 }
-\subsection{图示法}
-\begin{frame}{图示法}
+\section{OLS 推导 }
+\subsection{OLS 推导}
+\begin{frame}{OLS 推导}
 \end{frame}
 
-\subsection{ BP 检验}
-\begin{frame}{ BP 检验}
-\end{frame}
-
-\subsection{ White 检验}
-\begin{frame}{ White 检验}
-\end{frame}
 
 %%%%%%%%%%%%%%%
-% 3. 异方差的处理
+% 3. 拟合优度
 %%%%%%%%%%%%%%%
-\section{异方差的处理}
-\subsection{OLS + 稳健标准误}
-\begin{frame}{OLS + 稳健标准误}
-\end{frame}
-
-\subsection{加权最小二乘回归（WLS）}
-\begin{frame}{加权最小二乘回归（WLS）}
-\end{frame}
-
-\subsection{可行加权最小二乘回归（FWLS）}
-\begin{frame}{可行加权最小二乘回归（FWLS）}
+\section{拟合优度}
+\subsection{拟合优度}
+\begin{frame}{拟合优度}
 \end{frame}
 
 %%%%%%%%%%%%%%%
-% 4. Stata 命令及实例
+% 4. 度量单位和函数形式
 %%%%%%%%%%%%%%%
-\section{ Stata 命令及实例}
-\subsection{命令介绍}
-\begin{frame}{命令介绍}
+\section{度量单位和函数形式}
+\subsection{改变度量单位对 OLS 统计量的影响}
+\begin{frame}{改变度量单位对 OLS 统计量的影响}
 \end{frame}
 
-\subsection{案例分析}
-\begin{frame}{案例分析}
+
+\subsection{非线性因素}
+\begin{frame}{非线性因素}
+\end{frame}
+
+
+\subsection{“线性”回归的含义}
+\begin{frame}{“线性”回归的含义}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%
+% 5. OLS 估计量的期望值和方差
+%%%%%%%%%%%%%%%%%%%%
+\section{OLS 估计量的期望值和方差}
+\subsection{OLS 的无偏性}
+\begin{frame}{OLS 的无偏性}
+\end{frame}
+
+
+\subsection{OLS 估计量的方差}
+\begin{frame}{OLS 估计量的方差}
+\end{frame}
+
+
+\subsection{误差方差的估计}
+\begin{frame}{误差方差的估计}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%
+% 6. 过原点回归及对常数回归
+%%%%%%%%%%%%%%%%%%%%
+\section{过原点回归及对常数回归}
+\subsection{过原点回归及对常数回归}
+\begin{frame}{过原点回归及对常数回归}
 \end{frame}
 
 %%%%%%%%%%%%%%%

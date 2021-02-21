@@ -1,0 +1,12 @@
+\beamer@sectionintoc {1}{OLS 估计量的抽样分布}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{OLS 估计量的抽样分布}{3}{0}{1}
+\beamer@sectionintoc {2}{t 检验}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{t 检验}{4}{0}{2}
+\beamer@sectionintoc {3}{p 值}{5}{0}{3}
+\beamer@subsectionintoc {3}{1}{p 值}{5}{0}{3}
+\beamer@sectionintoc {4}{置信区间}{6}{0}{4}
+\beamer@subsectionintoc {4}{1}{置信区间}{6}{0}{4}
+\beamer@sectionintoc {5}{F 检验}{7}{0}{5}
+\beamer@subsectionintoc {5}{1}{F 检验}{7}{0}{5}
+\beamer@sectionintoc {6}{经典线性模型假定}{8}{0}{6}
+\beamer@subsectionintoc {6}{1}{经典线性模型假定}{8}{0}{6}

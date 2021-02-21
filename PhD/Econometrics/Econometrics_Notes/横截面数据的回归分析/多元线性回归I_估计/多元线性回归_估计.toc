@@ -1,0 +1,14 @@
+\beamer@sectionintoc {1}{OLS 推导 }{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{OLS 推导}{3}{0}{1}
+\beamer@sectionintoc {2}{拟合优度}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{拟合优度}{4}{0}{2}
+\beamer@sectionintoc {3}{OLS 估计量的期望值}{5}{0}{3}
+\beamer@subsectionintoc {3}{1}{OLS 的无偏性}{5}{0}{3}
+\beamer@subsectionintoc {3}{2}{包含无关变量}{6}{0}{3}
+\beamer@subsectionintoc {3}{3}{遗漏变量偏误}{7}{0}{3}
+\beamer@sectionintoc {4}{OLS 估计量的方差}{8}{0}{4}
+\beamer@subsectionintoc {4}{1}{同方差性假定}{8}{0}{4}
+\beamer@subsectionintoc {4}{2}{OLS 方差的成分：多重共线性}{9}{0}{4}
+\beamer@subsectionintoc {4}{3}{估计 $\sigma ^2$ ：OLS 估计量的标准误}{10}{0}{4}
+\beamer@sectionintoc {5}{OLS 估计的有效性：高斯-马尔科夫定理}{11}{0}{5}
+\beamer@subsectionintoc {5}{1}{OLS 估计的有效性：高斯-马尔科夫定理}{11}{0}{5}

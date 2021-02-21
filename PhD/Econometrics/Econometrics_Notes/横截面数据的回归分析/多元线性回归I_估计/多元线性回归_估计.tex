@@ -1,0 +1,139 @@
+\documentclass[UTF8]{ctexbeamer}
+
+\usetheme{Pittsburgh}
+\usecolortheme{whale} 
+
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=cyan,
+}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{amsmath} % 公式
+\usepackage{booktabs} %表格框线
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{setspace} % 调整行距
+\setbeamertemplate{caption}[numbered] % 图形编号
+\usepackage{threeparttable} % 表格添加注释
+\usepackage{multicol} % 目录分栏
+
+ % 设置字体
+\usepackage{xeCJK}
+\setCJKmainfont[BoldFont=STSongti-SC-Regular, ItalicFont=STSongti-SC-Regular]{STSongti-SC-Regular}
+\setCJKsansfont[BoldFont=STSongti-SC-Regular]{STSongti-SC-Regular}
+\setCJKmonofont{STSongti-SC-Regular}
+\setmainfont{TimesNewRomanPSMT}  %英文字体
+
+
+%%%%%%%%%%%%
+% 封面
+%%%%%%%%%%%%
+\begin{document}
+%\logo{\includegraphics[height=0.12\textwidth]{figures/logo_zuel.jpg}}
+\title{多元回归分析（1）：估计}
+\author{公众号：PyStaData}
+%\institute{}
+% \institute{gang.li.0814@gmail.com}
+\date{\today}
+
+\frame{\titlepage} %生成标题页
+
+%%%%%%%%%%%%
+% 目录
+%%%%%%%%%%%%
+
+\begin{frame}{目录}
+\begin{multicols}{2}
+  \tableofcontents
+\end{multicols}
+\end{frame}
+
+%%%%%%%%%%%%
+% 多元回归分析：估计
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+% 1. OLS 推导
+%%%%%%%%%%%%%%%
+\section{OLS 推导 }
+\subsection{OLS 推导}
+\begin{frame}{OLS 推导}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%
+% 2. 拟合优度
+%%%%%%%%%%%%%%%
+\section{拟合优度}
+\subsection{拟合优度}
+\begin{frame}{拟合优度}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%
+% 3. OLS 估计量的期望值
+%%%%%%%%%%%%%%%%%%%%
+\section{OLS 估计量的期望值}
+\subsection{OLS 的无偏性}
+\begin{frame}{OLS 的无偏性}
+\end{frame}
+
+\subsection{包含无关变量}
+\begin{frame}{包含无关变量}
+\end{frame}
+
+\subsection{遗漏变量偏误}
+\begin{frame}{遗漏变量偏误}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%
+% 3. OLS 估计量的方差
+%%%%%%%%%%%%%%%%%%%%
+\section{OLS 估计量的方差}
+\subsection{同方差性假定}
+\begin{frame}{同方差性假定}
+\end{frame}
+
+\subsection{OLS 方差的成分：多重共线性}
+\begin{frame}{OLS 方差的成分：多重共线性}
+\end{frame}
+
+\subsection{估计 $\sigma^2$ ：OLS 估计量的标准误}
+\begin{frame}{估计 $\sigma^2$ ：OLS 估计量的标准误}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% 4. OLS 估计的有效性：高斯-马尔科夫定理
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{OLS 估计的有效性：高斯-马尔科夫定理}
+\subsection{OLS 估计的有效性：高斯-马尔科夫定理}
+\begin{frame}{OLS 估计的有效性：高斯-马尔科夫定理}
+\end{frame}
+
+%%%%%%%%%%%%%%%
+% 结语
+%%%%%%%%%%%%%%%
+\begin{frame}{结束语}
+\linespread{1.25}
+\begin{center}
+%{\huge \emph{\textcolor{blue}{感谢聆听，欢迎批评指正！}}}\\
+\vspace{5mm}\large
+\begin{tabular}{ll}
+{\sc 姓名}:  & \textsf{李 刚}\\
+{\sc 单位}: & 中南财经政法大学工商管理学院 \\
+{\sc 地址}: & 湖北省武汉市洪山区南湖大道182号 \\
+{\sc 邮箱}: & \href{mailto:gang.li@stu.zuel.edu.cn}{\color{blue}gang.li@stu.zuel.edu.cn}\\
+\end{tabular}
+\end{center}
+\end{frame}
+
+\end{document} 

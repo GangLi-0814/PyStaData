@@ -1,0 +1,8 @@
+\beamer@sectionintoc {1}{数据的测度单位对 OLS 估计量的影响}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{数据的测度单位对 OLS 估计量的影响}{3}{0}{1}
+\beamer@sectionintoc {2}{对函数形式的进一步讨论}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{二次项}{4}{0}{2}
+\beamer@subsectionintoc {2}{2}{交互项}{5}{0}{2}
+\beamer@sectionintoc {3}{拟合优度和回归元选择的探讨}{6}{0}{3}
+\beamer@subsectionintoc {3}{1}{调整拟合优度}{6}{0}{3}
+\beamer@subsectionintoc {3}{2}{利用 $\bar R^2$ 在两个非嵌套模型中进行选择}{7}{0}{3}

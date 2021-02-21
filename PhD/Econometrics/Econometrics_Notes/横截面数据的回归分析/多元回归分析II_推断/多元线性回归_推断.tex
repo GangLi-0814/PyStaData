@@ -1,0 +1,132 @@
+\documentclass[UTF8]{ctexbeamer}
+
+\usetheme{Pittsburgh}
+\usecolortheme{whale} 
+
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=cyan,
+}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{amsmath} % 公式
+\usepackage{booktabs} %表格框线
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{setspace} % 调整行距
+\setbeamertemplate{caption}[numbered] % 图形编号
+\usepackage{threeparttable} % 表格添加注释
+\usepackage{multicol} % 目录分栏
+
+ % 设置字体
+\usepackage{xeCJK}
+\setCJKmainfont[BoldFont=STSongti-SC-Regular, ItalicFont=STSongti-SC-Regular]{STSongti-SC-Regular}
+\setCJKsansfont[BoldFont=STSongti-SC-Regular]{STSongti-SC-Regular}
+\setCJKmonofont{STSongti-SC-Regular}
+\setmainfont{TimesNewRomanPSMT}  %英文字体
+
+
+%%%%%%%%%%%%
+% 封面
+%%%%%%%%%%%%
+\begin{document}
+%\logo{\includegraphics[height=0.12\textwidth]{figures/logo_zuel.jpg}}
+\title{多元回归分析（2）：推断}
+\author{公众号：PyStaData}
+%\institute{}
+% \institute{gang.li.0814@gmail.com}
+\date{\today}
+
+\frame{\titlepage} %生成标题页
+
+%%%%%%%%%%%%
+% 目录
+%%%%%%%%%%%%
+
+\begin{frame}{目录}
+\begin{multicols}{2}
+  \tableofcontents
+\end{multicols}
+\end{frame}
+
+%%%%%%%%%%%%
+% 多元回归分析：估计
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+% 1. OLS 估计量的抽样分布
+%%%%%%%%%%%%%%%
+\section{OLS 估计量的抽样分布}
+\subsection{OLS 估计量的抽样分布}
+\begin{frame}{OLS 估计量的抽样分布}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%
+% 2.  t 检验
+%%%%%%%%%%%%%%%
+\section{t 检验}
+\subsection{t 检验}
+\begin{frame}{t 检验}
+\end{frame}
+
+%%%%%%%%%%%%%%%
+% 3.  p 值
+%%%%%%%%%%%%%%%
+\section{p 值}
+\subsection{p 值}
+\begin{frame}{p 值}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%
+% 3.  置信区间
+%%%%%%%%%%%%%%%
+\section{置信区间}
+\subsection{置信区间}
+\begin{frame}{置信区间}
+\end{frame}
+
+%%%%%%%%%%%%%%%
+% 4.  F 检验
+%%%%%%%%%%%%%%%
+\section{F 检验}
+\subsection{F 检验}
+\begin{frame}{F 检验}
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+% 5. 经典线性模型假定
+%%%%%%%%%%%%%%%%
+\section{经典线性模型假定}
+\subsection{经典线性模型假定}
+\begin{frame}{经典线性模型假定}
+\end{frame}
+
+%%%%%%%%%%%%%%%
+% 结语
+%%%%%%%%%%%%%%%
+\begin{frame}{结束语}
+\linespread{1.25}
+\begin{center}
+%{\huge \emph{\textcolor{blue}{感谢聆听，欢迎批评指正！}}}\\
+\vspace{5mm}\large
+\begin{tabular}{ll}
+{\sc 姓名}:  & \textsf{李 刚}\\
+{\sc 单位}: & 中南财经政法大学工商管理学院 \\
+{\sc 地址}: & 湖北省武汉市洪山区南湖大道182号 \\
+{\sc 邮箱}: & \href{mailto:gang.li@stu.zuel.edu.cn}{\color{blue}gang.li@stu.zuel.edu.cn}\\
+\end{tabular}
+\end{center}
+\end{frame}
+
+\end{document} 

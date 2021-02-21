@@ -1,0 +1,69 @@
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\headcommand {\beamer@framepages {1}{1}}
+\headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\beamer@sectionpages {1}{2}}
+\headcommand {\beamer@subsectionpages {1}{2}}
+\headcommand {\sectionentry {1}{PRF 与 SRF }{3}{PRF 与 SRF }{0}}
+\headcommand {\beamer@subsectionpages {3}{2}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{3}{PRF 与 SRF}}
+\headcommand {\slideentry {1}{1}{1}{3/3}{PRF 与 SRF}{0}}
+\headcommand {\beamer@framepages {3}{3}}
+\headcommand {\beamer@sectionpages {3}{3}}
+\headcommand {\beamer@subsectionpages {3}{3}}
+\headcommand {\sectionentry {2}{OLS 推导 }{4}{OLS 推导 }{0}}
+\headcommand {\beamer@subsectionpages {4}{3}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{4}{OLS 推导}}
+\headcommand {\slideentry {2}{1}{1}{4/4}{OLS 推导}{0}}
+\headcommand {\beamer@framepages {4}{4}}
+\headcommand {\beamer@sectionpages {4}{4}}
+\headcommand {\beamer@subsectionpages {4}{4}}
+\headcommand {\sectionentry {3}{拟合优度}{5}{拟合优度}{0}}
+\headcommand {\beamer@subsectionpages {5}{4}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{5}{拟合优度}}
+\headcommand {\slideentry {3}{1}{1}{5/5}{拟合优度}{0}}
+\headcommand {\beamer@framepages {5}{5}}
+\headcommand {\beamer@sectionpages {5}{5}}
+\headcommand {\beamer@subsectionpages {5}{5}}
+\headcommand {\sectionentry {4}{度量单位和函数形式}{6}{度量单位和函数形式}{0}}
+\headcommand {\beamer@subsectionpages {6}{5}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{6}{改变度量单位对 OLS 统计量的影响}}
+\headcommand {\slideentry {4}{1}{1}{6/6}{改变度量单位对 OLS 统计量的影响}{0}}
+\headcommand {\beamer@framepages {6}{6}}
+\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\beamer@subsectionentry {0}{4}{2}{7}{非线性因素}}
+\headcommand {\slideentry {4}{2}{1}{7/7}{非线性因素}{0}}
+\headcommand {\beamer@framepages {7}{7}}
+\headcommand {\beamer@subsectionpages {7}{7}}
+\headcommand {\beamer@subsectionentry {0}{4}{3}{8}{“线性”回归的含义}}
+\headcommand {\slideentry {4}{3}{1}{8/8}{“线性”回归的含义}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\beamer@sectionpages {6}{8}}
+\headcommand {\beamer@subsectionpages {8}{8}}
+\headcommand {\sectionentry {5}{OLS 估计量的期望值和方差}{9}{OLS 估计量的期望值和方差}{0}}
+\headcommand {\beamer@subsectionpages {9}{8}}
+\headcommand {\beamer@subsectionentry {0}{5}{1}{9}{OLS 的无偏性}}
+\headcommand {\slideentry {5}{1}{1}{9/9}{OLS 的无偏性}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\beamer@subsectionpages {9}{9}}
+\headcommand {\beamer@subsectionentry {0}{5}{2}{10}{OLS 估计量的方差}}
+\headcommand {\slideentry {5}{2}{1}{10/10}{OLS 估计量的方差}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\beamer@subsectionpages {10}{10}}
+\headcommand {\beamer@subsectionentry {0}{5}{3}{11}{误差方差的估计}}
+\headcommand {\slideentry {5}{3}{1}{11/11}{误差方差的估计}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\beamer@sectionpages {9}{11}}
+\headcommand {\beamer@subsectionpages {11}{11}}
+\headcommand {\sectionentry {6}{过原点回归及对常数回归}{12}{过原点回归及对常数回归}{0}}
+\headcommand {\beamer@subsectionpages {12}{11}}
+\headcommand {\beamer@subsectionentry {0}{6}{1}{12}{过原点回归及对常数回归}}
+\headcommand {\slideentry {6}{1}{1}{12/12}{过原点回归及对常数回归}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\slideentry {6}{1}{2}{13/13}{过原点回归及对常数回归}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\beamer@partpages {1}{13}}
+\headcommand {\beamer@subsectionpages {12}{13}}
+\headcommand {\beamer@sectionpages {12}{13}}
+\headcommand {\beamer@documentpages {13}}
+\headcommand {\gdef \inserttotalframenumber {13}}
