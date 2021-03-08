@@ -55,6 +55,7 @@ mat du = diag(u)  // 取出对角元素
 *将变量转换为矩阵
 mkmat varlist [if] [in] [, matrix(matname) nomissing   // 单变量：矩阵名默认为变量名，选项nomissing表示仅包含非缺漏值
 * 将矩阵转化为变量
+* ssc install xsvmat, replace
 xsvmat 矩阵名, list(,)                                 // 以变量方式列示矩阵的内容
 * 用矩阵存储统计结果
  makematrix [matrix_name], from(results_list) [production_options] [list_options]:["]command["] [varlist] ... [, options ]
@@ -105,7 +106,12 @@ matrix Atr = trace(A)        // 方阵的对角元素之和
 /*
 2. 矩阵的进阶操作
 2.1 交乘矩阵
-  matrix accum 的定义：atrix accum (A) = A’*A，其中,A = (x1,x2,x3……)；matrix vecaccum 的定义：matrix vecaccum(A) = x1’*X, 其中，X = (x2,x3,……)。
+  matrix accum 的定义：
+matrix accum (A) = A’*A，
+其中,A = (x1,x2,x3……)；
+
+matrix vecaccum 的定义：matrix vecaccum(A) = x1’*X, 
+其中，X = (x2,x3,……)。
 */
 
 matrix accum A = varlist [if] [in] [weight] [, noconstant deviations means(M) absorb(varname)]  // matrix accum 语法
@@ -114,10 +120,13 @@ matrix vecaccum a = varlist [if] [in] [weight] [, noconstant]                   
 *  (1) noconstant 不在 X 矩阵中自动附加常数项；
 *  (2) deviation  采用离差的形式
 
+
+
 *-eg1- 线性模型的 OLS 估计 
 *-目的：求取 b = inv(X'X)*X'y
 * 其中，y = price, 
 *       X =(weight,mpg,Cons)
+
 sysuse auto, clear
 * 方法1：仅使用 matrix accum 命令
 * 思路: 若 A = (y, X)， 则
@@ -132,6 +141,7 @@ matrix Xy = S[2..., 1]
 mat b = inv(XX)*Xy
 mat list b
 reg price weight mpg,nohead       // 检验上述结果
+
 * 方法2：结合使用 matrix accum 和 matrix vecaccum
 mat accum XX = weight mpg
 mat vecaccum yX = price weight mpg

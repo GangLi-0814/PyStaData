@@ -21,7 +21,7 @@ reg lnw s
 reg lnw s, noc // 无常数项回归
 
 * PRF 和 SRF：蒙特卡罗模拟
-clear
+clear 
 set obs 30
 set seed 10101
 
@@ -66,7 +66,7 @@ use ${d}/grilic.dta, clear
 该数据集包括 758 名美国年轻男子的数据。
 被解释变量为 lnw (工资对数)，主要解释变量包括 s (教育年限)、expr (工龄)、tenure (在现单位工作年限)、smsa (是否住在大城市) 以及 rns (是否住在美国南方)。
 */
-、
+
 reg lnw s expr tenure smsa rns
 
 vce // 回归系数的协方差矩阵

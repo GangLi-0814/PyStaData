@@ -1,3 +1,12 @@
+***************
+* 准备工作
+***************
+* 安装 Stata
+* 定义工作路径
+global prog "/Users/gangli/PyStaData/PhD/Econometrics/计量讲义/program"
+global d ${prog}/data
+global o ${prog}/outputs 
+* 安装外部命令
 * ssc install regcheck, replace   
 * ssc install aaplot, replace
 * ssc install regfit, replace
@@ -11,6 +20,7 @@
 * ssc install chowtest, replace
 * ssc install chowreg, replace
 * ssc install ttable, replace
+
 
 
 *************
@@ -39,7 +49,6 @@ scatter y x || lfit y x, lp(dash)
 ******************
 
 * 第一节 统计学基础
-
 * 第二节 Stata入门
 
 ******************
@@ -282,7 +291,9 @@ $H_0: \beta_j = 0 \quad H_1: \beta_j \neq 0$
 $t = \frac{\hat \beta_j - \beta_j}{Se(\hat \beta_j)} ~ t(n-k)$
 若 $|t| > t_{\alpha/2}(n-k)$，则拒绝原假设，认为解释变量对被解释变量的作用是显著的。
 
-t-2 法则（经验法则）
+t-2 法则（经验法则）：
+从 t 分布表可以看出，在给定显著性水平 \aplha = 0.05 的情形下，当自由度大于10 时，
+临界值基本上都接近 2 。
 */
 dis 4.699065/1.122339 // t 检验
 ttable 2
@@ -466,11 +477,14 @@ chowtest price wei mpg, group(foreign) het
 ***********************
 
 
-第一节 多重共线性
+* 第一节 多重共线性
 
 概念
 
-后果
+* 后果
+/*
+
+*/
 
 检测
 
@@ -478,17 +492,143 @@ chowtest price wei mpg, group(foreign) het
 
 - 增加样本
 - 剔除变量
+* 逐步回归
+help sw
+
 - 岭回归
 
-第二节 异方差
+* 第二节 异方差
+********************
 
 概念
 
 后果
 
-检测
+* 检测
 
-补救
+use ${d}/nerlove.dta, clear
+/*
+数据说明：此数据集包括以下变量:
+tc (总成本)，q (总产量)，pl (工资率)， pk (资本的使用成本) 与 pf (燃料价格)；
+以及相应的对数值 lntc， lnq，lnpl，lnpk 与 lnpf。
+*/
+reg lntc lnq lnpl lnpk lnpf
+* 1.残差图 -rvfplot- (residual-versus-fitted plot)
+rvfplot //残差与拟合值的散点图
+rvpplot lnq // 残差与解释变量 lnq 的散点图
+
+* 2.Glejser 检验
+use ${d}/nerlove.dta, clear
+reg lntc lnq lnpl lnpk lnpf
+predict e, residual // 残差 
+gen e_abs = abs(e) // 残差取绝对值
+foreach x in "lnq" "lnpl" "lnpk" "lnpf"{
+	gen `x'_sqrt = sqrt(`x') // 根号
+	gen `x'_reciprocal = 1/`x' // 倒数
+	gen `x'_square = `x'^2 // 平方
+}
+reg e_abs *_sqrt
+reg e_abs *_reciprocal
+reg e_abs *_square
+
+* 3. GQ检验
+
+
+* 4.BP 检验
+use ${d}/nerlove.dta, clear
+reg lntc lnq lnpl lnpk lnpf
+estat hettest, iid rhs 
+/*
+其中：
+- “estat”指 post-estimation statistics(估计后统计量)，即在完成估计后所计算的后续统计量。 
+- “hettest” 表示 heteroskedasticity test。
+- 选择项 “iid” 表示仅假定数据为 iid，而无须正态假定。
+- 选择项 “rhs” 表示，使用方程右边的全部解释变量进行辅助回归，默认使用拟合值 \hat y 进行辅助回归。
+
+estat hettest [varlist], iid //指定使用 varlist 进行辅助回归
+*/
+
+quietly reg lntc lnq lnpl lnpk lnpf
+estat hettest, iid  // 使用拟合值进行 BP 检验
+estat hettest, iid rhs // 使用所有解释变量进行 BP 检验
+estat hettest lnq, iid // 使用变量 lnq 进行 BP 检验
+/*
+结果解读：
+各种形式 BP 检验的 p 值都等于 0.0000，故强烈拒绝同方差的原假设，认为存在异方差。
+*/
+
+* 5.怀特检验
+estat imtest, white // imtest:  information matrix test(信息矩阵检验)
+/*结果解读：
+p值(Prob>chi2)等于 0.0000，强烈拒绝同方差的原假设，认 为存在异方差。
+*/
+
+* 补救
+
+* 4.WLS
+/*
+得到扰动项方差的估计值 ${\hat \sigma_{i}^2}_{i=1}^n$ 后，可作为权重进行 WLS 估计。
+假设已把 ${\hat \sigma_{i}^2}_{i=1}^n$ 存储在变量 var 上，可通过如下 Stata 命令来实现 WLS ：
+reg y x1 x2 x3 [aw=1/var]
+其中，“aw”表示 analytical weight，为扰动项方差(不是标准差)的倒数。
+*/
+
+quietly reg lntc lnq lnql lnpk lnpf
+predict e1, residual
+gen e2 = e1^2
+gen lne2 = log(e2)
+reg lne2 lnq // 假设 $\ln{\hat \sigma_{i}^2}$ 为变量 `lnq' 的线性函数进行辅助回归
+
+/*
+结果解读：变量lnq在1%水平上显著，但R2仅为0.1309，且常数项不显著 ( p值为 0.26)。
+*/
+
+reg lne2 lnq, noc //去掉常数项重新进行辅助回归
+
+/*
+结果解读：
+R2上升为 0.7447(尽管无常数项的R2与有常数项的R2不可比)， 残差平方的变动与 lnq 高度相关。
+*/
+
+predict lne2f // 计算辅助回归的拟合值
+gen e2f = exp(lne2f) //去掉对数后，即得到方差的估计值
+reg lntc lnq lnpl lnpk lnpf [aw=1/e2f] // 使用方差估计值的倒数作为权重,WLS
+/*
+结果解读：
+WLS 回归的结果显示，lnpk 的系数估计值由“-0.22”(OLS 估 计值)改进为“-0.09”(其理论值应为正数)。
+使用 OLS 时，变量 lnpl 的 p 值为 0.13，在 10%的水平上也不显 著;使用 WLS 后，该变量的 p 值变为 0.002，在 1%的水平上显著 不为 0。
+由于 Nerlove(1963)数据存在明显的异方差，使用 WLS 后提高了 估计效率。
+*/
+
+/*
+如担心条件方差函数的设定不准确，导致加权后的新扰动项仍 有异方差，可使用稳健标准误进行 WLS 估计:
+*/
+reg lntc lnq lnpl lnpk lnpf [aw=1/e2f],r
+
+/*
+结果解读：
+无论是否使用稳健标准误，WLS 的回归系数都相同，但标准误有所不同。
+*/
+
+* WLS for Nerlove(1963)
+capture log close
+log using wls_nerlove,replace
+set more off
+use nerlove.dta, clear
+reg lntc lnq lnpl lnpk lnpf
+predict e1,r
+gen e2=e1^2
+gen lne2=log(e2)
+reg lne2 lnq,noc
+predict lne2f
+gen e2f=exp(lne2f)
+
+* Weighted least square regression
+reg lntc lnq lnpl lnpk lnpf [aw=1/e2f]
+reg lntc lnq lnpl lnpk lnpf [aw=1/e2f],r
+log close
+exit
+
 
 第三节 自相关
 
@@ -562,3 +702,4 @@ Probit 模型
 
 赵西亮《基本有用的计量经济学》
 
+李·阿迪金斯,卡特·希尔 著 应用STATA学习计量经济学原理（第4版）

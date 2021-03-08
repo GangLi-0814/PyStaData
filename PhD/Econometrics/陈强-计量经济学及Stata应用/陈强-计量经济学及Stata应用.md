@@ -1538,7 +1538,7 @@ exit
 
 <img src="./images/8-6.png" style="zoom:60%;"/>
 
-#### 8.3.2 BG检验（Breusch, 1978; Godfrey, 1978）
+#### 8.3.2 BG 检验（Breusch, 1978; Godfrey, 1978）
 
 #### 8.3.3 Q 检验
 

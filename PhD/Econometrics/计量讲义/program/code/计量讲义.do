@@ -3,6 +3,7 @@
 * 快捷地计算分组回归统计量的三种方式：runby 、asreg、statsby
 * ssc install chowtest, replace
 * ssc install chowreg, replace
+* ssc install avciplot, replace
 
 /*
 模型设定
@@ -255,7 +256,6 @@ reg pr wei len
 
 例:若存在两个变量 a,b ，而a+b = 6 那么自由度为1。
 因为其实只有a才能真正的自由变化，b 会被 a 选值的不同所限制（b = 6 - a）。
-
 */
 
 
@@ -360,6 +360,7 @@ adj_r2 = 1 - (RSS/df)/(TSS/df)
 
 sysuse auto, clear
 reg pr wei len
+
 /*
 H_0: \beta_j = 0 \quad H_1: \beta_j \neq 0
 t = \frac{\hat \beta_j - \beta_j}{Se(\hat \beta_j)} ~ t(n-k)
