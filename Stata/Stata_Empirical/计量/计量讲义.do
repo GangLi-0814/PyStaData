@@ -1,3 +1,8 @@
+* ssc install ttable, replace
+* ssc install grss, replace
+* 快捷地计算分组回归统计量的三种方式：runby 、asreg、statsby
+* ssc install chowtest, replace
+* ssc install chowreg, replace
 
 /*
 模型设定
@@ -16,6 +21,7 @@ PRF SRF
 * 拟合优度
 
 ** 拟合优度的计算
+** 平方和分解公式的证明
 ** 调整拟合优度
 
 *** 自由度
@@ -48,6 +54,8 @@ RSS = e_i^2
 *** 方差分析
 方差分析(analysis of variance)，简写为ANOVA，
 指的是利用对多个样本的方差的分析，得出总体均值是否相等的判定。
+当回归模型中包含的解释变量都是虚拟变量时，这种模型被称为方差分析模型。
+
 
 * 估计量的统计性质
 线性
@@ -73,17 +81,7 @@ F = (ESS/k)/(RSS/(n-k-1)) ~ F(k, n-k-1)
 */
 
 
-* 最小二乘的推导
 
-* 拟合优度
-
-* 估计量的统计性质
-
-* 随机扰动方差的估计
-
-*模型的检验
-* 回归系数的显著性 t 检验
-* 回归方程的显著性检验 F 检验
 
 *※回归模型的基本假定:
 /*1.解释变量x是确定的，不是随机变量；
@@ -384,8 +382,151 @@ F = (R^2/(k))/((1-R^2)/(n-k-1))
 = .00375213
 
 **************************
+* 1.过原点回归
 /* 
-过原点回归
 拟合系数失效
-去中心化的 r2 = 
+非中心 r2 = \frac{\sum \hat y_i^2}{\sum_{i=1}^n y_i^2}
+如果回归模型无常数项，则平方和分解公式不成立，不宜使用r2来度量拟合优度。
 */
+
+sysuse auto, clear
+reg pr wei len, noconstant
+dis 2.9996e+09/3.4478e+09
+
+* 2.标准化变量回归
+
+/*
+标准化 = （原值-均值）/标准差
+由于标准化后的变量均值为零，所以对应的回归模型中必然无截距项
+标准化回归的系数被称为 beta 系数
+在标准化回归中，系数的大小度量了解释变量的相对解释力，
+如果一个标准化解释变量的系数比模型中另一个标准化解释变量的系数大，
+那么前者就比后者更多的解释 Y_i 的变动。
+*/
+sysuse auto, clear
+reg pr wei len, beta
+
+
+* 手动计算 beta 系数
+sysuse auto, clear
+foreach v in "price" "weight" "length"{
+	qui sum `v'
+	scalar `v'_mean = r(mean)
+	scalar `v'_se = r(sd)
+	gen `v'_standard = (`v' - `v'_mean)/`v'_se
+}
+reg price_standard weight_standard length_standard, noconstant
+
+* 传统模型系数与标准化模型系数
+/*
+传统模型系数与标准化模型系数之间的关系：
+\beta_j^* = \beta_j(\frac{S_{X_j}}{S_Y})
+\beta_j 为第 j 个解释变量的系数；
+S_x_j 为第 j 个解释变量的样本标准差；
+S_Y 为被解释变量的标准差。
+*/
+sysuse auto, clear
+qui sum price
+scalar price_se = r(sd)
+foreach v in "weight" "length"{
+	qui sum `v'
+	scalar `v'_se = r(sd)
+	gen `v'_temp = `v'_se/price_se
+	qui reg pr weight length
+	qui ereturn list
+	gen `v'_standard2 = _b[`v']*`v'_temp
+}
+dis weight_standard2 
+dis length_standard
+
+* 3.双对数模型
+/*
+取对数：1.降低原始数据可能存在异方差的影响；2.解释为弹性。
+log-lin：x 每变化一个单位，y 平均变化 \beta_1 个百分比；
+lon-log：x 每变化一个单位，y 平均变化 0.01*\beta_1 个百分比
+*/
+
+* 比较残差：消除异方差
+sysuse auto.dta,clear
+reg pr wei
+predict e,re
+grss rvfplot
+
+gen lpr  = ln(price) 
+gen lwei = ln(wei)
+reg lpr lwei
+predict e2,re
+grss rvfplot
+
+twoway (scatter e wei,yaxis(1) xaxis(1))   ///
+       (scatter e2 lwei,yaxis(2) xaxis(2)) ///
+	   ,yline(0)
+grss clear
+
+* 4.多项式回归
+*多项式模型
+/*多项式的取值越高，对原函数关系逼近的越好，但是在实际建模过程中，K的取值
+却不宜太大，一方面是没有必要，另一方面，k的取值过大，会带来模型自由度的损失。*/
+
+*示例：观察他们的R^2有变化吗？
+sysuse auto.dta,clear
+gen wei2 = weig^2 
+gen wei3 = weig^3
+gen wei4 = weig^4
+reg pr weig wei2              //二次项回归
+reg pr weig wei2 wei3         //三次项回归
+reg pr weig wei2 wei3 wei4    //四次项回归
+
+*示例：提取五次项回归的r2进行对比
+sysuse auto,clear
+forvalues i = 1/5 {
+  gen weight`i' = weight^`i'
+  if `i' == 1 {
+    reg pr weight
+	ereturn list
+	gen r2_`i' = `e(r2)'
+	}
+  else{
+  reg pr weight - weight`i'
+  ereturn list
+  gen r2_`i' = `e(r2)'
+  }
+}
+list r2_1 r2_2 r2_3 r2_4 r2_5 in 1
+
+* 5.虚拟变量与 ANOVA 模型
+/*
+方差分析模型主要是用于评价定性因素对被解释变量的量化影响。
+单因素方差分析、多因素方差分析
+协方差分析
+*/
+help anova
+
+*6.邹至庄检验
+/*
+chow检验（Chow test）也叫邹氏检验、邹至庄检验，它是由邹至庄提出的，
+用于判断结构在预先给定的时点是否发生了变化的一种方法。
+它把时间序列数据分成两部分，其分界点就是检验是否已发生结构变化的检验时点。
+然后利用F检验来检验由前一部分n个数据求得的参数与由后一部分m个数据求得的参数是否相等，
+由此判断结构是否发生了变化。
+
+检验方法：
+选定时间段分别回归，得到两个子回归的 RSS_1 和 RSS_2，
+记 RSS_{UR} = RSS_1 + RSS_2，称为无约束回归模型的残差平方和
+再对所有的数据回归，得到 RSS_{R}，称为有约束回归模型的残差平方和
+构造F 检验：
+F = [(RSS_U - RSS_{UR})/k]/(RSS_{UR}/(n1+n2-2k))
+
+*/
+help chowreg
+help chowtest
+
+sysuse auto,clear
+chowtest price wei mpg, group(foreign)
+chowtest price wei mpg, group(foreign) restrict(headroom)
+chowtest price wei mpg, group(foreign) het
+
+****************************************
+* 多重共线性
+
+
