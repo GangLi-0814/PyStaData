@@ -247,6 +247,21 @@ reg pr wei len
 dis  1- (414340116/(74-2-1))/(635065396/(74-1)) // adj_r2
 
 * 非中心拟合优度
+sysuse auto, clear
+reg price wei length, noconstant
+scalar u_r2 = e(r2)
+
+* 手动计算
+qui reg price wei length, noconstant
+predict yhat, xb
+gen yhat2 = yhat^2
+gen y2 = price^2
+egen yhat2_sum = total(yhat2)
+egen y2_sum = total(y2)
+gen r_r2_2 = yhat2_sum/y2_sum
+list  r_r2_2 in 1
+
+dis "汇报R2: " u_r2
 
 * 拟合优度对变量的分解
 view browse "https://zhuanlan.zhihu.com/p/75459438"
