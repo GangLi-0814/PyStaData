@@ -418,7 +418,7 @@ gen z = sqrt(e(N)) * ac_g //置信区间：$sqrt(T)r_k^{\alpha} ~ N(0,1)$
 list ac_g z in 1/12
 
 
-use "$data_url/phillips_aus", clear //菲尔普斯曲线
+use "$data_url/phillips_aus", clear //菲利普斯曲线
 /*
 1987q1: inf, unemployment
 inf_{t} = \beta_1 + \beta_2 DU_t + e_t
