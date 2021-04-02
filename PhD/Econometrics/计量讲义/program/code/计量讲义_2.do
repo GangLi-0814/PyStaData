@@ -243,15 +243,24 @@ adj_r2 = 1 - (RSS/df)/(TSS/df)
 = 1 - ((RSS/n-k-1)/(TSS/(n-1))
 */
 sysuse auto, clear
+qui reg pr wei len
+eret list
+/*
+ESS: e(mss)
+RSS: e(rss)
+TSS: e(mss) + e(rss)
+n: e(N)
+k: e(df_m)
+*/
+scalar adj_r2 = 1- (e(rss)/(e(N)-e(df_m)-1))/((e(mss)+e(rss))/(e(N)-1)) 
+dis "调整的R^2:" adj_r2
+* 验证:
 reg pr wei len
-dis  1- (414340116/(74-2-1))/(635065396/(74-1)) // adj_r2
+
 
 * 非中心拟合优度
-sysuse auto, clear
-reg price wei length, noconstant
-scalar u_r2 = e(r2)
-
 * 手动计算
+sysuse auto, clear
 qui reg price wei length, noconstant
 predict yhat, xb
 gen yhat2 = yhat^2
@@ -261,7 +270,8 @@ egen y2_sum = total(y2)
 gen r_r2_2 = yhat2_sum/y2_sum
 list  r_r2_2 in 1
 
-dis "汇报R2: " u_r2
+*验证
+reg price wei length, noconstant
 
 * 拟合优度对变量的分解
 view browse "https://zhuanlan.zhihu.com/p/75459438"
@@ -281,6 +291,13 @@ grss rvfplot,yline(0)                //residual-versus-fitted plot
 
 grss clear
 
+* R2的理解
+sysuse auto,clear
+reg pr wei len mpg rep78
+predict yhat, xb
+qui corr pr yhat
+scalar rho = r(rho)
+dis rho^2
 
 * 第三节 估计量的统计性质及证明
 
