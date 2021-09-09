@@ -218,12 +218,11 @@ f.close()
 # 推荐阅读
 
 [Working with PDF files in Python](https://www.geeksforgeeks.org/working-with-pdf-files-in-python/)
- 
+
  [PDF提取文本](https://zhuanlan.zhihu.com/p/136888486)
 
 [Exporting Data from PDFs with Python](https://www.blog.pythonlibrary.org/2018/05/03/exporting-data-from-pdfs-with-python/)
 
 [使用pdfminer3k模块读取PDF](https://blog.csdn.net/qq_42415326/article/details/89432839?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-8)
 
-[How do I use pdfminer as a library
-](https://stackoverflow.com/questions/5725278/how-do-i-use-pdfminer-as-a-library#)
+[How do I use pdfminer as a library](https://stackoverflow.com/questions/5725278/how-do-i-use-pdfminer-as-a-library#)
